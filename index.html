@@ -4,284 +4,255 @@
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>API Reference</title>
+    <title>Affinity API Reference</title>
+    <link href="images/favicon.png" rel="icon" type="image/png" />
 
-    <link href="stylesheets/screen.css" rel="stylesheet" media="screen" />
-    <link href="stylesheets/print.css" rel="stylesheet" media="print" />
     <style>
       .highlight table td { padding: 5px; }
 .highlight table pre { margin: 0; }
-.highlight, .highlight .w {
-  color: #f8f8f2;
-  background-color: #272822;
-}
-.highlight .err {
-  color: #151515;
-  background-color: #ac4142;
-}
-.highlight .c, .highlight .cd, .highlight .cm, .highlight .c1, .highlight .cs {
-  color: #505050;
-}
-.highlight .cp {
-  color: #f4bf75;
-}
-.highlight .nt {
-  color: #f4bf75;
-}
-.highlight .o, .highlight .ow {
-  color: #d0d0d0;
-}
-.highlight .p, .highlight .pi {
-  color: #d0d0d0;
-}
-.highlight .gi {
-  color: #90a959;
-}
-.highlight .gd {
-  color: #ac4142;
-}
 .highlight .gh {
-  color: #6a9fb5;
-  background-color: #151515;
-  font-weight: bold;
-}
-.highlight .k, .highlight .kn, .highlight .kp, .highlight .kr, .highlight .kv {
-  color: #aa759f;
-}
-.highlight .kc {
-  color: #d28445;
-}
-.highlight .kt {
-  color: #d28445;
-}
-.highlight .kd {
-  color: #d28445;
-}
-.highlight .s, .highlight .sb, .highlight .sc, .highlight .sd, .highlight .s2, .highlight .sh, .highlight .sx, .highlight .s1 {
-  color: #90a959;
+  color: #999999;
 }
 .highlight .sr {
-  color: #75b5aa;
+  color: #f6aa11;
 }
-.highlight .si {
-  color: #8f5536;
+.highlight .go {
+  color: #888888;
 }
-.highlight .se {
-  color: #8f5536;
+.highlight .gp {
+  color: #555555;
 }
-.highlight .nn {
-  color: #f4bf75;
+.highlight .gs {
 }
-.highlight .nc {
-  color: #f4bf75;
+.highlight .gu {
+  color: #aaaaaa;
+}
+.highlight .nb {
+  color: #f6aa11;
+}
+.highlight .cm {
+  color: #75715e;
+}
+.highlight .cp {
+  color: #75715e;
+}
+.highlight .c1 {
+  color: #75715e;
+}
+.highlight .cs {
+  color: #75715e;
+}
+.highlight .c, .highlight .cd {
+  color: #75715e;
+}
+.highlight .err {
+  color: #960050;
+}
+.highlight .gr {
+  color: #960050;
+}
+.highlight .gt {
+  color: #960050;
+}
+.highlight .gd {
+  color: #49483e;
+}
+.highlight .gi {
+  color: #49483e;
+}
+.highlight .ge {
+  color: #49483e;
+}
+.highlight .kc {
+  color: #66d9ef;
+}
+.highlight .kd {
+  color: #66d9ef;
+}
+.highlight .kr {
+  color: #66d9ef;
 }
 .highlight .no {
-  color: #f4bf75;
+  color: #66d9ef;
 }
-.highlight .na {
-  color: #6a9fb5;
+.highlight .kt {
+  color: #66d9ef;
 }
-.highlight .m, .highlight .mf, .highlight .mh, .highlight .mi, .highlight .il, .highlight .mo, .highlight .mb, .highlight .mx {
-  color: #90a959;
+.highlight .mf {
+  color: #ae81ff;
+}
+.highlight .mh {
+  color: #ae81ff;
+}
+.highlight .il {
+  color: #ae81ff;
+}
+.highlight .mi {
+  color: #ae81ff;
+}
+.highlight .mo {
+  color: #ae81ff;
+}
+.highlight .m, .highlight .mb, .highlight .mx {
+  color: #ae81ff;
+}
+.highlight .sc {
+  color: #ae81ff;
+}
+.highlight .se {
+  color: #ae81ff;
 }
 .highlight .ss {
-  color: #90a959;
+  color: #ae81ff;
+}
+.highlight .sd {
+  color: #e6db74;
+}
+.highlight .s2 {
+  color: #e6db74;
+}
+.highlight .sb {
+  color: #e6db74;
+}
+.highlight .sh {
+  color: #e6db74;
+}
+.highlight .si {
+  color: #e6db74;
+}
+.highlight .sx {
+  color: #e6db74;
+}
+.highlight .s1 {
+  color: #e6db74;
+}
+.highlight .s {
+  color: #e6db74;
+}
+.highlight .na {
+  color: #a6e22e;
+}
+.highlight .nc {
+  color: #a6e22e;
+}
+.highlight .nd {
+  color: #a6e22e;
+}
+.highlight .ne {
+  color: #a6e22e;
+}
+.highlight .nf {
+  color: #a6e22e;
+}
+.highlight .vc {
+  color: #ffffff;
+}
+.highlight .nn {
+  color: #ffffff;
+}
+.highlight .nl {
+  color: #ffffff;
+}
+.highlight .ni {
+  color: #ffffff;
+}
+.highlight .bp {
+  color: #ffffff;
+}
+.highlight .vg {
+  color: #ffffff;
+}
+.highlight .vi {
+  color: #ffffff;
+}
+.highlight .nv {
+  color: #ffffff;
+}
+.highlight .w {
+  color: #ffffff;
+}
+.highlight {
+  color: #ffffff;
+}
+.highlight .n, .highlight .py, .highlight .nx {
+  color: #ffffff;
+}
+.highlight .ow {
+  color: #f92672;
+}
+.highlight .nt {
+  color: #f92672;
+}
+.highlight .k, .highlight .kv {
+  color: #f92672;
+}
+.highlight .kn {
+  color: #f92672;
+}
+.highlight .kp {
+  color: #f92672;
+}
+.highlight .o {
+  color: #f92672;
 }
     </style>
-      <script src="javascripts/all.js"></script>
+    <link href="stylesheets/screen.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/print.css" rel="stylesheet" media="print" />
+      <script src="javascripts/all_nosearch.js"></script>
   </head>
 
-  <body class="index" data-languages="[&quot;shell&quot;,&quot;ruby&quot;,&quot;python&quot;]">
+  <body class="index" data-languages="[&quot;shell&quot;]">
     <a href="#" id="nav-button">
       <span>
         NAV
-        <img src="images/navbar.png" />
+        <img src="images/navbar.png" alt="Navbar" />
       </span>
     </a>
     <div class="tocify-wrapper">
-      <img src="images/logo.png" />
+      <img src="images/logo.png" alt="Logo" />
         <div class="lang-selector">
               <a href="#" data-language-name="shell">shell</a>
-              <a href="#" data-language-name="ruby">ruby</a>
-              <a href="#" data-language-name="python">python</a>
         </div>
-        <div class="search">
-          <input type="text" class="search" id="input-search" placeholder="Search">
-        </div>
-        <ul class="search-results"></ul>
       <div id="toc">
       </div>
-        <ul class="toc-footer">
-            <li><a href='#'>Sign Up for a Developer Key</a></li>
-            <li><a href='https://github.com/tripit/slate'>Documentation Powered by Slate</a></li>
-        </ul>
     </div>
     <div class="page-wrapper">
       <div class="dark-box"></div>
       <div class="content">
         <h1 id="introduction">Introduction</h1>
 
-<p>Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.</p>
+<p>Welcome to the Affinity API. This API provides a RESTful interface for performing 
+operations on the different objects that make up Affinity. If you are trying to 
+accomplish an action through this API and are not sure on what endpoints to use, or 
+if you have ideas on more endpoints we could create to make your workflow easier, 
+please do not hesitate to contact us at <code class="prettyprint">support@affinity.co</code>.</p>
 
-<p>We have language bindings in Shell, Ruby, and Python! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.</p>
+<h1 id="overview">Overview</h1>
 
-<p>This example API documentation page was created with <a href="https://github.com/tripit/slate">Slate</a>. Feel free to edit it and use it as a base for your own API&rsquo;s documentation.</p>
-
-<h1 id="authentication">Authentication</h1>
-
-<blockquote>
-<p>To authorize, use this code:</p>
-</blockquote>
-<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-</code></pre>
-<pre class="highlight python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-</code></pre>
-<pre class="highlight shell"><code><span class="c"># With shell, you can just pass the correct header with each request</span>
-curl <span class="s2">"api_endpoint_here"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre>
+<h2 id="authentication">Authentication</h2>
 
 <blockquote>
-<p>Make sure to replace <code class="prettyprint">meowmeowmeow</code> with your API key.</p>
+<p>To authorize, use your code as follows:</p>
 </blockquote>
-
-<p>Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our <a href="http://example.com/developers">developer portal</a>.</p>
-
-<p>Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:</p>
-
-<p><code class="prettyprint">Authorization: meowmeowmeow</code></p>
-
-<aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
-</aside>
-
-<h1 id="kittens">Kittens</h1>
-
-<h2 id="get-all-kittens">Get All Kittens</h2>
-<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span>
+<pre class="highlight shell tab-shell"><code><span class="c"># Pass the key as a query parameter with each request over HTTPS.</span>
+curl <span class="s2">"https://api.affinity.vc/api_endpoint?key=&lt;API-KEY&gt;"</span>
 </code></pre>
-<pre class="highlight python"><code><span class="kn">import</span> <span class="nn">kittn</span>
+<p>To use the API, you will need to generate an API secret key. This can be done easily through
+the Settings Panel that is accessible through the left sidebar on the Affinity web app.</p>
 
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
-</code></pre>
-<pre class="highlight shell"><code>curl <span class="s2">"http://example.com/api/kittens"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre>
+<p>Currently, we support one key per user on your team. Once you have generated a key, you 
+will need to pass in the key with every API request for us to process it successfully. 
+Otherwise, an error with a code of <code class="prettyprint">401</code> will be returned.</p>
 
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">[</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fluffums"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"calico"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">]</span><span class="w">
-</span></code></pre>
+<h2 id="requests-responses">Requests &amp; Responses</h2>
 
-<p>This endpoint retrieves all kittens.</p>
+<p>This is a full-featured RESTful API. We provide reading &amp; writing functionality for each
+object type in Affinity. All requests use the base URL of <code class="prettyprint">https://api.affinity.vc/</code>.</p>
 
-<h3 id="http-request">HTTP Request</h3>
+<p>Responses to each request are provided as a JSON object. The response is either the data 
+requested, or a valid error message and error code as outlined below.</p>
 
-<p><code class="prettyprint">GET http://example.com/api/kittens</code></p>
-
-<h3 id="query-parameters">Query Parameters</h3>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Default</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>include_cats</td>
-<td>false</td>
-<td>If set to true, the result will also include cats.</td>
-</tr>
-<tr>
-<td>available</td>
-<td>true</td>
-<td>If set to false, the result will include kittens that have already been adopted.</td>
-</tr>
-</tbody></table>
-
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
-</aside>
-
-<h2 id="get-a-specific-kitten">Get a Specific Kitten</h2>
-<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre>
-<pre class="highlight python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre>
-<pre class="highlight shell"><code>curl <span class="s2">"http://example.com/api/kittens/2"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre>
-
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-
-<p>This endpoint retrieves a specific kitten.</p>
-
-<aside class="warning">Inside HTML code blocks like this one, you can&rsquo;t use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
-
-<h3 id="http-request">HTTP Request</h3>
-
-<p><code class="prettyprint">GET http://example.com/kittens/&lt;ID&gt;</code></p>
-
-<h3 id="url-parameters">URL Parameters</h3>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>ID</td>
-<td>The ID of the kitten to retrieve</td>
-</tr>
-</tbody></table>
-
-          <h1 id="errors">Errors</h1>
-
-<aside class="notice">This error section is stored in a separate file in `includes/_errors.md`. Slate allows you to optionally separate out your docs into many files&hellip;just save them to the `includes` folder and add them to the top of your `index.md`&rsquo;s frontmatter. Files are included in the order listed.</aside>
-
-<p>The Kittn API uses the following error codes:</p>
+<p>Here is a list of all the error codes the Affinity API returns in case something does not go as expected:</p>
 
 <table><thead>
 <tr>
@@ -290,40 +261,20 @@ Remember — a happy kitten is an authenticated kitten!
 </tr>
 </thead><tbody>
 <tr>
-<td>400</td>
-<td>Bad Request &ndash; Your request sucks</td>
-</tr>
-<tr>
 <td>401</td>
-<td>Unauthorized &ndash; Your API key is wrong</td>
-</tr>
-<tr>
-<td>403</td>
-<td>Forbidden &ndash; The kitten requested is hidden for administrators only</td>
+<td>Unauthorized &ndash; Your API key is invalid.</td>
 </tr>
 <tr>
 <td>404</td>
-<td>Not Found &ndash; The specified kitten could not be found</td>
+<td>Not Found &ndash; Requested resource does not exist.</td>
 </tr>
 <tr>
-<td>405</td>
-<td>Method Not Allowed &ndash; You tried to access a kitten with an invalid method</td>
-</tr>
-<tr>
-<td>406</td>
-<td>Not Acceptable &ndash; You requested a format that isn&rsquo;t json</td>
-</tr>
-<tr>
-<td>410</td>
-<td>Gone &ndash; The kitten requested has been removed from our servers</td>
-</tr>
-<tr>
-<td>418</td>
-<td>I&rsquo;m a teapot</td>
+<td>422</td>
+<td>Unprocessable Entity &ndash; Malformed parameters supplied. This can also happen in cases the parameters supplied logically cannot complete the request. In this case, an appropriate error message is delivered.</td>
 </tr>
 <tr>
 <td>429</td>
-<td>Too Many Requests &ndash; You&rsquo;re requesting too many kittens! Slow down!</td>
+<td>Too Many Requests &ndash; You have exceed the rate limit.</td>
 </tr>
 <tr>
 <td>500</td>
@@ -331,16 +282,2158 @@ Remember — a happy kitten is an authenticated kitten!
 </tr>
 <tr>
 <td>503</td>
-<td>Service Unavailable &ndash; We&rsquo;re temporarially offline for maintanance. Please try again later.</td>
+<td>Service Unavailable &ndash; This shouldn&rsquo;t generally happen. Either a deploy is in process, or Affinity services are down.</td>
 </tr>
 </tbody></table>
+
+<p><strong>Note:</strong> Requests must be sent over HTTPS. Requests sent over HTTP will not return any 
+data in order to ensure your sensitive information remains secure.</p>
+
+<h2 id="rate-limiting">Rate Limiting</h2>
+
+<p>Each API key is limited to 150k requests per day. Once you hit the quota, all further requests will return an error code of
+429 - this will reset as soon as the next day begins.</p>
+
+          <h1 id="data-model">Data Model</h1>
+
+<p>The two top-level objects in Affinity are Persons and Organizations, and everything in the
+product is centered around these two resources. We refer to a data model that is either 
+a person or organization as an Entity.</p>
+
+<p>The data stored in Affinity can be easily understood as a spreadsheet, with many rows, 
+columns and cells. For each part of a spreadsheet, there are directly equivalent 
+data models in Affinity.</p>
+
+<p>The List in Affinity represents the spreadsheet itself. A List is a collection of many rows, and the Affinity equivalent of a row is a List Entry. Each column in a spreadsheet is represented by an Entity Attribute in Affinity, and the value in each cell is represented by an Entity Value.</p>
+
+          <h1 id="entity-attributes">Entity Attributes</h1>
+
+<p>As discussed in the previous section, entity attributes as a data model represent the 
+&ldquo;columns&rdquo; in a spreadsheet. An entity attribute can be specific to a given list, or it 
+can be global. List-specific entity attributes appear as a column whenever that 
+list is being viewed while global entity attributes are displayed on all lists.</p>
+
+<p>Let us consider two examples:</p>
+
+<ol>
+<li><p>Assume you have a list called &ldquo;Top Referrers&rdquo;, and a new list-specific entity 
+attribute (column) called &ldquo;Number of Referrals&rdquo; is added to this list. In this case, 
+the &ldquo;Number of Referrals&rdquo; column will only be visible on the &ldquo;Top Referrers&rdquo; list. </p></li>
+<li><p>Now assume you have three lists of people, &ldquo;Top Referrers&rdquo;, &ldquo;Friends in Media&rdquo;, 
+&ldquo;BD Leads&rdquo;, and a person X exists on all three lists. If you want to track where all the 
+people in these 3 lists live, you might an entity attribute called &ldquo;Location&rdquo;. 
+It makes sense to make this entity attribute global - in which case it will be shared 
+across all three lists. Hence, if person X is a top referrer and lives in San 
+Francisco, CA, that information will automatically appear on the &ldquo;Friends in Media&rdquo; 
+list as well.</p></li>
+</ol>
+
+<p>By default, Affinity provides all teams with a few default global entity attributes: 
+For people, the global entity attributes include Location, Job Titles, and Industries.
+For organizations, the global entity attributes include Stage, Industry, Location, and 
+more.</p>
+
+<h2 id="the-entity-attribute-resource">The entity attribute resource</h2>
+
+<p>Each entity attribute object has a unique <code class="prettyprint">id</code>. It also has a <code class="prettyprint">name</code>, which determines the name of the entity attribute,
+and <code class="prettyprint">allows_multiple</code>, which determines whether multiple values can be added to a single cell for that entity attribute.</p>
+
+<p>Affinity is extremely flexible and customizable, and a lot of that power comes from our ability to support many different
+value types for entity attributes. Numbers, dates, and locations are all examples of value types, and you can search, 
+sort, or filter all of them.</p>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>integer</td>
+<td>The unique identifier of the entity attribute object.</td>
+</tr>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>The name of the entity attribute.</td>
+</tr>
+<tr>
+<td>allows_multiple</td>
+<td>boolean</td>
+<td>This determines whether multiple values can be added to a single cell for the entity attribute.</td>
+</tr>
+<tr>
+<td>dropdown_options</td>
+<td>object[]</td>
+<td>Affinity supports pre-entered dropdown options for entity attributes of the &ldquo;Ranked Dropdown&rdquo; value_type. The array is empty unless there are valid dropdown options for the entity attribute of the &ldquo;Ranked Dropdown&rdquo; value type.</td>
+</tr>
+<tr>
+<td>value_type</td>
+<td>integer</td>
+<td>This field describes what values can be associated with the entity attribute. This can be one of many values, as described in the table below.</td>
+</tr>
+</tbody></table>
+
+<h3 id="entity-attribute-value-types">Entity Attribute Value Types</h3>
+
+<p>All the Types listed below can be referred through looking at the Affinity web app as well.</p>
+
+<p><strong>Note:</strong></p>
+
+<p>The API currently only supports fetching entity attribute data for entity value creation. 
+It does not support updating, deleting, or creating entity attributes. Modifying or 
+creating an entity attribute must be done through the web product.</p>
+
+<p>For accessing person global entity attributes, see the <a href="#get-global-entity-attributes">Person Entity Attributes</a> endpoint.
+For accessing company global entity attributes, see the <a href="#get-global-entity-attributes33">Company Entity Attributes</a> endpoint.
+For accessing list specific entity attributes on a list, see the <a href="#get-a-specific-list">Specific List</a> endpoint.</p>
+
+<table><thead>
+<tr>
+<th>Value</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>0</td>
+<td>Person</td>
+<td>This type enables you to add person objects as a value. Eg: External Source, Owner, Friends</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Organization</td>
+<td>This type enables you to add organization objects as a value. Eg: Place of work, Co-Investors</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Dropdown</td>
+<td>This type allows you to add a text option into a single cell. This is best used when you want to store information that is unique to a person or organization. Eg: Interests, Stage, Industry</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Number</td>
+<td>This type enables you to add number as a value. Eg: Deal Size, Check Size, Revenue</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Date</td>
+<td>This type enables you to add date as a value. Eg: Date of Event, Birthday</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Location</td>
+<td>This type enables you to add a smart Google Maps location as a value. Eg: Address</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Text</td>
+<td>This type enables you to add a long text block as a value. Eg: Summary</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Ranked Dropdown</td>
+<td>This type allows you to add values in a particular order as well as assign colors to them. This is the equivalent of a pick list. Eg: Status, Priority, Ranking</td>
+</tr>
+</tbody></table>
+
+          <h1 id="lists">Lists</h1>
+
+<p>Lists are the primary data structure that you can interact with in Affinity. Each list
+manages a collection of either people or organizations. We call people or organizations
+&ldquo;entities&rdquo;.</p>
+
+<p>A list in Affinity is easily represented as a spreadsheet. The rows of the spreadsheet
+are the list entries, and each list entry corresponds to a single person in a list of
+people, or organization in a list of organizations.</p>
+
+<p>Lists in Affinity can also have any number of custom attributes. These attributes allow
+you to fully customize your workflow and model the data for your use case. We call these
+attributes &ldquo;entity attributes&rdquo;, and each entity attribute represents a column in the
+spreadsheet representation.</p>
+
+<p>As a simple example:
+A list called &ldquo;Important People&rdquo; might have 25 people in it. Two of the columns in the
+sheet could be &ldquo;Title&rdquo; and &ldquo;Industry&rdquo;.</p>
+
+<p>This list would have 25 &ldquo;list entries&rdquo;. Each list entry would be associated with a single
+person entity. Furthermore, the list would have two &ldquo;entity attributes&rdquo; with the names
+&ldquo;Title&rdquo; and &ldquo;Industry&rdquo;. </p>
+
+<h2 id="the-list-resource">The list resource</h2>
+
+<blockquote>
+<p>Example Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">450</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My List of People"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"public"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"owner_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">38706</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"list_size"</span><span class="p">:</span><span class="w"> </span><span class="mi">67</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>integer</td>
+<td>The unique identifier of the list object.</td>
+</tr>
+<tr>
+<td>type</td>
+<td>integer</td>
+<td>The type of the entities contained within the list. A list can contain people or organizations, but not both.</td>
+</tr>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>The title of the list that is displayed in Affinity.</td>
+</tr>
+<tr>
+<td>public</td>
+<td>boolean</td>
+<td>If the list is publicly accessible to all users in your team, this is true. Otherwise, this is false.</td>
+</tr>
+<tr>
+<td>owner_id</td>
+<td>integer</td>
+<td>The unique id of the internal person who created this list.</td>
+</tr>
+<tr>
+<td>list_size</td>
+<td>integer</td>
+<td>The number of list entries contained within the list.</td>
+</tr>
+</tbody></table>
+
+<h3 id="list-types">List types</h3>
+
+<table><thead>
+<tr>
+<th>List Type</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>person</td>
+<td>0</td>
+<td>Type specifying a list of people.</td>
+</tr>
+<tr>
+<td>organization</td>
+<td>1</td>
+<td>Type specifying a list of organizations.</td>
+</tr>
+</tbody></table>
+
+<h2 id="get-all-lists">Get all lists</h2>
+
+<blockquote>
+<p>Example Request</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code><span class="c"># Returns an array of all lists that you have access to.</span>
+curl <span class="s2">"https://api.affinity.vc/lists?key=&lt;API-KEY&gt;"</span>
+</code></pre>
+<blockquote>
+<p>Example Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">450</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My List of People"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">383</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My List of Companies"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="err">...</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+<p><code class="prettyprint">GET /lists</code></p>
+
+<p>Returns a collection of all the lists visible to you.</p>
+
+<h3 id="parameters">Parameters</h3>
+
+<p>None</p>
+
+<h3 id="returns">Returns</h3>
+
+<p>An array of all the list resources for lists visible to you. Each list resource in the
+array includes the <code class="prettyprint">id</code>, <code class="prettyprint">name</code>, and <code class="prettyprint">type</code> (refer to the
+<a href="#the-list-resource">list resource</a> above for further help).</p>
+
+<h2 id="get-a-specific-list">Get a specific list</h2>
+
+<blockquote>
+<p>Example Request</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code><span class="c"># Returns the list with the specified `list_id`</span>
+curl <span class="s2">"https://api.affinity.vc/lists/450?key=&lt;API-KEY&gt;"</span>
+</code></pre>
+<blockquote>
+<p>Example Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">450</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My List of People"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"public"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"owner_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">38706</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"list_size"</span><span class="p">:</span><span class="w"> </span><span class="mi">67</span><span class="w">
+  </span><span class="s2">"entity_attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1625</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Status"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"value_type"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"allows_multiple"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"dropdown_options"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">886</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Interested"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"rank"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"color"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1626</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Owners"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"value_type"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"allows_multiple"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"dropdown_options"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="err">...</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code class="prettyprint">GET /lists/{list_id}</code></p>
+
+<p>Gets the details for a specific list given the existing list id.</p>
+
+<h3 id="path-parameters">Path Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>list_id</td>
+<td>integer</td>
+<td>true</td>
+<td>The unique id of the list object to be retrieved.</td>
+</tr>
+</tbody></table>
+
+<h3 id="returns">Returns</h3>
+
+<p>The details of the list resource corresponding to the list id specified in the path
+parameter. These details include an array of the entity attributes that are specific
+to this list. An appropriate error is returned if an invalid list is supplied.</p>
+
+          <h1 id="list-entries">List Entries</h1>
+
+<h2 id="the-list-entry-resource">The list entry resource</h2>
+
+<blockquote>
+<p>Example Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">16367</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"list_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">450</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"creator_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">38706</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"entity_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">287125</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-01-16 16:34:03 -0800"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Each list comprises a number of entries. Each list entry has a creator, a list
+that it belongs to, and the underlying entity it represents depending on the type of the
+list (people or organizations).</p>
+
+<p>Operations like adding and removing entities from a list can be accomplished using the
+list entry abstraction.</p>
+
+<p><strong>Note:</strong>
+Although list entries correspond to rows in an Affinity spreadsheet, the values
+associated with the entity are not stored inside the list entry resource. If you are
+trying to update, create, or delete a value in one of the custom columns for this list
+entry, please refer to the <a href="#entity-values">Entity Values</a> section. The list entry API
+is only used for getting, adding, or removing entities from a lst. It does not
+handle updating individual cells in columns.</p>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>integer</td>
+<td>The unique identifier of the list entry object.</td>
+</tr>
+<tr>
+<td>list_id</td>
+<td>integer</td>
+<td>The unique identifier of the list on which the list entry resides.</td>
+</tr>
+<tr>
+<td>creator_id</td>
+<td>integer</td>
+<td>The unique identifier of the user who created the list entry. If you create a list entry through the API, the user corresponding to the API token will be the creator by default.</td>
+</tr>
+<tr>
+<td>entity_id</td>
+<td>integer</td>
+<td>The unique identifier of the entity corresponding to the list entry.</td>
+</tr>
+<tr>
+<td>created_at</td>
+<td>datetime</td>
+<td>The time when the list entry was created.</td>
+</tr>
+</tbody></table>
+
+<h2 id="get-all-list-entries">Get all list entries</h2>
+
+<blockquote>
+<p>Example Request</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.affinity.vc/lists/450/list-entries?key=&lt;API-KEY&gt;"</span>
+</code></pre>
+<blockquote>
+<p>Example Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">56515</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"list_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">450</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"creator_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">38706</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"entity_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">312898</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-03-23 11:42:15 -0700"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">16367</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"list_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">450</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"creator_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">38599</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"entity_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">287125</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-01-16 16:34:03 -0800"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="err">...</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+<p><code class="prettyprint">GET /lists/{list_id}/list-entries</code></p>
+
+<p>Fetches all the list entries in the list with the supplied list id.</p>
+
+<h3 id="path-parameters">Path Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>list_id</td>
+<td>integer</td>
+<td>true</td>
+<td>The unique id of the list whose list entries are to be retrieved.</td>
+</tr>
+</tbody></table>
+
+<h3 id="returns">Returns</h3>
+
+<p>An array of all the list entry resources corresponding to the provided list.
+Each list entry in the array includes all the attributes as specified in the
+<a href="#the-list-entry-resource">list entry resource</a> section above.</p>
+
+<h2 id="get-a-specific-list-entry">Get a specific list entry</h2>
+
+<p><code class="prettyprint">GET /lists/{list_id}/list-entries/{list_entry_id}</code></p>
+
+<p>Fetches a list entry with a specified id.</p>
+
+<blockquote>
+<p>Example Request</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.affinity.vc/lists/450/list-entries/16367?key=&lt;API-KEY&gt;"</span>
+</code></pre>
+<blockquote>
+<p>Example Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">16367</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"list_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">450</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"creator_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">38599</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"entity_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">287125</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-01-16 16:34:03 -0800"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<h3 id="path-parameters">Path Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>list_id</td>
+<td>integer</td>
+<td>true</td>
+<td>The unique id of the list that contains the specified <code class="prettyprint">list_entry_id</code>.</td>
+</tr>
+<tr>
+<td>list_entry_id</td>
+<td>integer</td>
+<td>true</td>
+<td>The unique id of the list entry object to be retrieved.</td>
+</tr>
+</tbody></table>
+
+<h3 id="returns">Returns</h3>
+
+<p>The list entry object corresponding to the <code class="prettyprint">list_entry_id</code>.</p>
+
+<h2 id="create-a-new-list-entry">Create a new list entry</h2>
+
+<blockquote>
+<p>Example Request</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.affinity.vc/lists/450/list-entries?key=&lt;API-KEY&gt;"</span> <span class="se">\</span>
+   -d <span class="nv">entity_id</span><span class="o">=</span>38706
+</code></pre>
+<blockquote>
+<p>Example Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">56517</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"list_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">450</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"creator_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">38706</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"entity_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">38706</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-03-26 16:27:51 -0700"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code class="prettyprint">POST /lists/{list_id}/list-entries</code></p>
+
+<p>Creates a new list entry in the list with the supplied list id.</p>
+
+<p><strong>Note:</strong> A list can contain the same entity multiple times. Depending on your use case, before you add an entry,
+you might want to make sure that it does not exist in the list already.</p>
+
+<h3 id="path-parameters">Path Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>list_id</td>
+<td>integer</td>
+<td>true</td>
+<td>The unique id of the list whose list entries are to be retrieved.</td>
+</tr>
+<tr>
+<td>entity_id</td>
+<td>integer</td>
+<td>true</td>
+<td>The unique id of the entity (person or company) to add to this list.</td>
+</tr>
+</tbody></table>
+
+<h3 id="returns">Returns</h3>
+
+<p>The list entry resource that was just created through this request.</p>
+
+<h2 id="delete-a-specific-list-entry">Delete a specific list entry</h2>
+
+<blockquote>
+<p>Example Request</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.affinity.vc/lists/450/list-entries/56517?key=&lt;API-KEY&gt;"</span> <span class="se">\</span>
+   -d <span class="nv">entity_id</span><span class="o">=</span>38706 <span class="se">\</span>
+   -X <span class="s2">"DELETE"</span>
+</code></pre>
+<blockquote>
+<p>Example Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="s2">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code class="prettyprint">DELETE /lists/{list_id}/list-entries/{list_entry_id}</code></p>
+
+<p>Deletes a list entry with a specified <code class="prettyprint">list_entry_id</code>.</p>
+
+<p><strong>Note:</strong> This will also delete all the entity values, if any, associated with the list entry.
+Such entity values will only exist in entity attributes specific to this list.</p>
+
+<h3 id="path-parameters">Path Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>list_id</td>
+<td>integer</td>
+<td>true</td>
+<td>The unique id of the list that contains the specified <code class="prettyprint">list_entry_id</code>.</td>
+</tr>
+<tr>
+<td>list_entry_id</td>
+<td>integer</td>
+<td>true</td>
+<td>The unique id of the list entry object to be deleted.</td>
+</tr>
+</tbody></table>
+
+<h3 id="returns">Returns</h3>
+
+<p>The JSON object <code class="prettyprint">{&quot;success&quot;: true}</code>.</p>
+
+          <h1 id="persons">Persons</h1>
+
+<p>The persons API allows you to manage all the contacts of your organization. These people
+include anyone your team has ever been in email communications or meetings with, and all
+the people that your team has added to Affinity either manually or through the API.
+Affinity&rsquo;s data model also guarantees that only one person in your team&rsquo;s shared contact
+list has a given email address.</p>
+
+<p><strong>Note:</strong></p>
+
+<ol>
+<li>If you are looking to add or remove a person from a list, please check out the
+<a href="#list-entries">List Entries</a> section of the API.</li>
+<li>If you are looking to modify a person&rsquo;s entity values (one of the cells on Affinity&rsquo;s
+spreadsheet), please check out the <a href="#entity-values">Entity Values</a> section of the API.</li>
+</ol>
+
+<h2 id="the-person-resource">The person resource</h2>
+
+<blockquote>
+<p>Example Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">38706</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Doe"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"phone_numbers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"123-456-7890"</span><span class="p">],</span><span class="w">
+  </span><span class="s2">"primary_email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"john@affinity.co"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"emails"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"john@affinity.co"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"john@affinity.vc"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"jdoe@alumni.stanford.edu"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"johnjdoe@gmail.com"</span><span class="p">,</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"organization_ids"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">1687449</span><span class="p">],</span><span class="w">
+</span><span class="p">},</span><span class="w">
+</span></code></pre>
+<p>Each person resource is assigned a unique <code class="prettyprint">id</code> and stores the name, phone numbers, and
+email addresses of the person. A person resource also has access to a smart attribute
+called <code class="prettyprint">primary_email</code>. The value of <code class="prettyprint">primary_email</code> is automatically computed by
+Affinity&rsquo;s proprietary algorithms and refers to the email that is most likely to be the
+current active email address of a person.</p>
+
+<p>The person resource <code class="prettyprint">organization_ids</code> is a collection of unique identifiers to the
+person&rsquo;s associated organizations. Note that a person can be associated with multiple
+organizations. For example, say your team has talked with organizations A and B. Person X
+used to work at A and was your point of contact, but then changed jobs and started emailing
+you from a new email address (corresponding to organization B).
+In this case, Affinity will automatically associate person X with both
+organization A and organization B.</p>
+
+<p>Finally, the person resource <code class="prettyprint">type</code> indicates whether a person is internal or
+external to your team. Every internal person is a user of Affinity on your team, and all other
+people are externals.</p>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>integer</td>
+<td>The unique identifier of the person object.</td>
+</tr>
+<tr>
+<td>type</td>
+<td>integer</td>
+<td>The type of person (see below).</td>
+</tr>
+<tr>
+<td>first_name</td>
+<td>string</td>
+<td>The first name of the person.</td>
+</tr>
+<tr>
+<td>last_name</td>
+<td>string</td>
+<td>The last name of the person.</td>
+</tr>
+<tr>
+<td>emails</td>
+<td>string[]</td>
+<td>The email addresses of the person.</td>
+</tr>
+<tr>
+<td>phone_numbers</td>
+<td>string[]</td>
+<td>The phone numbers of the person.</td>
+</tr>
+<tr>
+<td>primary_email</td>
+<td>string</td>
+<td>The email (automatically computed) that is most likely to the current active email address of the person.</td>
+</tr>
+<tr>
+<td>organization_ids</td>
+<td>integer[]</td>
+<td>An array of unique identifiers of organizations that the person is associated with.</td>
+</tr>
+</tbody></table>
+
+<h3 id="person-types">Person types</h3>
+
+<table><thead>
+<tr>
+<th>Type</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>external</td>
+<td>0</td>
+<td>Default value. All people that your team has spoken with externally have this type.</td>
+</tr>
+<tr>
+<td>internal</td>
+<td>1</td>
+<td>All people on your team that have Affinity accounts will have this type.</td>
+</tr>
+</tbody></table>
+
+<h2 id="search-for-persons">Search for persons</h2>
+
+<p><code class="prettyprint">GET /persons</code></p>
+
+<p>Searches your teams data and fetches all the persons that meet the search criteria.
+The search term can be part of an email address, a first name or a last name.</p>
+
+<blockquote>
+<p>Example Request</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.affinity.vc/persons?key=&lt;API-KEY&gt;&amp;term=doe"</span>
+</code></pre>
+<blockquote>
+<p>Example Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">38706</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Doe"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"phone_numbers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"123-456-7890"</span><span class="p">],</span><span class="w">
+    </span><span class="s2">"primary_email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"john@affinity.co"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"emails"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"john@affinity.co"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"john@affinity.vc"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"jdoe@alumni.stanford.edu"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"johnjdoe@gmail.com"</span><span class="p">,</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">624289</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jane"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Doe"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"phone_numbers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"098-765-4321"</span><span class="p">],</span><span class="w">
+    </span><span class="s2">"primary_email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jane@gmail.com"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"emails"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"jane@gmail.com"</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="err">...</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+<h3 id="query-parameters">Query Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>term</td>
+<td>string</td>
+<td>true</td>
+<td>A string used to search all the persons in your team&rsquo;s address book. This could be an email address, a first name or a last name.</td>
+</tr>
+</tbody></table>
+
+<h3 id="returns">Returns</h3>
+
+<p>An array of all the person resources that match the search criteria. Does not include the associated <code class="prettyprint">organization_ids</code>.</p>
+
+<h2 id="get-a-specific-person">Get a specific person</h2>
+
+<blockquote>
+<p>Example Request</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.affinity.vc/persons/38706?key=&lt;API-KEY&gt;"</span>
+</code></pre>
+<blockquote>
+<p>Example Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">38706</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Doe"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"phone_numbers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"123-456-7890"</span><span class="p">],</span><span class="w">
+  </span><span class="s2">"primary_email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"john@affinity.co"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"emails"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"john@affinity.co"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"john@affinity.vc"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"jdoe@alumni.stanford.edu"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"johndoe@gmail.com"</span><span class="p">,</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"organization_ids"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">1687449</span><span class="p">],</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code class="prettyprint">GET /persons/{person_id}</code></p>
+
+<p>Fetches a person with a specified <code class="prettyprint">person_id</code>.</p>
+
+<h3 id="path-parameters">Path Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>person_id</td>
+<td>integer</td>
+<td>true</td>
+<td>The unique id of the person that needs to be retrieved.</td>
+</tr>
+</tbody></table>
+
+<h3 id="returns">Returns</h3>
+
+<p>The person resource corresponding to the <code class="prettyprint">person_id</code>.</p>
+
+<h2 id="create-a-new-person">Create a new person</h2>
+
+<blockquote>
+<p>Example Request</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.affinity.vc/persons?key=&lt;API-KEY&gt;"</span> <span class="se">\</span>
+  -d <span class="nv">first_name</span><span class="o">=</span><span class="s2">"Alice"</span> <span class="se">\</span>
+  -d <span class="nv">last_name</span><span class="o">=</span><span class="s2">"Doe"</span> <span class="se">\</span>
+  -d emails[]<span class="o">=</span><span class="s2">"alice@affinity.co"</span> <span class="se">\</span>
+  -d phone_numbers[]<span class="o">=</span><span class="s2">"123-123-123"</span> <span class="se">\</span>
+  -d organization_ids[]<span class="o">=</span>1687449
+</code></pre>
+<blockquote>
+<p>Example Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">860197</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"type"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"first_name"</span><span class="p">:</span><span class="s2">"Alice"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"last_name"</span><span class="p">:</span><span class="s2">"Doe"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"phone_numbers"</span><span class="p">:[</span><span class="s2">"123-123-123"</span><span class="p">],</span><span class="w">
+  </span><span class="s2">"primary_email"</span><span class="p">:</span><span class="s2">"alice@affinity.co"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"emails"</span><span class="p">:[</span><span class="s2">"alice@affinity.co"</span><span class="p">],</span><span class="w">
+  </span><span class="s2">"organization_ids"</span><span class="p">:[</span><span class="mi">1687449</span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code class="prettyprint">POST /persons</code></p>
+
+<p>Creates a new person with the supplied parameters.</p>
+
+<p><strong>Note:</strong></p>
+
+<ol>
+<li>If one of the supplied email addresses conflicts with another person object, this
+request will fail and an appropriate error will be returned.</li>
+<li>If you are looking to add an existing person to a list, please check the <a href="#list-entries">List Entries</a> section 
+of the API.</li>
+</ol>
+
+<h3 id="payload-parameters">Payload Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>first_name</td>
+<td>string</td>
+<td>true</td>
+<td>The first name of the person.</td>
+</tr>
+<tr>
+<td>last_name</td>
+<td>string</td>
+<td>true</td>
+<td>The last name of the person.</td>
+</tr>
+<tr>
+<td>emails</td>
+<td>string[]</td>
+<td>true</td>
+<td>The email addresses of the person. If there are no email addresses, please specify an empty array.</td>
+</tr>
+<tr>
+<td>phone_numbers</td>
+<td>string[]</td>
+<td>false</td>
+<td>The phone numbers of the person. If there are no phone numbers, please specify an empty array.</td>
+</tr>
+<tr>
+<td>organization_ids</td>
+<td>integer[]</td>
+<td>false</td>
+<td>An array of unique identifiers of organizations that the person is associated with.</td>
+</tr>
+</tbody></table>
+
+<h3 id="returns">Returns</h3>
+
+<p>The person resource was newly created from this successful request.</p>
+
+<h2 id="update-a-person">Update a person</h2>
+
+<blockquote>
+<p>Example Request</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.affinity.vc/860197?key=&lt;API-KEY&gt;"</span> <span class="se">\</span>
+  -d phone_numbers[]<span class="o">=</span><span class="s2">"123-123-123"</span> <span class="se">\</span>
+  -d phone_numbers[]<span class="o">=</span><span class="s2">"234-234-234"</span> <span class="se">\</span>
+  -d <span class="nv">first_name</span><span class="o">=</span><span class="s2">"Allison"</span> <span class="se">\</span>
+  -X <span class="s2">"PUT"</span>
+</code></pre>
+<blockquote>
+<p>Example Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">860197</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"type"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"first_name"</span><span class="p">:</span><span class="s2">"Allison"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"last_name"</span><span class="p">:</span><span class="s2">"Doe"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"phone_numbers"</span><span class="p">:[</span><span class="s2">"123-123-123"</span><span class="p">,</span><span class="s2">"234-234-234"</span><span class="p">],</span><span class="w">
+  </span><span class="s2">"primary_email"</span><span class="p">:</span><span class="s2">"alice@affinity.co"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"emails"</span><span class="p">:[</span><span class="s2">"alice@affinity.co"</span><span class="p">],</span><span class="w">
+  </span><span class="s2">"organization_ids"</span><span class="p">:[</span><span class="mi">1687449</span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code class="prettyprint">PUT /persons/{person_id}</code></p>
+
+<p>Updates an existing person with <code class="prettyprint">person_id</code> with the supplied parameters. Only attributes
+that need to be changed must be passed in.</p>
+
+<p><strong>Note:</strong></p>
+
+<p>If you are looking to add an existing person to a list, please check the 
+<a href="#list-entries">List Entries</a> section of the API.</p>
+
+<p>If you are trying to add a new phone number, email, or organization to a person, the 
+existing values for <code class="prettyprint">phone_numbers</code>, <code class="prettyprint">emails</code> and <code class="prettyprint">organization_ids</code> must also be 
+supplied as parameters.</p>
+
+<h3 id="path-parameters">Path Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>person_id</td>
+<td>integer</td>
+<td>true</td>
+<td>The unique id of the person that needs to be retrieved.</td>
+</tr>
+</tbody></table>
+
+<h3 id="payload-parameters">Payload Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>first_name</td>
+<td>string</td>
+<td>false</td>
+<td>The first name of the person.</td>
+</tr>
+<tr>
+<td>last_name</td>
+<td>string</td>
+<td>false</td>
+<td>The last name of the person.</td>
+</tr>
+<tr>
+<td>emails</td>
+<td>string[]</td>
+<td>false</td>
+<td>The email addresses of the person. If there are no email addresses, please specify an empty array.</td>
+</tr>
+<tr>
+<td>phone_numbers</td>
+<td>string[]</td>
+<td>false</td>
+<td>The phone numbers of the person. If there are no phone numbers, please specify an empty array.</td>
+</tr>
+<tr>
+<td>organization_ids</td>
+<td>integer[]</td>
+<td>false</td>
+<td>An array of unique identifiers of organizations that the person is associated with</td>
+</tr>
+</tbody></table>
+
+<h3 id="returns">Returns</h3>
+
+<p>The person object that was just updated through this request.</p>
+
+<h2 id="delete-a-person">Delete a person</h2>
+
+<blockquote>
+<p>Example Request</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.affinity.vc/persons/860197?key=&lt;API-KEY&gt;"</span> <span class="se">\</span>
+  -X <span class="s2">"DELETE"</span>
+</code></pre>
+<blockquote>
+<p>Example Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="s2">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code class="prettyprint">DELETE /persons/{person_id}</code></p>
+
+<p>Deletes a person with a specified <code class="prettyprint">person_id</code>.</p>
+
+<p><strong>Note:</strong> This will also delete all the entity values, if any, associated with the person.
+Such entity values exist linked to either global or list-specific entity attributes.</p>
+
+<h3 id="path-parameters">Path Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>person_id</td>
+<td>integer</td>
+<td>true</td>
+<td>The unique id of the person that needs to be deleted.</td>
+</tr>
+</tbody></table>
+
+<h3 id="returns">Returns</h3>
+
+<p><code class="prettyprint">{success: true}</code>.</p>
+
+<h2 id="get-global-entity-attributes">Get global entity attributes</h2>
+
+<p><code class="prettyprint">GET /persons/entity-attributes</code></p>
+
+<p>Fetches an array of all the global entity attributes that exist on people. If you aren&rsquo;t sure
+about what entity attributes are, please read the <a href="#entity-attributes">entity attributes</a> 
+section first.</p>
+
+<blockquote>
+<p>Example Request</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.affinity.vc/persons/entity-attributes?key=&lt;API-KEY&gt;"</span>
+</code></pre>
+<blockquote>
+<p>Example Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">125</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"Use Case"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"value_type"</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"allows_multiple"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"dropdown_options"</span><span class="p">:[]</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">198</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"Referrers"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"value_type"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"allows_multiple"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"dropdown_options"</span><span class="p">:[]</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">1615</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"Address"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"value_type"</span><span class="p">:</span><span class="mi">5</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"allows_multiple"</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"dropdown_options"</span><span class="p">:[]</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="err">...</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+<h3 id="parameters">Parameters</h3>
+
+<p>None.</p>
+
+<h3 id="returns">Returns</h3>
+
+<p>An array of the global entity attributes that exist on people for your team.</p>
+
+          <h1 id="organizations">Organizations</h1>
+
+<p>An organization in Affinity represents an external company that your team is in touch 
+with- this could be an organization you&rsquo;re trying to invest in, sell to, or establish a 
+relationship with.</p>
+
+<p>An organization has many people associated with it - these are your team&rsquo;s points of 
+contacts at that organization. Just like people, organizations can be added to multiple 
+lists and can be assigned entity values.</p>
+
+<p>To make the data quality as good as possible, we have our own proprietary database of 
+organizations that we have developed through third-party partnerships and web scraping. 
+We use this database to minimize data entry for you as you use Affinity&rsquo;s CRM products.</p>
+
+<p><strong>Note:</strong></p>
+
+<ol>
+<li>If you are looking to add or remove an organization from a list, please check out the 
+<a href="#list-entries">List Entries</a> section of the API.</li>
+<li>If you are looking to modify an entity value (one of the cells on Affinity&rsquo;s 
+spreadsheet), please check out the <a href="#entity-values">Entity Values</a> section of the API.</li>
+</ol>
+
+<h2 id="the-organization-resource">The organization resource</h2>
+
+<blockquote>
+<p>Example Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">64779194</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"Affinity"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"domain"</span><span class="p">:</span><span class="s2">"affinity.co"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"global"</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"person_ids"</span><span class="p">:[</span><span class="mi">89734</span><span class="p">,</span><span class="w"> </span><span class="mi">117270</span><span class="p">,</span><span class="w"> </span><span class="mi">138123</span><span class="p">,</span><span class="w"> </span><span class="mi">274492</span><span class="p">,</span><span class="w"> </span><span class="mi">304848</span><span class="p">,</span><span class="w"> </span><span class="err">...</span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Each organization object has a unique <code class="prettyprint">id</code>. It also has a <code class="prettyprint">name</code>, <code class="prettyprint">domain</code> (the website 
+of the organization), and <code class="prettyprint">persons</code> associated with it. The <code class="prettyprint">domain</code> is an important 
+attribute from an automation perspective, as it helps Affinity automatically link all 
+the appropriate person objects to the organization.</p>
+
+<p>Each organization also has a flag determining whether it&rsquo;s <code class="prettyprint">global</code> or not. As mentioned 
+above, Affinity maintains its own database of global organizations that each customer has 
+access to. Note that you cannot change the name or the domain of a <code class="prettyprint">global</code> 
+organization. You also cannot delete a <code class="prettyprint">global</code> organization.</p>
+
+<p>Of course, if an organization is manually created by your team, all fields can be 
+modified and the organization can be deleted.</p>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>integer</td>
+<td>The unique identifier of the organization object.</td>
+</tr>
+<tr>
+<td>name</td>
+<td>integer</td>
+<td>The name of the organization (see below).</td>
+</tr>
+<tr>
+<td>domain</td>
+<td>string</td>
+<td>The website name of the organization. This is used by Affinity to automatically associate person objects with an organization.</td>
+</tr>
+<tr>
+<td>person_ids</td>
+<td>string[]</td>
+<td>An array of unique identifiers of person that are associated with the organization</td>
+</tr>
+<tr>
+<td>global</td>
+<td>boolean</td>
+<td>Returns whether this organization is a part of Affinity&rsquo;s global dataset of organizations. This is always false if the organization was created by you.</td>
+</tr>
+</tbody></table>
+
+<h2 id="search-for-organizations">Search for organizations</h2>
+
+<blockquote>
+<p>Example Request</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.affinity.vc/organizations?key=&lt;API-KEY&gt;&amp;term=affinity"</span>
+</code></pre>
+<blockquote>
+<p>Example Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">64779194</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"Affinity"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"domain"</span><span class="p">:</span><span class="s2">"affinity.co"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"global"</span><span class="p">:</span><span class="kc">false</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">1513682</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"Brand Affinity Technologies"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"domain"</span><span class="p">:</span><span class="s2">"brandaffinity.net"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"global"</span><span class="p">:</span><span class="kc">true</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="err">...</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+<p><code class="prettyprint">GET /organizations</code></p>
+
+<p>Searches your team&rsquo;s data and fetches all the organizations that meet the search criteria.
+The search term can be a part of an organization&rsquo;s name or domain.</p>
+
+<h3 id="query-parameters">Query Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>term</td>
+<td>string</td>
+<td>false</td>
+<td>A string used to search all the organizations in your team&rsquo;s address book. This could be a name or a domain name.</td>
+</tr>
+</tbody></table>
+
+<h3 id="returns">Returns</h3>
+
+<p>An array of all the organization objects that match the search criteria.</p>
+
+<h2 id="get-a-specific-organization">Get a specific organization</h2>
+
+<blockquote>
+<p>Example Request</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.affinity.vc/organizations/64779194?key=&lt;API-KEY&gt;"</span>
+</code></pre>
+<blockquote>
+<p>Example Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">64779194</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"Affinity"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"domain"</span><span class="p">:</span><span class="s2">"affinity.co"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"global"</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"person_ids"</span><span class="p">:[</span><span class="mi">89734</span><span class="p">,</span><span class="w"> </span><span class="mi">117270</span><span class="p">,</span><span class="w"> </span><span class="mi">138123</span><span class="p">,</span><span class="w"> </span><span class="mi">274492</span><span class="p">,</span><span class="w"> </span><span class="mi">304848</span><span class="p">,</span><span class="w"> </span><span class="err">...</span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code class="prettyprint">GET /organizations/{organization_id}</code></p>
+
+<p>Fetches an organization with a specified <code class="prettyprint">organization_id</code>.</p>
+
+<h3 id="path-parameters">Path Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>organization_id</td>
+<td>integer</td>
+<td>true</td>
+<td>The unique id of the organization that needs to be retrieved.</td>
+</tr>
+</tbody></table>
+
+<h3 id="returns">Returns</h3>
+
+<p>The organization object corresponding to the <code class="prettyprint">organization_id</code>.</p>
+
+<h2 id="create-a-new-organization">Create a new organization</h2>
+
+<blockquote>
+<p>Example Request</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.affinity.vc/organizations?key=&lt;API-KEY&gt;"</span> <span class="se">\</span>
+  -d <span class="nv">name</span><span class="o">=</span><span class="s2">"Acme Corporation"</span> <span class="se">\</span>
+  -d <span class="nv">domain</span><span class="o">=</span><span class="s2">"acme.co"</span> <span class="se">\</span>
+  -d person_ids[]<span class="o">=</span>38706
+</code></pre>
+<blockquote>
+<p>Example Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">120611418</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"Acme Corporation"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"domain"</span><span class="p">:</span><span class="s2">"acme.co"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"global"</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"person_ids"</span><span class="p">:[</span><span class="mi">38706</span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code class="prettyprint">POST /organizations</code></p>
+
+<p>Creates a new organization with the supplied parameters.</p>
+
+<p><strong>Note:</strong> If you are looking to add an existing organization to a list, please check 
+the <a href="#list-entries">List Entries</a> section of the API.</p>
+
+<h3 id="payload-parameters">Payload Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>true</td>
+<td>The name of the organization.</td>
+</tr>
+<tr>
+<td>domain</td>
+<td>string</td>
+<td>false</td>
+<td>The domain name of the organization.</td>
+</tr>
+<tr>
+<td>person_ids</td>
+<td>integer[]</td>
+<td>false</td>
+<td>An array of unique identifiers of persons that the new organization will be associated with.</td>
+</tr>
+</tbody></table>
+
+<h3 id="returns">Returns</h3>
+
+<p>The organization resource that was just created by a successful request.</p>
+
+<h2 id="update-an-organization">Update an organization</h2>
+
+<blockquote>
+<p>Example Request</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.affinity.vc/organizations/120611418?key=&lt;API-KEY&gt;"</span> <span class="se">\</span>
+  -d <span class="nv">name</span><span class="o">=</span><span class="s2">"Acme Corp."</span> <span class="se">\</span>
+  -d person_ids[]<span class="o">=</span>38706 <span class="se">\</span>
+  -d person_ids[]<span class="o">=</span>89734 <span class="se">\</span>
+  -X <span class="s2">"PUT"</span>
+</code></pre>
+<blockquote>
+<p>Example Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">120611418</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"Acme Corp."</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"domain"</span><span class="p">:</span><span class="s2">"acme.co"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"global"</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"person_ids"</span><span class="p">:[</span><span class="mi">38706</span><span class="p">,</span><span class="mi">89734</span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code class="prettyprint">PUT /organizations/{organization_id}</code></p>
+
+<p>Updates an existing organization with <code class="prettyprint">organization_id</code> with the supplied parameters.</p>
+
+<p><strong>Note:</strong></p>
+
+<p>If you are looking to add an existing organization to a list, please check the 
+<a href="#list-entries">List Entries</a> section of the API.</p>
+
+<p>If you are trying to add a person to an organization, the existing values for 
+<code class="prettyprint">person_ids</code> must also be passed into the endpoint.</p>
+
+<h3 id="path-parameters">Path Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>organization_id</td>
+<td>integer</td>
+<td>true</td>
+<td>The unique id of the organization to be updated.</td>
+</tr>
+</tbody></table>
+
+<h3 id="payload-parameters">Payload Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>false</td>
+<td>The name of the organization.</td>
+</tr>
+<tr>
+<td>domain</td>
+<td>string</td>
+<td>false</td>
+<td>The domain name of the organization.</td>
+</tr>
+<tr>
+<td>person_ids</td>
+<td>integer[]</td>
+<td>false</td>
+<td>An array of unique identifiers of persons that the organization will be associated with.</td>
+</tr>
+</tbody></table>
+
+<h3 id="returns">Returns</h3>
+
+<p>The organization resource that was just updated through a successful request.</p>
+
+<h2 id="delete-an-organization">Delete an organization</h2>
+
+<blockquote>
+<p>Example Request</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.affinity.vc/organizations/120611418?key=&lt;API-KEY&gt;"</span> <span class="se">\</span>
+  -X <span class="s2">"DELETE"</span>
+</code></pre>
+<blockquote>
+<p>Example Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="s2">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code class="prettyprint">DELETE /organizations/{organization_id}</code></p>
+
+<p>Deletes an organization with a specified <code class="prettyprint">organization_id</code>.</p>
+
+<p><strong>Note:</strong></p>
+
+<ol>
+<li>An appropriate error will be returned if you are trying to delete a <code class="prettyprint">global</code> organization.</li>
+<li>This will also delete all the entity values, if any, associated with the organization.
+Such entity values exist linked to either global or list-specific entity attributes.</li>
+</ol>
+
+<h3 id="path-parameters">Path Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>organization_id</td>
+<td>integer</td>
+<td>true</td>
+<td>The unique id of the organization that needs to be deleted.</td>
+</tr>
+</tbody></table>
+
+<h3 id="returns">Returns</h3>
+
+<p><code class="prettyprint">{success: true}</code>.</p>
+
+<h2 id="get-global-entity-attributes">Get global entity attributes</h2>
+
+<blockquote>
+<p>Example Request</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.affinity.vc/organizations/entity-attributes?key=&lt;API-KEY&gt;"</span>
+</code></pre>
+<blockquote>
+<p>Example Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">662</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"Potential Users"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"value_type"</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"allows_multiple"</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"dropdown_options"</span><span class="p">:[]</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">700</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"Leads"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"value_type"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"allows_multiple"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"dropdown_options"</span><span class="p">:[]</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">2988</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"Last Funding Date"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"value_type"</span><span class="p">:</span><span class="mi">4</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"allows_multiple"</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"dropdown_options"</span><span class="p">:[]</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="err">...</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+<p><code class="prettyprint">GET /organizations/entity-attributes</code></p>
+
+<p>Fetches an array of all the global entity attributes that exist on organizations.
+If you aren&rsquo;t sure about what entity attributes are, please read the 
+<a href="#entity-attributes">Entity Attributes</a> section first.</p>
+
+<h3 id="parameters">Parameters</h3>
+
+<p>None.</p>
+
+<h3 id="returns">Returns</h3>
+
+<p>An array of the entity attributes that exist on all organizations for your team.</p>
+
+          <h1 id="entity-values">Entity Values</h1>
+
+<p>Entity values are displayed in Affinity as the data in the cells of an Affinity 
+spreadsheet.</p>
+
+<p>As an example for how an entity value is created:</p>
+
+<ol>
+<li>Assume there exists a list of people called &ldquo;Business Development Leads&rdquo;.</li>
+<li>A custom entity attribute called &ldquo;Deal Size&rdquo; is created on this list. Entity 
+attributes are visually displayed as columns.</li>
+<li>A person X is added to this list. This action creates a list entry for this person.</li>
+<li>A value, 50,000, is entered in the cell corresponding to person X in the Deal Size 
+column.</li>
+<li>50,000 is now an entity value tied to the list entry corresponding to person X, 
+and the &ldquo;Deal Size&rdquo; entity attribute.</li>
+</ol>
+
+<p><strong>Note:</strong></p>
+
+<p>By default, Affinity creates some entity attributes for you automatically. These include
+Location, Industry, Job Titles, and more.</p>
+
+<h2 id="the-entity-value-resource">The entity value resource</h2>
+
+<blockquote>
+<p>Example Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="err">#</span><span class="w"> </span><span class="err">Global</span><span class="w"> </span><span class="err">Location</span><span class="w"> </span><span class="err">Entity</span><span class="w"> </span><span class="err">Value</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">250616</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"entity_attribute_id"</span><span class="p">:</span><span class="mi">337</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"list_entry_id"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"entity_id"</span><span class="p">:</span><span class="mi">38706</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"value"</span><span class="p">:{</span><span class="w">
+    </span><span class="s2">"city"</span><span class="p">:</span><span class="s2">"San Francisco"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"state"</span><span class="p">:</span><span class="s2">"California"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"country"</span><span class="p">:</span><span class="s2">"United States"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"continent"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"street_address"</span><span class="p">:</span><span class="kc">null</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="err">#</span><span class="w"> </span><span class="err">List</span><span class="w"> </span><span class="err">Specific</span><span class="w"> </span><span class="err">Dropdown</span><span class="w"> </span><span class="err">Entity</span><span class="w"> </span><span class="err">Value</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">177634</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"entity_attribute_id"</span><span class="p">:</span><span class="mi">751</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"list_entry_id"</span><span class="p">:</span><span class="mi">605</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"entity_id"</span><span class="p">:</span><span class="mi">38706</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"value"</span><span class="p">:{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">71</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"text"</span><span class="p">:</span><span class="s2">"Low"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"rank"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"color"</span><span class="p">:</span><span class="mi">4</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Each entity value object has a unique <code class="prettyprint">id</code>.</p>
+
+<p>An entity value also has <code class="prettyprint">entity_attribute_id</code>, <code class="prettyprint">entity_id</code>, and <code class="prettyprint">list_entry_id</code> 
+attributes that give it the appropriate associations, as noted in the example above.</p>
+
+<p>An entity value can take on many different kinds of values, depending on the 
+<code class="prettyprint">entity_attribute</code> value type (see <a href="#entity-attributes">Entity Attributes</a> section).</p>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>integer</td>
+<td>The unique identifier of the entity value object.</td>
+</tr>
+<tr>
+<td>entity_attribute_id</td>
+<td>integer</td>
+<td>The unique identifier of the entity attribute the value is associated with.</td>
+</tr>
+<tr>
+<td>entity_id</td>
+<td>integer</td>
+<td>The unique identifier of the person or organization object the entity value is associated with.</td>
+</tr>
+<tr>
+<td>list_entry_id</td>
+<td>integer</td>
+<td>The unique identifier of the list entry object the entity value is associated with. This only exists if the entity attribute the value is associated with is list-specific.</td>
+</tr>
+<tr>
+<td>value</td>
+<td>One of many</td>
+<td>The value attribute can take on many different types, depending on the entity attribute <code class="prettyprint">value_type</code>. See below for reference.</td>
+</tr>
+</tbody></table>
+
+<h3 id="entity-value-value-types">Entity Value value types</h3>
+
+<p>The Field Type specified below corresponds to the <code class="prettyprint">value_type</code> of an entity attribute.</p>
+
+<table><thead>
+<tr>
+<th>Value Type</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>dropdown</td>
+<td>string</td>
+<td>This represents a value in a dropdown field.</td>
+</tr>
+<tr>
+<td>number</td>
+<td>integer</td>
+<td>This represents a value in a number field.</td>
+</tr>
+<tr>
+<td>person</td>
+<td>integer</td>
+<td>This represents a value in a person field.</td>
+</tr>
+<tr>
+<td>organization</td>
+<td>integer</td>
+<td>This represents a value in an organization field.</td>
+</tr>
+<tr>
+<td>location</td>
+<td>object</td>
+<td>This represents a value in a location field - it&rsquo;s an object comprising the following keys: <code class="prettyprint">street_address</code>, <code class="prettyprint">city</code>, <code class="prettyprint">state</code>, <code class="prettyprint">country</code>, all of which take string values.</td>
+</tr>
+<tr>
+<td>date</td>
+<td>datetime</td>
+<td>This represents a value in a date field.</td>
+</tr>
+<tr>
+<td>text</td>
+<td>string</td>
+<td>This represents a value in a text field.</td>
+</tr>
+</tbody></table>
+
+<h2 id="get-entity-values">Get entity values</h2>
+
+<blockquote>
+<p>Example Request</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.affinity.vc/entity-values?key=&lt;API-KEY&gt;&amp;person_id=38706"</span>
+</code></pre>
+<blockquote>
+<p>Example Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">250616</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"entity_attribute_id"</span><span class="p">:</span><span class="mi">337</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"list_entry_id"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"entity_id"</span><span class="p">:</span><span class="mi">38706</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"value"</span><span class="p">:{</span><span class="w">
+      </span><span class="s2">"city"</span><span class="p">:</span><span class="s2">"San Francisco"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"state"</span><span class="p">:</span><span class="s2">"California"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"country"</span><span class="p">:</span><span class="s2">"United States"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"continent"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"street_address"</span><span class="p">:</span><span class="kc">null</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">250615</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"entity_attribute_id"</span><span class="p">:</span><span class="mi">1284</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"list_entry_id"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"entity_id"</span><span class="p">:</span><span class="mi">38706</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"value"</span><span class="p">:</span><span class="s2">"Computer Software"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">32760</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"entity_attribute_id"</span><span class="p">:</span><span class="mi">198</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"list_entry_id"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"entity_id"</span><span class="p">:</span><span class="mi">38706</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"value"</span><span class="p">:</span><span class="mi">38659</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">177634</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"entity_attribute_id"</span><span class="p">:</span><span class="mi">751</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"list_entry_id"</span><span class="p">:</span><span class="mi">605</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"entity_id"</span><span class="p">:</span><span class="mi">38706</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"value"</span><span class="p">:{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">71</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"text"</span><span class="p">:</span><span class="s2">"Low"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"rank"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"color"</span><span class="p">:</span><span class="mi">4</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="err">...</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+<p><code class="prettyprint">GET /entity-values</code></p>
+
+<p>Returns all entity values attached to a <code class="prettyprint">person</code>, <code class="prettyprint">organization</code> or <code class="prettyprint">list_entry</code>.</p>
+
+<h3 id="query-parameters">Query Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>person_id</td>
+<td>integer</td>
+<td>custom*</td>
+<td>A unique id that represents a person object whose entity values are to be retrieved.</td>
+</tr>
+<tr>
+<td>organization_id</td>
+<td>integer</td>
+<td>custom*</td>
+<td>A unique id that represents an organization object whose entity values are to be retrieved.</td>
+</tr>
+<tr>
+<td>list_entry_id</td>
+<td>integer</td>
+<td>custom*</td>
+<td>A unique id that represents a list entry object whose entity values are to be retrieved.</td>
+</tr>
+</tbody></table>
+
+<p><strong>Note:</strong></p>
+
+<ol>
+<li>custom*: Only one of <code class="prettyprint">person_id</code>, <code class="prettyprint">organization_id</code>, <code class="prettyprint">list_entry_id</code> can be specified to the endpoint.</li>
+<li>If a <code class="prettyprint">person_id</code> or <code class="prettyprint">organization_id</code> is specified, the endpoint returns all entity values tied to these entities - including those that are associated with all list entries that 
+exist for the given person or organization.</li>
+</ol>
+
+<h3 id="returns">Returns</h3>
+
+<p>An array of all the entity values associated with the supplied <code class="prettyprint">person</code>, 
+<code class="prettyprint">organization</code> or <code class="prettyprint">list_entry</code>.</p>
+
+<h2 id="create-a-new-entity-value">Create a new entity value</h2>
+
+<blockquote>
+<p>Example Request</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.affinity.vc/entity-values?key=&lt;API-KEY&gt;"</span> <span class="se">\</span>
+  -d <span class="nv">entity_attribute_id</span><span class="o">=</span>1284 <span class="se">\</span>
+  -d <span class="nv">value</span><span class="o">=</span><span class="s2">"Architecture"</span> <span class="se">\</span>
+  -d <span class="nv">entity_id</span><span class="o">=</span>38706
+</code></pre>
+<blockquote>
+<p>Example Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">20406836</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"entity_attribute_id"</span><span class="p">:</span><span class="mi">1284</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"list_entry_id"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"entity_id"</span><span class="p">:</span><span class="mi">38706</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"value"</span><span class="p">:</span><span class="s2">"Architecture"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code class="prettyprint">POST /entity-values</code></p>
+
+<p>Creates a new entity value with the supplied parameters.</p>
+
+<h3 id="payload-parameters">Payload Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>entity_attribute_id</td>
+<td>integer</td>
+<td>true</td>
+<td>The unique identifier of the entity attribute (column) that the entity value is associated with.</td>
+</tr>
+<tr>
+<td>entity_id</td>
+<td>integer</td>
+<td>true</td>
+<td>The unique identifier of the entity (person or company) that the entity value is associated with.</td>
+</tr>
+<tr>
+<td>list_entry_id</td>
+<td>integer</td>
+<td>false</td>
+<td>The unique identifier of the list entry (list row) that the entity value is associated with. Only specify the list_entry_id if the entity attribute that the entity value is associated with is list specific.</td>
+</tr>
+<tr>
+<td>value</td>
+<td>custom</td>
+<td>true</td>
+<td>See the <a href="#the-entity-value-resource">entity value resource</a> section for all value types. The value specified must correspond to the <code class="prettyprint">value_type</code> of the supplied <code class="prettyprint">entity_attribute</code>.</td>
+</tr>
+</tbody></table>
+
+<h3 id="returns">Returns</h3>
+
+<p>The entity value resource that was just created through this request.</p>
+
+<h2 id="update-an-entity-value">Update an entity value</h2>
+
+<blockquote>
+<p>Example Request</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.affinity.vc/entity-values/20406836?key=&lt;API-KEY&gt;"</span> <span class="se">\</span>
+  -d <span class="nv">value</span><span class="o">=</span><span class="s2">"Healthcare"</span> <span class="se">\</span>
+  -X <span class="s2">"PUT"</span>
+</code></pre>
+<blockquote>
+<p>Example Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">20406836</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"entity_attribute_id"</span><span class="p">:</span><span class="mi">1284</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"list_entry_id"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"entity_id"</span><span class="p">:</span><span class="mi">38706</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"value"</span><span class="p">:</span><span class="s2">"Healthcare"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code class="prettyprint">PUT /entity-values/{entity_value_id}</code></p>
+
+<p>Updates the existing entity value with <code class="prettyprint">entity_value_id</code> with the supplied parameters.</p>
+
+<p><strong>Note:</strong></p>
+
+<p>If you are looking to add an existing organization to a list, please check the 
+<a href="#list-entries">List Entries</a> section of the API.</p>
+
+<h3 id="path-parameters">Path Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>entity_value_id</td>
+<td>integer</td>
+<td>true</td>
+<td>The unique id of the entity value that needs to be updated.</td>
+</tr>
+</tbody></table>
+
+<h3 id="payload-parameters">Payload Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>value</td>
+<td>custom</td>
+<td>true</td>
+<td>See the <a href="#the-entity-value-resource">entity value resource</a> section for all value types. The value specified must correspond to the <code class="prettyprint">value_type</code> of the supplied <code class="prettyprint">entity_attribute</code>.</td>
+</tr>
+</tbody></table>
+
+<h3 id="returns">Returns</h3>
+
+<p>The entity value object that was just updated through this request.</p>
+
+<h2 id="delete-an-entity-value">Delete an entity value</h2>
+
+<blockquote>
+<p>Example Request</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.affinity.vc/entity-values/20406836?key=&lt;API-KEY&gt;"</span> <span class="se">\</span>
+  -X <span class="s2">"DELETE"</span>
+</code></pre>
+<blockquote>
+<p>Example Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="s2">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code class="prettyprint">DELETE /entity-values/{entity_value_id}</code></p>
+
+<p>Deletes an entity value with the specified <code class="prettyprint">entity_value_id</code>.</p>
+
+<h3 id="path-parameters">Path Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>entity_value_id</td>
+<td>integer</td>
+<td>true</td>
+<td>The unique id of the entity value that needs to be deleted.</td>
+</tr>
+</tbody></table>
+
+<h3 id="returns">Returns</h3>
+
+<p><code class="prettyprint">{success: true}</code>.</p>
+
+          <h1 id="notes">Notes</h1>
+
+<blockquote>
+<p>Example Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">22984</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"creator_id"</span><span class="p">:</span><span class="mi">860197</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"person_ids"</span><span class="p">:[</span><span class="mi">38706</span><span class="p">,</span><span class="mi">89734</span><span class="p">],</span><span class="w">
+  </span><span class="s2">"organization_ids"</span><span class="p">:[</span><span class="mi">64779194</span><span class="p">],</span><span class="w">
+  </span><span class="s2">"content"</span><span class="p">:</span><span class="s2">"Had a lunch meeting with Jane and John today. They are looking to invest."</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"created_at"</span><span class="p">:</span><span class="s2">"2017-03-28 00:38:41 -0700"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Just like entity values, notes are used to keep track of state on an entity. They could be
+notes manually taken from due diligence, a meeting, or a call. Or, notes could be used to
+store logged activity from a prospect&rsquo;s visit to your website. </p>
+
+<h2 id="the-note-resource">The note resource</h2>
+
+<p>A note object contains <code class="prettyprint">content</code>, which is a string containing the note body. In 
+addition, a note can be associated with multiple people or organizations. Each person or 
+organization will display linked notes on their profiles.</p>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>integer</td>
+<td>The unique identifier of the note object.</td>
+</tr>
+<tr>
+<td>creator_id</td>
+<td>integer</td>
+<td>The unique identifier of the person object who created the note.</td>
+</tr>
+<tr>
+<td>person_ids</td>
+<td>integer[]</td>
+<td>An array of unique identifiers of person objects that are associated with the note.</td>
+</tr>
+<tr>
+<td>organization_ids</td>
+<td>integer[]</td>
+<td>An array of unique identifiers of organization objects that are associated with the note.</td>
+</tr>
+<tr>
+<td>content</td>
+<td>string</td>
+<td>The string containing the content of the note.</td>
+</tr>
+<tr>
+<td>created_at</td>
+<td>datetime</td>
+<td>The string representing the time when the note was created.</td>
+</tr>
+</tbody></table>
+
+<h2 id="create-a-new-note">Create a new note</h2>
+
+<blockquote>
+<p>Example Request</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.affinity.vc/notes?key=&lt;API-KEY&gt;"</span> <span class="se">\</span>
+  -d person_ids[]<span class="o">=</span>38706 <span class="se">\</span>
+  -d person_ids[]<span class="o">=</span>624289 <span class="se">\</span>
+  -d organization_ids[]<span class="o">=</span>120611418 <span class="se">\</span>
+  -d <span class="nv">content</span><span class="o">=</span><span class="s2">"Had a lunch meeting with Jane and </span><span class="se">\</span><span class="s2">
+              John today. They want to invest in </span><span class="se">\</span><span class="s2">
+              Acme Corp."</span>
+</code></pre>
+<blockquote>
+<p>Example Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">22984</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"creator_id"</span><span class="p">:</span><span class="mi">860197</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"person_ids"</span><span class="p">:[</span><span class="mi">38706</span><span class="p">,</span><span class="mi">89734</span><span class="p">],</span><span class="w">
+  </span><span class="s2">"organization_ids"</span><span class="p">:[</span><span class="mi">64779194</span><span class="p">],</span><span class="w">
+  </span><span class="s2">"content"</span><span class="p">:</span><span class="s2">"Had a lunch meeting with Jane ... "</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"created_at"</span><span class="p">:</span><span class="s2">"2017-03-28 00:38:41 -0700"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code class="prettyprint">POST /notes</code></p>
+
+<p>Creates a new note with the supplied parameters.</p>
+
+<h3 id="path-parameters">Path Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>person_ids</td>
+<td>integer[]</td>
+<td>false</td>
+<td>An array of unique identifiers of person objects that are associated with the new note.</td>
+</tr>
+<tr>
+<td>organization_ids</td>
+<td>integer[]</td>
+<td>false</td>
+<td>An array of unique identifiers of organization objects that are associated with the new note.</td>
+</tr>
+<tr>
+<td>content</td>
+<td>string</td>
+<td>true</td>
+<td>The string containing the content of the new note.</td>
+</tr>
+</tbody></table>
+
+<h3 id="returns">Returns</h3>
+
+<p>The note resource created through this request.</p>
+
+          <h1 id="additional-materials">Additional Materials</h1>
+
+<h2 id="sdk-and-native-client-support">SDK and Native Client support</h2>
+
+<p>We currently don&rsquo;t have native clients or SDKs for different languages, but given the 
+rise in the number of REST clients for different languages, we have compiled some 
+resources to make the API super easy to implement for your use case.</p>
+
+<p>Here are some links to REST clients in the most popular languages:</p>
+
+<ol>
+<li><a href="https://github.com/rest-client/rest-client">Ruby</a></li>
+<li><a href="http://docs.python-requests.org/en/master/">Python</a></li>
+<li><a href="https://github.com/cujojs/rest">Javascript</a></li>
+<li><a href="https://github.com/dghubble/sling">Go</a></li>
+</ol>
 
       </div>
       <div class="dark-box">
           <div class="lang-selector">
                 <a href="#" data-language-name="shell">shell</a>
-                <a href="#" data-language-name="ruby">ruby</a>
-                <a href="#" data-language-name="python">python</a>
           </div>
       </div>
     </div>
