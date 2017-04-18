@@ -221,7 +221,7 @@
       <div class="content">
         <h1 id="introduction">Introduction</h1>
 
-<p>Welcome to the Affinity API. This API provides a RESTful interface for performing 
+<p>Welcome to the Affinity API! This API provides a RESTful interface for performing 
 operations on the different objects that make up Affinity. If you are trying to 
 accomplish an action through this API and are not sure on what endpoints to use, or 
 if you have ideas on more endpoints we could create to make your workflow easier, 
@@ -297,49 +297,49 @@ data in order to ensure your sensitive information remains secure.</p>
           <h1 id="data-model">Data Model</h1>
 
 <p>The two top-level objects in Affinity are Persons and Organizations, and everything in the
-product is centered around these two resources. We refer to a data model that is either 
+product is centered around these two resources. We refer to a data model that is either
 a person or organization as an Entity.</p>
 
-<p>The data stored in Affinity can be easily understood as a spreadsheet, with many rows, 
-columns and cells. For each part of a spreadsheet, there are directly equivalent 
+<p>The data stored in Affinity can be easily understood as a spreadsheet, with many rows,
+columns and cells. For each part of a spreadsheet, there are directly equivalent
 data models in Affinity.</p>
 
-<p>The List in Affinity represents the spreadsheet itself. A List is a collection of many rows, and the Affinity equivalent of a row is a List Entry. Each column in a spreadsheet is represented by an Entity Attribute in Affinity, and the value in each cell is represented by an Entity Value.</p>
+<p>The List in Affinity represents the spreadsheet itself. A List is a collection of many rows, and the Affinity equivalent of a row is a List Entry. Each column in a spreadsheet is represented by a &ldquo;Field&rdquo; in Affinity, and the value in each cell is represented by a &ldquo;Field Value&rdquo;.</p>
 
-          <h1 id="entity-attributes">Entity Attributes</h1>
+          <h1 id="fields">Fields</h1>
 
-<p>As discussed in the previous section, entity attributes as a data model represent the 
-&ldquo;columns&rdquo; in a spreadsheet. An entity attribute can be specific to a given list, or it 
-can be global. List-specific entity attributes appear as a column whenever that 
-list is being viewed while global entity attributes are displayed on all lists.</p>
+<p>As discussed in the previous section, fields as a data model represent the
+&ldquo;columns&rdquo; in a spreadsheet. A field can be specific to a given list, or it
+can be global. List-specific fields appear as a column whenever that
+list is being viewed while global fields are displayed on all lists.</p>
 
 <p>Let us consider two examples:</p>
 
 <ol>
-<li><p>Assume you have a list called &ldquo;Top Referrers&rdquo;, and a new list-specific entity 
-attribute (column) called &ldquo;Number of Referrals&rdquo; is added to this list. In this case, 
-the &ldquo;Number of Referrals&rdquo; column will only be visible on the &ldquo;Top Referrers&rdquo; list. </p></li>
-<li><p>Now assume you have three lists of people, &ldquo;Top Referrers&rdquo;, &ldquo;Friends in Media&rdquo;, 
-&ldquo;BD Leads&rdquo;, and a person X exists on all three lists. If you want to track where all the 
-people in these 3 lists live, you might an entity attribute called &ldquo;Location&rdquo;. 
-It makes sense to make this entity attribute global - in which case it will be shared 
-across all three lists. Hence, if person X is a top referrer and lives in San 
-Francisco, CA, that information will automatically appear on the &ldquo;Friends in Media&rdquo; 
+<li><p>Assume you have a list called &ldquo;Top Referrers&rdquo;, and a new list-specific field (column)
+called &ldquo;Number of Referrals&rdquo; is added to this list. In this case,
+the &ldquo;Number of Referrals&rdquo; column will only be visible on the &ldquo;Top Referrers&rdquo; list.</p></li>
+<li><p>Now assume you have three lists of people, &ldquo;Top Referrers&rdquo;, &ldquo;Friends in Media&rdquo;,
+&ldquo;BD Leads&rdquo;, and a person X exists on all three lists. If you want to track where all the
+people in these 3 lists live, you might have a field called &ldquo;Location&rdquo;.
+It makes sense to make this field global - in which case it will be shared
+across all three lists. Hence, if person X is a top referrer and lives in San
+Francisco, CA, that information will automatically appear on the &ldquo;Friends in Media&rdquo;
 list as well.</p></li>
 </ol>
 
-<p>By default, Affinity provides all teams with a few default global entity attributes: 
-For people, the global entity attributes include Location, Job Titles, and Industries.
-For organizations, the global entity attributes include Stage, Industry, Location, and 
+<p>By default, Affinity provides all teams with a few default global fields:
+For people, the global fields include Location, Job Titles, and Industries.
+For organizations, the global fields include Stage, Industry, Location, and
 more.</p>
 
-<h2 id="the-entity-attribute-resource">The entity attribute resource</h2>
+<h2 id="the-field-resource">The field resource</h2>
 
-<p>Each entity attribute object has a unique <code class="prettyprint">id</code>. It also has a <code class="prettyprint">name</code>, which determines the name of the entity attribute,
-and <code class="prettyprint">allows_multiple</code>, which determines whether multiple values can be added to a single cell for that entity attribute.</p>
+<p>Each field object has a unique <code class="prettyprint">id</code>. It also has a <code class="prettyprint">name</code>, which determines the name of the field,
+and <code class="prettyprint">allows_multiple</code>, which determines whether multiple values can be added to a single cell for that field.</p>
 
 <p>Affinity is extremely flexible and customizable, and a lot of that power comes from our ability to support many different
-value types for entity attributes. Numbers, dates, and locations are all examples of value types, and you can search, 
+value types for fields. Numbers, dates, and locations are all examples of value types, and you can search,
 sort, or filter all of them.</p>
 
 <table><thead>
@@ -352,43 +352,43 @@ sort, or filter all of them.</p>
 <tr>
 <td>id</td>
 <td>integer</td>
-<td>The unique identifier of the entity attribute object.</td>
+<td>The unique identifier of the field object.</td>
 </tr>
 <tr>
 <td>name</td>
 <td>string</td>
-<td>The name of the entity attribute.</td>
+<td>The name of the field.</td>
 </tr>
 <tr>
 <td>allows_multiple</td>
 <td>boolean</td>
-<td>This determines whether multiple values can be added to a single cell for the entity attribute.</td>
+<td>This determines whether multiple values can be added to a single cell for the field.</td>
 </tr>
 <tr>
 <td>dropdown_options</td>
 <td>object[]</td>
-<td>Affinity supports pre-entered dropdown options for entity attributes of the &ldquo;Ranked Dropdown&rdquo; value_type. The array is empty unless there are valid dropdown options for the entity attribute of the &ldquo;Ranked Dropdown&rdquo; value type.</td>
+<td>Affinity supports pre-entered dropdown options for fields of the &ldquo;Ranked Dropdown&rdquo; value_type. The array is empty unless there are valid dropdown options for the field of the &ldquo;Ranked Dropdown&rdquo; value type.</td>
 </tr>
 <tr>
 <td>value_type</td>
 <td>integer</td>
-<td>This field describes what values can be associated with the entity attribute. This can be one of many values, as described in the table below.</td>
+<td>This field describes what values can be associated with the field. This can be one of many values, as described in the table below.</td>
 </tr>
 </tbody></table>
 
-<h3 id="entity-attribute-value-types">Entity Attribute Value Types</h3>
+<h3 id="field-value-types">Field Value Types</h3>
 
 <p>All the Types listed below can be referred through looking at the Affinity web app as well.</p>
 
 <p><strong>Note:</strong></p>
 
-<p>The API currently only supports fetching entity attribute data for entity value creation. 
-It does not support updating, deleting, or creating entity attributes. Modifying or 
-creating an entity attribute must be done through the web product.</p>
+<p>The API currently only supports fetching field data for field value creation.
+It does not support updating, deleting, or creating fields. Modifying or
+creating an field must be done through the web product.</p>
 
-<p>For accessing person global entity attributes, see the <a href="#get-global-entity-attributes">Person Entity Attributes</a> endpoint.
-For accessing company global entity attributes, see the <a href="#get-global-entity-attributes33">Company Entity Attributes</a> endpoint.
-For accessing list specific entity attributes on a list, see the <a href="#get-a-specific-list">Specific List</a> endpoint.</p>
+<p>For accessing person global fields, see the <a href="#get-global-fields">Person Fields</a> endpoint.
+For accessing company global fields, see the <a href="#get-global-fields33">Company Fields</a> endpoint.
+For accessing list specific fields on a list, see the <a href="#get-a-specific-list">Specific List</a> endpoint.</p>
 
 <table><thead>
 <tr>
@@ -451,7 +451,7 @@ people, or organization in a list of organizations.</p>
 
 <p>Lists in Affinity can also have any number of custom attributes. These attributes allow
 you to fully customize your workflow and model the data for your use case. We call these
-attributes &ldquo;entity attributes&rdquo;, and each entity attribute represents a column in the
+attributes &ldquo;fields&rdquo;, and each fields represents a column in the
 spreadsheet representation.</p>
 
 <p>As a simple example:
@@ -459,8 +459,8 @@ A list called &ldquo;Important People&rdquo; might have 25 people in it. Two of 
 sheet could be &ldquo;Title&rdquo; and &ldquo;Industry&rdquo;.</p>
 
 <p>This list would have 25 &ldquo;list entries&rdquo;. Each list entry would be associated with a single
-person entity. Furthermore, the list would have two &ldquo;entity attributes&rdquo; with the names
-&ldquo;Title&rdquo; and &ldquo;Industry&rdquo;. </p>
+person entity. Furthermore, the list would have two &ldquo;fields&rdquo; with the names
+&ldquo;Title&rdquo; and &ldquo;Industry&rdquo;.</p>
 
 <h2 id="the-list-resource">The list resource</h2>
 
@@ -593,7 +593,7 @@ curl <span class="s2">"https://api.affinity.vc/lists/450?key=&lt;API-KEY&gt;"</s
   </span><span class="s2">"public"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
   </span><span class="s2">"owner_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">38706</span><span class="p">,</span><span class="w">
   </span><span class="s2">"list_size"</span><span class="p">:</span><span class="w"> </span><span class="mi">67</span><span class="w">
-  </span><span class="s2">"entity_attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+  </span><span class="s2">"fields"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1625</span><span class="p">,</span><span class="w">
       </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Status"</span><span class="p">,</span><span class="w">
@@ -644,7 +644,7 @@ curl <span class="s2">"https://api.affinity.vc/lists/450?key=&lt;API-KEY&gt;"</s
 <h3 id="returns">Returns</h3>
 
 <p>The details of the list resource corresponding to the list id specified in the path
-parameter. These details include an array of the entity attributes that are specific
+parameter. These details include an array of the fields that are specific
 to this list. An appropriate error is returned if an invalid list is supplied.</p>
 
           <h1 id="list-entries">List Entries</h1>
@@ -673,7 +673,7 @@ list entry abstraction.</p>
 Although list entries correspond to rows in an Affinity spreadsheet, the values
 associated with the entity are not stored inside the list entry resource. If you are
 trying to update, create, or delete a value in one of the custom columns for this list
-entry, please refer to the <a href="#entity-values">Entity Values</a> section. The list entry API
+entry, please refer to the <a href="#field-values">Field Values</a> section. The list entry API
 is only used for getting, adding, or removing entities from a lst. It does not
 handle updating individual cells in columns.</p>
 
@@ -889,8 +889,8 @@ you might want to make sure that it does not exist in the list already.</p>
 
 <p>Deletes a list entry with a specified <code class="prettyprint">list_entry_id</code>.</p>
 
-<p><strong>Note:</strong> This will also delete all the entity values, if any, associated with the list entry.
-Such entity values will only exist in entity attributes specific to this list.</p>
+<p><strong>Note:</strong> This will also delete all the field values, if any, associated with the list entry.
+Such field values will only exist in fields specific to this list.</p>
 
 <h3 id="path-parameters">Path Parameters</h3>
 
@@ -933,8 +933,8 @@ list has a given email address.</p>
 <ol>
 <li>If you are looking to add or remove a person from a list, please check out the
 <a href="#list-entries">List Entries</a> section of the API.</li>
-<li>If you are looking to modify a person&rsquo;s entity values (one of the cells on Affinity&rsquo;s
-spreadsheet), please check out the <a href="#entity-values">Entity Values</a> section of the API.</li>
+<li>If you are looking to modify a person&rsquo;s field values (one of the cells on Affinity&rsquo;s
+spreadsheet), please check out the <a href="#field-values">Field Values</a> section of the API.</li>
 </ol>
 
 <h2 id="the-person-resource">The person resource</h2>
@@ -1199,7 +1199,7 @@ The search term can be part of an email address, a first name or a last name.</p
 <ol>
 <li>If one of the supplied email addresses conflicts with another person object, this
 request will fail and an appropriate error will be returned.</li>
-<li>If you are looking to add an existing person to a list, please check the <a href="#list-entries">List Entries</a> section 
+<li>If you are looking to add an existing person to a list, please check the <a href="#list-entries">List Entries</a> section
 of the API.</li>
 </ol>
 
@@ -1281,11 +1281,11 @@ that need to be changed must be passed in.</p>
 
 <p><strong>Note:</strong></p>
 
-<p>If you are looking to add an existing person to a list, please check the 
+<p>If you are looking to add an existing person to a list, please check the
 <a href="#list-entries">List Entries</a> section of the API.</p>
 
-<p>If you are trying to add a new phone number, email, or organization to a person, the 
-existing values for <code class="prettyprint">phone_numbers</code>, <code class="prettyprint">emails</code> and <code class="prettyprint">organization_ids</code> must also be 
+<p>If you are trying to add a new phone number, email, or organization to a person, the
+existing values for <code class="prettyprint">phone_numbers</code>, <code class="prettyprint">emails</code> and <code class="prettyprint">organization_ids</code> must also be
 supplied as parameters.</p>
 
 <h3 id="path-parameters">Path Parameters</h3>
@@ -1369,8 +1369,8 @@ supplied as parameters.</p>
 
 <p>Deletes a person with a specified <code class="prettyprint">person_id</code>.</p>
 
-<p><strong>Note:</strong> This will also delete all the entity values, if any, associated with the person.
-Such entity values exist linked to either global or list-specific entity attributes.</p>
+<p><strong>Note:</strong> This will also delete all the field values, if any, associated with the person.
+Such field values exist linked to either global or list-specific fields.</p>
 
 <h3 id="path-parameters">Path Parameters</h3>
 
@@ -1394,18 +1394,18 @@ Such entity values exist linked to either global or list-specific entity attribu
 
 <p><code class="prettyprint">{success: true}</code>.</p>
 
-<h2 id="get-global-entity-attributes">Get global entity attributes</h2>
+<h2 id="get-global-fields">Get global fields</h2>
 
-<p><code class="prettyprint">GET /persons/entity-attributes</code></p>
+<p><code class="prettyprint">GET /persons/fields</code></p>
 
-<p>Fetches an array of all the global entity attributes that exist on people. If you aren&rsquo;t sure
-about what entity attributes are, please read the <a href="#entity-attributes">entity attributes</a> 
+<p>Fetches an array of all the global fields that exist on people. If you aren&rsquo;t sure
+about what fields are, please read the <a href="#fields">fields</a>
 section first.</p>
 
 <blockquote>
 <p>Example Request</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.affinity.vc/persons/entity-attributes?key=&lt;API-KEY&gt;"</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.affinity.vc/persons/fields?key=&lt;API-KEY&gt;"</span>
 </code></pre>
 <blockquote>
 <p>Example Response</p>
@@ -1441,29 +1441,29 @@ section first.</p>
 
 <h3 id="returns">Returns</h3>
 
-<p>An array of the global entity attributes that exist on people for your team.</p>
+<p>An array of the global fields that exist on people for your team.</p>
 
           <h1 id="organizations">Organizations</h1>
 
-<p>An organization in Affinity represents an external company that your team is in touch 
-with- this could be an organization you&rsquo;re trying to invest in, sell to, or establish a 
+<p>An organization in Affinity represents an external company that your team is in touch
+with- this could be an organization you&rsquo;re trying to invest in, sell to, or establish a
 relationship with.</p>
 
-<p>An organization has many people associated with it - these are your team&rsquo;s points of 
-contacts at that organization. Just like people, organizations can be added to multiple 
-lists and can be assigned entity values.</p>
+<p>An organization has many people associated with it - these are your team&rsquo;s points of
+contacts at that organization. Just like people, organizations can be added to multiple
+lists and can be assigned field values.</p>
 
-<p>To make the data quality as good as possible, we have our own proprietary database of 
-organizations that we have developed through third-party partnerships and web scraping. 
+<p>To make the data quality as good as possible, we have our own proprietary database of
+organizations that we have developed through third-party partnerships and web scraping.
 We use this database to minimize data entry for you as you use Affinity&rsquo;s CRM products.</p>
 
 <p><strong>Note:</strong></p>
 
 <ol>
-<li>If you are looking to add or remove an organization from a list, please check out the 
+<li>If you are looking to add or remove an organization from a list, please check out the
 <a href="#list-entries">List Entries</a> section of the API.</li>
-<li>If you are looking to modify an entity value (one of the cells on Affinity&rsquo;s 
-spreadsheet), please check out the <a href="#entity-values">Entity Values</a> section of the API.</li>
+<li>If you are looking to modify a field value (one of the cells on Affinity&rsquo;s
+spreadsheet), please check out the <a href="#field-values">Field Values</a> section of the API.</li>
 </ol>
 
 <h2 id="the-organization-resource">The organization resource</h2>
@@ -1479,17 +1479,17 @@ spreadsheet), please check out the <a href="#entity-values">Entity Values</a> se
   </span><span class="s2">"person_ids"</span><span class="p">:[</span><span class="mi">89734</span><span class="p">,</span><span class="w"> </span><span class="mi">117270</span><span class="p">,</span><span class="w"> </span><span class="mi">138123</span><span class="p">,</span><span class="w"> </span><span class="mi">274492</span><span class="p">,</span><span class="w"> </span><span class="mi">304848</span><span class="p">,</span><span class="w"> </span><span class="err">...</span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>Each organization object has a unique <code class="prettyprint">id</code>. It also has a <code class="prettyprint">name</code>, <code class="prettyprint">domain</code> (the website 
-of the organization), and <code class="prettyprint">persons</code> associated with it. The <code class="prettyprint">domain</code> is an important 
-attribute from an automation perspective, as it helps Affinity automatically link all 
+<p>Each organization object has a unique <code class="prettyprint">id</code>. It also has a <code class="prettyprint">name</code>, <code class="prettyprint">domain</code> (the website
+of the organization), and <code class="prettyprint">persons</code> associated with it. The <code class="prettyprint">domain</code> is an important
+attribute from an automation perspective, as it helps Affinity automatically link all
 the appropriate person objects to the organization.</p>
 
-<p>Each organization also has a flag determining whether it&rsquo;s <code class="prettyprint">global</code> or not. As mentioned 
-above, Affinity maintains its own database of global organizations that each customer has 
-access to. Note that you cannot change the name or the domain of a <code class="prettyprint">global</code> 
+<p>Each organization also has a flag determining whether it&rsquo;s <code class="prettyprint">global</code> or not. As mentioned
+above, Affinity maintains its own database of global organizations that each customer has
+access to. Note that you cannot change the name or the domain of a <code class="prettyprint">global</code>
 organization. You also cannot delete a <code class="prettyprint">global</code> organization.</p>
 
-<p>Of course, if an organization is manually created by your team, all fields can be 
+<p>Of course, if an organization is manually created by your team, all fields can be
 modified and the organization can be deleted.</p>
 
 <table><thead>
@@ -1648,7 +1648,7 @@ The search term can be a part of an organization&rsquo;s name or domain.</p>
 
 <p>Creates a new organization with the supplied parameters.</p>
 
-<p><strong>Note:</strong> If you are looking to add an existing organization to a list, please check 
+<p><strong>Note:</strong> If you are looking to add an existing organization to a list, please check
 the <a href="#list-entries">List Entries</a> section of the API.</p>
 
 <h3 id="payload-parameters">Payload Parameters</h3>
@@ -1713,10 +1713,10 @@ the <a href="#list-entries">List Entries</a> section of the API.</p>
 
 <p><strong>Note:</strong></p>
 
-<p>If you are looking to add an existing organization to a list, please check the 
+<p>If you are looking to add an existing organization to a list, please check the
 <a href="#list-entries">List Entries</a> section of the API.</p>
 
-<p>If you are trying to add a person to an organization, the existing values for 
+<p>If you are trying to add a person to an organization, the existing values for
 <code class="prettyprint">person_ids</code> must also be passed into the endpoint.</p>
 
 <h3 id="path-parameters">Path Parameters</h3>
@@ -1792,8 +1792,8 @@ the <a href="#list-entries">List Entries</a> section of the API.</p>
 
 <ol>
 <li>An appropriate error will be returned if you are trying to delete a <code class="prettyprint">global</code> organization.</li>
-<li>This will also delete all the entity values, if any, associated with the organization.
-Such entity values exist linked to either global or list-specific entity attributes.</li>
+<li>This will also delete all the field values, if any, associated with the organization.
+Such field values exist linked to either global or list-specific fields.</li>
 </ol>
 
 <h3 id="path-parameters">Path Parameters</h3>
@@ -1818,12 +1818,12 @@ Such entity values exist linked to either global or list-specific entity attribu
 
 <p><code class="prettyprint">{success: true}</code>.</p>
 
-<h2 id="get-global-entity-attributes">Get global entity attributes</h2>
+<h2 id="get-global-fields">Get global fields</h2>
 
 <blockquote>
 <p>Example Request</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.affinity.vc/organizations/entity-attributes?key=&lt;API-KEY&gt;"</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.affinity.vc/organizations/fields?key=&lt;API-KEY&gt;"</span>
 </code></pre>
 <blockquote>
 <p>Example Response</p>
@@ -1853,11 +1853,11 @@ Such entity values exist linked to either global or list-specific entity attribu
   </span><span class="err">...</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
-<p><code class="prettyprint">GET /organizations/entity-attributes</code></p>
+<p><code class="prettyprint">GET /organizations/fields</code></p>
 
-<p>Fetches an array of all the global entity attributes that exist on organizations.
-If you aren&rsquo;t sure about what entity attributes are, please read the 
-<a href="#entity-attributes">Entity Attributes</a> section first.</p>
+<p>Fetches an array of all the global fields that exist on organizations.
+If you aren&rsquo;t sure about what fields are, please read the
+<a href="#fields">Fields</a> section first.</p>
 
 <h3 id="parameters">Parameters</h3>
 
@@ -1865,40 +1865,40 @@ If you aren&rsquo;t sure about what entity attributes are, please read the
 
 <h3 id="returns">Returns</h3>
 
-<p>An array of the entity attributes that exist on all organizations for your team.</p>
+<p>An array of the fields that exist on all organizations for your team.</p>
 
-          <h1 id="entity-values">Entity Values</h1>
+          <h1 id="field-values">Field Values</h1>
 
-<p>Entity values are displayed in Affinity as the data in the cells of an Affinity 
+<p>Field values are displayed in Affinity as the data in the cells of an Affinity
 spreadsheet.</p>
 
-<p>As an example for how an entity value is created:</p>
+<p>As an example for how a field value is created:</p>
 
 <ol>
 <li>Assume there exists a list of people called &ldquo;Business Development Leads&rdquo;.</li>
-<li>A custom entity attribute called &ldquo;Deal Size&rdquo; is created on this list. Entity 
-attributes are visually displayed as columns.</li>
+<li>A custom field called &ldquo;Deal Size&rdquo; is created on this list. Fields are visually displayed
+as columns.</li>
 <li>A person X is added to this list. This action creates a list entry for this person.</li>
-<li>A value, 50,000, is entered in the cell corresponding to person X in the Deal Size 
+<li>A value, 50,000, is entered in the cell corresponding to person X in the Deal Size
 column.</li>
-<li>50,000 is now an entity value tied to the list entry corresponding to person X, 
-and the &ldquo;Deal Size&rdquo; entity attribute.</li>
+<li>50,000 is now a field value tied to the list entry corresponding to person X,
+and the &ldquo;Deal Size&rdquo; field.</li>
 </ol>
 
 <p><strong>Note:</strong></p>
 
-<p>By default, Affinity creates some entity attributes for you automatically. These include
+<p>By default, Affinity creates some fields for you automatically. These include
 Location, Industry, Job Titles, and more.</p>
 
-<h2 id="the-entity-value-resource">The entity value resource</h2>
+<h2 id="the-field-value-resource">The field value resource</h2>
 
 <blockquote>
 <p>Example Response</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="err">#</span><span class="w"> </span><span class="err">Global</span><span class="w"> </span><span class="err">Location</span><span class="w"> </span><span class="err">Entity</span><span class="w"> </span><span class="err">Value</span><span class="w">
+<pre class="highlight json tab-json"><code><span class="err">#</span><span class="w"> </span><span class="err">Global</span><span class="w"> </span><span class="err">Location</span><span class="w"> </span><span class="err">Field</span><span class="w"> </span><span class="err">Value</span><span class="w">
 </span><span class="p">{</span><span class="w">
   </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">250616</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"entity_attribute_id"</span><span class="p">:</span><span class="mi">337</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"field_id"</span><span class="p">:</span><span class="mi">337</span><span class="p">,</span><span class="w">
   </span><span class="s2">"list_entry_id"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="s2">"entity_id"</span><span class="p">:</span><span class="mi">38706</span><span class="p">,</span><span class="w">
   </span><span class="s2">"value"</span><span class="p">:{</span><span class="w">
@@ -1910,10 +1910,10 @@ Location, Industry, Job Titles, and more.</p>
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span><span class="err">#</span><span class="w"> </span><span class="err">List</span><span class="w"> </span><span class="err">Specific</span><span class="w"> </span><span class="err">Dropdown</span><span class="w"> </span><span class="err">Entity</span><span class="w"> </span><span class="err">Value</span><span class="w">
+</span><span class="err">#</span><span class="w"> </span><span class="err">List</span><span class="w"> </span><span class="err">Specific</span><span class="w"> </span><span class="err">Dropdown</span><span class="w"> </span><span class="err">Field</span><span class="w"> </span><span class="err">Value</span><span class="w">
 </span><span class="p">{</span><span class="w">
   </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">177634</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"entity_attribute_id"</span><span class="p">:</span><span class="mi">751</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"field_id"</span><span class="p">:</span><span class="mi">751</span><span class="p">,</span><span class="w">
   </span><span class="s2">"list_entry_id"</span><span class="p">:</span><span class="mi">605</span><span class="p">,</span><span class="w">
   </span><span class="s2">"entity_id"</span><span class="p">:</span><span class="mi">38706</span><span class="p">,</span><span class="w">
   </span><span class="s2">"value"</span><span class="p">:{</span><span class="w">
@@ -1924,13 +1924,13 @@ Location, Industry, Job Titles, and more.</p>
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>Each entity value object has a unique <code class="prettyprint">id</code>.</p>
+<p>Each field value object has a unique <code class="prettyprint">id</code>.</p>
 
-<p>An entity value also has <code class="prettyprint">entity_attribute_id</code>, <code class="prettyprint">entity_id</code>, and <code class="prettyprint">list_entry_id</code> 
+<p>A field value also has <code class="prettyprint">field_id</code>, <code class="prettyprint">entity_id</code>, and <code class="prettyprint">list_entry_id</code>
 attributes that give it the appropriate associations, as noted in the example above.</p>
 
-<p>An entity value can take on many different kinds of values, depending on the 
-<code class="prettyprint">entity_attribute</code> value type (see <a href="#entity-attributes">Entity Attributes</a> section).</p>
+<p>A field value can take on many different kinds of values, depending on the
+<code class="prettyprint">field</code> value type (see <a href="#fields">Fields</a> section).</p>
 
 <table><thead>
 <tr>
@@ -1942,33 +1942,33 @@ attributes that give it the appropriate associations, as noted in the example ab
 <tr>
 <td>id</td>
 <td>integer</td>
-<td>The unique identifier of the entity value object.</td>
+<td>The unique identifier of the field value object.</td>
 </tr>
 <tr>
-<td>entity_attribute_id</td>
+<td>field_id</td>
 <td>integer</td>
-<td>The unique identifier of the entity attribute the value is associated with.</td>
+<td>The unique identifier of the field the value is associated with.</td>
 </tr>
 <tr>
 <td>entity_id</td>
 <td>integer</td>
-<td>The unique identifier of the person or organization object the entity value is associated with.</td>
+<td>The unique identifier of the person or organization object the field value is associated with.</td>
 </tr>
 <tr>
 <td>list_entry_id</td>
 <td>integer</td>
-<td>The unique identifier of the list entry object the entity value is associated with. This only exists if the entity attribute the value is associated with is list-specific.</td>
+<td>The unique identifier of the list entry object the field value is associated with. This only exists if the field the value is associated with is list-specific.</td>
 </tr>
 <tr>
 <td>value</td>
 <td>One of many</td>
-<td>The value attribute can take on many different types, depending on the entity attribute <code class="prettyprint">value_type</code>. See below for reference.</td>
+<td>The value attribute can take on many different types, depending on the field <code class="prettyprint">value_type</code>. See below for reference.</td>
 </tr>
 </tbody></table>
 
-<h3 id="entity-value-value-types">Entity Value value types</h3>
+<h3 id="field-value-value-types">Field Value value types</h3>
 
-<p>The Field Type specified below corresponds to the <code class="prettyprint">value_type</code> of an entity attribute.</p>
+<p>The Field Type specified below corresponds to the <code class="prettyprint">value_type</code> of a field.</p>
 
 <table><thead>
 <tr>
@@ -2014,12 +2014,12 @@ attributes that give it the appropriate associations, as noted in the example ab
 </tr>
 </tbody></table>
 
-<h2 id="get-entity-values">Get entity values</h2>
+<h2 id="get-field-values">Get field values</h2>
 
 <blockquote>
 <p>Example Request</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.affinity.vc/entity-values?key=&lt;API-KEY&gt;&amp;person_id=38706"</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.affinity.vc/field-values?key=&lt;API-KEY&gt;&amp;person_id=38706"</span>
 </code></pre>
 <blockquote>
 <p>Example Response</p>
@@ -2027,7 +2027,7 @@ attributes that give it the appropriate associations, as noted in the example ab
 <pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
   </span><span class="p">{</span><span class="w">
     </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">250616</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"entity_attribute_id"</span><span class="p">:</span><span class="mi">337</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"field_id"</span><span class="p">:</span><span class="mi">337</span><span class="p">,</span><span class="w">
     </span><span class="s2">"list_entry_id"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="s2">"entity_id"</span><span class="p">:</span><span class="mi">38706</span><span class="p">,</span><span class="w">
     </span><span class="s2">"value"</span><span class="p">:{</span><span class="w">
@@ -2040,21 +2040,21 @@ attributes that give it the appropriate associations, as noted in the example ab
   </span><span class="p">},</span><span class="w">
   </span><span class="p">{</span><span class="w">
     </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">250615</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"entity_attribute_id"</span><span class="p">:</span><span class="mi">1284</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"field_id"</span><span class="p">:</span><span class="mi">1284</span><span class="p">,</span><span class="w">
     </span><span class="s2">"list_entry_id"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="s2">"entity_id"</span><span class="p">:</span><span class="mi">38706</span><span class="p">,</span><span class="w">
     </span><span class="s2">"value"</span><span class="p">:</span><span class="s2">"Computer Software"</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="p">{</span><span class="w">
     </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">32760</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"entity_attribute_id"</span><span class="p">:</span><span class="mi">198</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"field_id"</span><span class="p">:</span><span class="mi">198</span><span class="p">,</span><span class="w">
     </span><span class="s2">"list_entry_id"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="s2">"entity_id"</span><span class="p">:</span><span class="mi">38706</span><span class="p">,</span><span class="w">
     </span><span class="s2">"value"</span><span class="p">:</span><span class="mi">38659</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="p">{</span><span class="w">
     </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">177634</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"entity_attribute_id"</span><span class="p">:</span><span class="mi">751</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"field_id"</span><span class="p">:</span><span class="mi">751</span><span class="p">,</span><span class="w">
     </span><span class="s2">"list_entry_id"</span><span class="p">:</span><span class="mi">605</span><span class="p">,</span><span class="w">
     </span><span class="s2">"entity_id"</span><span class="p">:</span><span class="mi">38706</span><span class="p">,</span><span class="w">
     </span><span class="s2">"value"</span><span class="p">:{</span><span class="w">
@@ -2067,9 +2067,9 @@ attributes that give it the appropriate associations, as noted in the example ab
   </span><span class="err">...</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
-<p><code class="prettyprint">GET /entity-values</code></p>
+<p><code class="prettyprint">GET /field-values</code></p>
 
-<p>Returns all entity values attached to a <code class="prettyprint">person</code>, <code class="prettyprint">organization</code> or <code class="prettyprint">list_entry</code>.</p>
+<p>Returns all field values attached to a <code class="prettyprint">person</code>, <code class="prettyprint">organization</code> or <code class="prettyprint">list_entry</code>.</p>
 
 <h3 id="query-parameters">Query Parameters</h3>
 
@@ -2085,19 +2085,19 @@ attributes that give it the appropriate associations, as noted in the example ab
 <td>person_id</td>
 <td>integer</td>
 <td>custom*</td>
-<td>A unique id that represents a person object whose entity values are to be retrieved.</td>
+<td>A unique id that represents a person object whose field values are to be retrieved.</td>
 </tr>
 <tr>
 <td>organization_id</td>
 <td>integer</td>
 <td>custom*</td>
-<td>A unique id that represents an organization object whose entity values are to be retrieved.</td>
+<td>A unique id that represents an organization object whose field values are to be retrieved.</td>
 </tr>
 <tr>
 <td>list_entry_id</td>
 <td>integer</td>
 <td>custom*</td>
-<td>A unique id that represents a list entry object whose entity values are to be retrieved.</td>
+<td>A unique id that represents a list entry object whose field values are to be retrieved.</td>
 </tr>
 </tbody></table>
 
@@ -2105,22 +2105,22 @@ attributes that give it the appropriate associations, as noted in the example ab
 
 <ol>
 <li>custom*: Only one of <code class="prettyprint">person_id</code>, <code class="prettyprint">organization_id</code>, <code class="prettyprint">list_entry_id</code> can be specified to the endpoint.</li>
-<li>If a <code class="prettyprint">person_id</code> or <code class="prettyprint">organization_id</code> is specified, the endpoint returns all entity values tied to these entities - including those that are associated with all list entries that 
+<li>If a <code class="prettyprint">person_id</code> or <code class="prettyprint">organization_id</code> is specified, the endpoint returns all field values tied to these entities - including those that are associated with all list entries that
 exist for the given person or organization.</li>
 </ol>
 
 <h3 id="returns">Returns</h3>
 
-<p>An array of all the entity values associated with the supplied <code class="prettyprint">person</code>, 
+<p>An array of all the field values associated with the supplied <code class="prettyprint">person</code>,
 <code class="prettyprint">organization</code> or <code class="prettyprint">list_entry</code>.</p>
 
-<h2 id="create-a-new-entity-value">Create a new entity value</h2>
+<h2 id="create-a-new-field-value">Create a new field value</h2>
 
 <blockquote>
 <p>Example Request</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.affinity.vc/entity-values?key=&lt;API-KEY&gt;"</span> <span class="se">\</span>
-  -d <span class="nv">entity_attribute_id</span><span class="o">=</span>1284 <span class="se">\</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.affinity.vc/field-values?key=&lt;API-KEY&gt;"</span> <span class="se">\</span>
+  -d <span class="nv">field_id</span><span class="o">=</span>1284 <span class="se">\</span>
   -d <span class="nv">value</span><span class="o">=</span><span class="s2">"Architecture"</span> <span class="se">\</span>
   -d <span class="nv">entity_id</span><span class="o">=</span>38706
 </code></pre>
@@ -2129,15 +2129,15 @@ exist for the given person or organization.</li>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">20406836</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"entity_attribute_id"</span><span class="p">:</span><span class="mi">1284</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"field_id"</span><span class="p">:</span><span class="mi">1284</span><span class="p">,</span><span class="w">
   </span><span class="s2">"list_entry_id"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="s2">"entity_id"</span><span class="p">:</span><span class="mi">38706</span><span class="p">,</span><span class="w">
   </span><span class="s2">"value"</span><span class="p">:</span><span class="s2">"Architecture"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p><code class="prettyprint">POST /entity-values</code></p>
+<p><code class="prettyprint">POST /field-values</code></p>
 
-<p>Creates a new entity value with the supplied parameters.</p>
+<p>Creates a new field value with the supplied parameters.</p>
 
 <h3 id="payload-parameters">Payload Parameters</h3>
 
@@ -2150,41 +2150,41 @@ exist for the given person or organization.</li>
 </tr>
 </thead><tbody>
 <tr>
-<td>entity_attribute_id</td>
+<td>field_id</td>
 <td>integer</td>
 <td>true</td>
-<td>The unique identifier of the entity attribute (column) that the entity value is associated with.</td>
+<td>The unique identifier of the field (column) that the field value is associated with.</td>
 </tr>
 <tr>
 <td>entity_id</td>
 <td>integer</td>
 <td>true</td>
-<td>The unique identifier of the entity (person or company) that the entity value is associated with.</td>
+<td>The unique identifier of the entity (person or company) that the field value is associated with.</td>
 </tr>
 <tr>
 <td>list_entry_id</td>
 <td>integer</td>
 <td>false</td>
-<td>The unique identifier of the list entry (list row) that the entity value is associated with. Only specify the list_entry_id if the entity attribute that the entity value is associated with is list specific.</td>
+<td>The unique identifier of the list entry (list row) that the field value is associated with. Only specify the list_entry_id if the field that the field value is associated with is list specific.</td>
 </tr>
 <tr>
 <td>value</td>
 <td>custom</td>
 <td>true</td>
-<td>See the <a href="#the-entity-value-resource">entity value resource</a> section for all value types. The value specified must correspond to the <code class="prettyprint">value_type</code> of the supplied <code class="prettyprint">entity_attribute</code>.</td>
+<td>See the <a href="#the-field-value-resource">field value resource</a> section for all value types. The value specified must correspond to the <code class="prettyprint">value_type</code> of the supplied <code class="prettyprint">field</code>.</td>
 </tr>
 </tbody></table>
 
 <h3 id="returns">Returns</h3>
 
-<p>The entity value resource that was just created through this request.</p>
+<p>The field value resource that was just created through this request.</p>
 
-<h2 id="update-an-entity-value">Update an entity value</h2>
+<h2 id="update-a-field-value">Update a field value</h2>
 
 <blockquote>
 <p>Example Request</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.affinity.vc/entity-values/20406836?key=&lt;API-KEY&gt;"</span> <span class="se">\</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.affinity.vc/field-values/20406836?key=&lt;API-KEY&gt;"</span> <span class="se">\</span>
   -d <span class="nv">value</span><span class="o">=</span><span class="s2">"Healthcare"</span> <span class="se">\</span>
   -X <span class="s2">"PUT"</span>
 </code></pre>
@@ -2193,19 +2193,19 @@ exist for the given person or organization.</li>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">20406836</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"entity_attribute_id"</span><span class="p">:</span><span class="mi">1284</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"field_id"</span><span class="p">:</span><span class="mi">1284</span><span class="p">,</span><span class="w">
   </span><span class="s2">"list_entry_id"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="s2">"entity_id"</span><span class="p">:</span><span class="mi">38706</span><span class="p">,</span><span class="w">
   </span><span class="s2">"value"</span><span class="p">:</span><span class="s2">"Healthcare"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p><code class="prettyprint">PUT /entity-values/{entity_value_id}</code></p>
+<p><code class="prettyprint">PUT /field-values/{field_value_id}</code></p>
 
-<p>Updates the existing entity value with <code class="prettyprint">entity_value_id</code> with the supplied parameters.</p>
+<p>Updates the existing field value with <code class="prettyprint">field_value_id</code> with the supplied parameters.</p>
 
 <p><strong>Note:</strong></p>
 
-<p>If you are looking to add an existing organization to a list, please check the 
+<p>If you are looking to add an existing organization to a list, please check the
 <a href="#list-entries">List Entries</a> section of the API.</p>
 
 <h3 id="path-parameters">Path Parameters</h3>
@@ -2219,10 +2219,10 @@ exist for the given person or organization.</li>
 </tr>
 </thead><tbody>
 <tr>
-<td>entity_value_id</td>
+<td>field_value_id</td>
 <td>integer</td>
 <td>true</td>
-<td>The unique id of the entity value that needs to be updated.</td>
+<td>The unique id of the field value that needs to be updated.</td>
 </tr>
 </tbody></table>
 
@@ -2240,20 +2240,20 @@ exist for the given person or organization.</li>
 <td>value</td>
 <td>custom</td>
 <td>true</td>
-<td>See the <a href="#the-entity-value-resource">entity value resource</a> section for all value types. The value specified must correspond to the <code class="prettyprint">value_type</code> of the supplied <code class="prettyprint">entity_attribute</code>.</td>
+<td>See the <a href="#the-field-value-resource">field value resource</a> section for all value types. The value specified must correspond to the <code class="prettyprint">value_type</code> of the supplied <code class="prettyprint">field</code>.</td>
 </tr>
 </tbody></table>
 
 <h3 id="returns">Returns</h3>
 
-<p>The entity value object that was just updated through this request.</p>
+<p>The field value object that was just updated through this request.</p>
 
-<h2 id="delete-an-entity-value">Delete an entity value</h2>
+<h2 id="delete-a-field-value">Delete a field value</h2>
 
 <blockquote>
 <p>Example Request</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.affinity.vc/entity-values/20406836?key=&lt;API-KEY&gt;"</span> <span class="se">\</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.affinity.vc/field-values/20406836?key=&lt;API-KEY&gt;"</span> <span class="se">\</span>
   -X <span class="s2">"DELETE"</span>
 </code></pre>
 <blockquote>
@@ -2261,9 +2261,9 @@ exist for the given person or organization.</li>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="s2">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p><code class="prettyprint">DELETE /entity-values/{entity_value_id}</code></p>
+<p><code class="prettyprint">DELETE /field-values/{field_value_id}</code></p>
 
-<p>Deletes an entity value with the specified <code class="prettyprint">entity_value_id</code>.</p>
+<p>Deletes an field value with the specified <code class="prettyprint">field_value_id</code>.</p>
 
 <h3 id="path-parameters">Path Parameters</h3>
 
@@ -2276,10 +2276,10 @@ exist for the given person or organization.</li>
 </tr>
 </thead><tbody>
 <tr>
-<td>entity_value_id</td>
+<td>field_value_id</td>
 <td>integer</td>
 <td>true</td>
-<td>The unique id of the entity value that needs to be deleted.</td>
+<td>The unique id of the field value that needs to be deleted.</td>
 </tr>
 </tbody></table>
 
@@ -2301,14 +2301,14 @@ exist for the given person or organization.</li>
   </span><span class="s2">"created_at"</span><span class="p">:</span><span class="s2">"2017-03-28 00:38:41 -0700"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>Just like entity values, notes are used to keep track of state on an entity. They could be
+<p>Just like field values, notes are used to keep track of state on an entity. They could be
 notes manually taken from due diligence, a meeting, or a call. Or, notes could be used to
-store logged activity from a prospect&rsquo;s visit to your website. </p>
+store logged activity from a prospect&rsquo;s visit to your website.</p>
 
 <h2 id="the-note-resource">The note resource</h2>
 
-<p>A note object contains <code class="prettyprint">content</code>, which is a string containing the note body. In 
-addition, a note can be associated with multiple people or organizations. Each person or 
+<p>A note object contains <code class="prettyprint">content</code>, which is a string containing the note body. In
+addition, a note can be associated with multiple people or organizations. Each person or
 organization will display linked notes on their profiles.</p>
 
 <table><thead>
