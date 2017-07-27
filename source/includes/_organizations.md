@@ -102,7 +102,7 @@ curl "https://api.affinity.vc/organizations?term=affinity" -u :<API-KEY>
 
 > Example pagination
 
-```json
+```shell
 # To get the second page of results, issue the following query:
 curl "https://api.affinity.vc/organizations?term=affinity&page_token=eyJwYXJhbXMiOnsidGVybSI6IiJ9LCJwYWdlX3NpemUiOjUsIm9mZnNldCI6MTB9" -u :<API-KEY>
 ```
