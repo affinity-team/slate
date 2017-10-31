@@ -81,7 +81,7 @@ curl "https://api.affinity.vc/organizations?term=affinity" -u :<API-KEY>
 
 ```json
 {
-  organizations: [
+  "organizations": [
     {
       "id":64779194,
       "name":"Affinity",
@@ -96,7 +96,7 @@ curl "https://api.affinity.vc/organizations?term=affinity" -u :<API-KEY>
     },
     ...
   ],
-  next_page_token: "eyJwYXJhbXMiOnsidGVybSI6IiJ9LCJwYWdlX3NpemUiOjUsIm9mZnNldCI6MTB9",
+  "next_page_token": "eyJwYXJhbXMiOnsidGVybSI6IiJ9LCJwYWdlX3NpemUiOjUsIm9mZnNldCI6MTB9",
 }
 ```
 

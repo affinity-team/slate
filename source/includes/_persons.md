@@ -96,7 +96,7 @@ curl "https://api.affinity.vc/persons?term=doe" -u :<API-KEY>
 
 ```json
 {
-  persons: [
+  "persons": [
     {
       "id": 38706,
       "type": 0,
@@ -124,7 +124,7 @@ curl "https://api.affinity.vc/persons?term=doe" -u :<API-KEY>
     },
     ...
   ],
-  next_page_token: "eyJwYXJhbXMiOnsidGVybSI6IiJ9LCJwYWdlX3NpemUiOjUsIm9mZnNldCI6MTB9"
+  "next_page_token": "eyJwYXJhbXMiOnsidGVybSI6IiJ9LCJwYWdlX3NpemUiOjUsIm9mZnNldCI6MTB9"
 }
 ```
 
