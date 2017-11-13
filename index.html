@@ -924,6 +924,12 @@ you might want to make sure that it does not exist in the list already.</p>
 <td>true</td>
 <td>The unique id of the entity (person or company) to add to this list.</td>
 </tr>
+<tr>
+<td>creator_id</td>
+<td>integer</td>
+<td>false</td>
+<td>The id of a Person resource who should be recorded as adding the entry to the list. Must be a person who can access Affinity. If not provided the creator defaults to the owner of the API key.</td>
+</tr>
 </tbody></table>
 
 <h3 id="returns">Returns</h3>
@@ -1134,7 +1140,7 @@ confirm that there are no more resources).</p>
 <p>Example Response</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="err">persons</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+  </span><span class="s2">"persons"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">38706</span><span class="p">,</span><span class="w">
       </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
@@ -1162,7 +1168,7 @@ confirm that there are no more resources).</p>
     </span><span class="p">},</span><span class="w">
     </span><span class="err">...</span><span class="w">
   </span><span class="p">],</span><span class="w">
-  </span><span class="err">next_page_token</span><span class="p">:</span><span class="w"> </span><span class="s2">"eyJwYXJhbXMiOnsidGVybSI6IiJ9LCJwYWdlX3NpemUiOjUsIm9mZnNldCI6MTB9"</span><span class="w">
+  </span><span class="s2">"next_page_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eyJwYXJhbXMiOnsidGVybSI6IiJ9LCJwYWdlX3NpemUiOjUsIm9mZnNldCI6MTB9"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <blockquote>
@@ -1653,7 +1659,7 @@ confirm that there are no more resources).</p>
 <p>Example Response</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="err">organizations</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+  </span><span class="s2">"organizations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">64779194</span><span class="p">,</span><span class="w">
       </span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"Affinity"</span><span class="p">,</span><span class="w">
@@ -1668,7 +1674,7 @@ confirm that there are no more resources).</p>
     </span><span class="p">},</span><span class="w">
     </span><span class="err">...</span><span class="w">
   </span><span class="p">],</span><span class="w">
-  </span><span class="err">next_page_token</span><span class="p">:</span><span class="w"> </span><span class="s2">"eyJwYXJhbXMiOnsidGVybSI6IiJ9LCJwYWdlX3NpemUiOjUsIm9mZnNldCI6MTB9"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"next_page_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eyJwYXJhbXMiOnsidGVybSI6IiJ9LCJwYWdlX3NpemUiOjUsIm9mZnNldCI6MTB9"</span><span class="p">,</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <blockquote>
@@ -2521,6 +2527,15 @@ organization will display linked notes on their profiles.</p>
 
 <p>Creates a new note with the supplied parameters.</p>
 
+<p>Affinity&rsquo;s Gmail Chrome Extension allows users to save an email as a note in Affinity.
+This same functionality is exposed in our API via the <code class="prettyprint">gmail_id</code> parameter. Passing in the
+<code class="prettyprint">id</code> of a Gmail
+<a href="https://developers.google.com/gmail/api/v1/reference/users/messages">message</a> will
+automatically sync the email to Affinity (if it hasn&rsquo;t synced with Affinity already)
+and associate it with the newly created note. (Make sure that Affinity has access to the
+account that owns the Gmail mesage.) A note associated with an email cannot have any
+<code class="prettyprint">content</code>.</p>
+
 <h3 id="path-parameters">Path Parameters</h3>
 
 <table><thead>
@@ -2546,10 +2561,24 @@ organization will display linked notes on their profiles.</p>
 <tr>
 <td>content</td>
 <td>string</td>
-<td>true</td>
+<td>false</td>
 <td>The string containing the content of the new note.</td>
 </tr>
+<tr>
+<td>gmail_id</td>
+<td>string</td>
+<td>false</td>
+<td>An id of an email an Gmail to save as the content of the note.</td>
+</tr>
+<tr>
+<td>creator_id</td>
+<td>integer</td>
+<td>false</td>
+<td>The id of a Person resource who should be recorded as the author of the note. Must be a person who can access Affinity. If not provided the creator defaults to the owner of the API key.</td>
+</tr>
 </tbody></table>
+
+<p>Note that either <code class="prettyprint">content</code> or <code class="prettyprint">gmail_id</code> must be specified.</p>
 
 <h3 id="returns">Returns</h3>
 
