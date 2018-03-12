@@ -13,6 +13,7 @@ includes:
   - list-entries
   - persons
   - organizations
+  - opps
   - entity-values
   - notes
   - additional-materials
