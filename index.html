@@ -234,7 +234,7 @@ please do not hesitate to contact us at <code class="prettyprint">support@affini
 <blockquote>
 <p>Authentication using HTTP basic auth.</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.affinity.vc/api_endpoint"</span> -u :&lt;API-KEY&gt;
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.affinity.co/api_endpoint"</span> -u :&lt;API-KEY&gt;
 </code></pre>
 <p>To use the API, you will need to generate an API secret key. This can be done easily through
 the Settings Panel that is accessible through the left sidebar on the Affinity web app.</p>
@@ -249,7 +249,7 @@ Otherwise, an error with a code of <code class="prettyprint">401</code> will be 
 <h2 id="requests-responses">Requests &amp; Responses</h2>
 
 <p>This is a full-featured RESTful API. We provide reading &amp; writing functionality for each
-object type in Affinity. All requests use the base URL of <code class="prettyprint">https://api.affinity.vc/</code>.</p>
+object type in Affinity. All requests use the base URL of <code class="prettyprint">https://api.affinity.co/</code>.</p>
 
 <p>Responses to each request are provided as a JSON object. The response is either the data
 requested, or a valid error message and error code as outlined below.</p>
@@ -544,7 +544,7 @@ person entity. Furthermore, the list would have two &ldquo;fields&rdquo; with th
 <p>Example Request</p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code><span class="c"># Returns an array of all lists that you have access to.</span>
-curl <span class="s2">"https://api.affinity.vc/lists"</span> -u :&lt;API-KEY&gt;
+curl <span class="s2">"https://api.affinity.co/lists"</span> -u :&lt;API-KEY&gt;
 </code></pre>
 <blockquote>
 <p>Example Response</p>
@@ -583,7 +583,7 @@ array includes the <code class="prettyprint">id</code>, <code class="prettyprint
 <p>Example Request</p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code><span class="c"># Returns the list with the specified `list_id`</span>
-curl <span class="s2">"https://api.affinity.vc/lists/450"</span> -u :&lt;API-KEY&gt;
+curl <span class="s2">"https://api.affinity.co/lists/450"</span> -u :&lt;API-KEY&gt;
 </code></pre>
 <blockquote>
 <p>Example Response</p>
@@ -734,7 +734,7 @@ handle updating individual cells in columns.</p>
 <blockquote>
 <p>Example Request</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.affinity.vc/lists/450/list-entries"</span> -u :&lt;API-KEY&gt;
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.affinity.co/lists/450/list-entries"</span> -u :&lt;API-KEY&gt;
 </code></pre>
 <blockquote>
 <p>Example Response</p>
@@ -751,9 +751,9 @@ handle updating individual cells in columns.</p>
       </span><span class="s2">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Affinity"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Team"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"phone_numbers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">],</span><span class="w">
-      </span><span class="s2">"primary_email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"team@affinity.vc"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"primary_email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"team@affinity.co"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"emails"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="s2">"team@affinity.vc"</span><span class="w">
+        </span><span class="s2">"team@affinity.co"</span><span class="w">
       </span><span class="p">],</span><span class="w">
     </span><span class="p">},</span><span class="w">
   </span><span class="p">},</span><span class="w">
@@ -814,7 +814,7 @@ Each list entry in the array includes all the attributes as specified in the
 <blockquote>
 <p>Example Request</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.affinity.vc/lists/450/list-entries/16367"</span> -u :&lt;API-KEY&gt;
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.affinity.co/lists/450/list-entries/16367"</span> -u :&lt;API-KEY&gt;
 </code></pre>
 <blockquote>
 <p>Example Response</p>
@@ -870,7 +870,7 @@ Each list entry in the array includes all the attributes as specified in the
 <blockquote>
 <p>Example Request</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.affinity.vc/lists/450/list-entries"</span> <span class="se">\</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.affinity.co/lists/450/list-entries"</span> <span class="se">\</span>
    -u :&lt;API-KEY&gt; <span class="se">\</span>
    -d <span class="nv">entity_id</span><span class="o">=</span>38706
 </code></pre>
@@ -941,7 +941,7 @@ you might want to make sure that it does not exist in the list already.</p>
 <blockquote>
 <p>Example Request</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.affinity.vc/lists/450/list-entries/56517"</span> <span class="se">\</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.affinity.co/lists/450/list-entries/56517"</span> <span class="se">\</span>
    -u :&lt;API-KEY&gt; <span class="se">\</span>
    -d <span class="nv">entity_id</span><span class="o">=</span>38706 <span class="se">\</span>
    -X <span class="s2">"DELETE"</span>
@@ -1017,7 +1017,7 @@ spreadsheet), please check out the <a href="#field-values">Field Values</a> sect
   </span><span class="s2">"primary_email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"john@affinity.co"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"emails"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="s2">"john@affinity.co"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"john@affinity.vc"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"john@affinity.co"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"jdoe@alumni.stanford.edu"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"johnjdoe@gmail.com"</span><span class="p">,</span><span class="w">
   </span><span class="p">],</span><span class="w">
@@ -1032,6 +1032,12 @@ spreadsheet), please check out the <a href="#field-values">Field Values</a> sect
     </span><span class="p">},</span><span class="w">
     </span><span class="err">...</span><span class="w">
   </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"interaction_dates"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"last_email_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-03-04T05:06:07.890-08:00"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"last_event_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2011-12-11T02:26:56.537-08:00"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"last_interaction_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-03-04T05:06:07.890-08:00"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"next_event_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-03-04T05:06:07.890-08:00"</span><span class="p">,</span><span class="w">
+  </span><span class="p">},</span><span class="w">
 </span><span class="p">},</span><span class="w">
 </span></code></pre>
 <p>Each person resource is assigned a unique <code class="prettyprint">id</code> and stores the name, phone numbers, and
@@ -1048,9 +1054,14 @@ you from a new email address (corresponding to organization B).
 In this case, Affinity will automatically associate person X with both
 organization A and organization B.</p>
 
-<p>Finally, the person resource <code class="prettyprint">type</code> indicates whether a person is internal or
+<p>The person resource <code class="prettyprint">type</code> indicates whether a person is internal or
 external to your team. Every internal person is a user of Affinity on your team, and all other
 people are externals.</p>
+
+<p>Dates of the most recent and upcoming interactions with a person are available in the
+<code class="prettyprint">interaction_dates</code> field. This data is only included when passing
+<code class="prettyprint">with_interaction_dates=true</code> as a query parameter to the <code class="prettyprint">/persons</code> or
+the <code class="prettyprint">/persons/{person_id}</code> endpoints.</p>
 
 <table><thead>
 <tr>
@@ -1104,6 +1115,11 @@ people are externals.</p>
 <td>ListEntry[]</td>
 <td>An array of list entry resources associated with the person, only returned as part of the <a href="#get-a-specific-person">Get a specific person</a> endpoint.</td>
 </tr>
+<tr>
+<td>interaction_dates</td>
+<td>object</td>
+<td>An object with four string date fields representing the most recent and upcoming interactions with this person: <code class="prettyprint">last_email_date</code>, <code class="prettyprint">last_event_date</code>, <code class="prettyprint">last_interacton_date</code> and <code class="prettyprint">next_event_date</code>. Only returned when passing <code class="prettyprint">with_interaction_dates=true</code>.</td>
+</tr>
 </tbody></table>
 
 <h3 id="person-types">Person types</h3>
@@ -1146,10 +1162,14 @@ though its presence does not necessarily indicated that there are <em>more</em> 
 fetched. The next page may be empty (but then would <code class="prettyprint">next_page_token</code> would be <code class="prettyprint">null</code> to
 confirm that there are no more resources).</p>
 
+<p>Pass <code class="prettyprint">with_interaction_dates=true</code> as a query parameter to include dates of the most
+recent and upcoming interactions with persons. When this parameter is included, persons
+with no interactions will not be returned in the response.</p>
+
 <blockquote>
 <p>Example Request</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.affinity.vc/persons?term=doe"</span> -u :&lt;API-KEY&gt;
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.affinity.co/persons?term=doe"</span> -u :&lt;API-KEY&gt;
 </code></pre>
 <blockquote>
 <p>Example Response</p>
@@ -1165,7 +1185,7 @@ confirm that there are no more resources).</p>
       </span><span class="s2">"primary_email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"john@affinity.co"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"emails"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="s2">"john@affinity.co"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"john@affinity.vc"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"john@affinity.co"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"jdoe@alumni.stanford.edu"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"johnjdoe@gmail.com"</span><span class="p">,</span><span class="w">
       </span><span class="p">]</span><span class="w">
@@ -1190,7 +1210,7 @@ confirm that there are no more resources).</p>
 <p>Example pagination</p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code><span class="c"># To get the second page of results, issue the following query:</span>
-curl <span class="s2">"https://api.affinity.vc/persons?term=doe&amp;page_token=eyJwYXJhbXMiOnsidGVybSI6IiJ9LCJwYWdlX3NpemUiOjUsIm9mZnNldCI6MTB9"</span> -u :&lt;API-KEY&gt;
+curl <span class="s2">"https://api.affinity.co/persons?term=doe&amp;page_token=eyJwYXJhbXMiOnsidGVybSI6IiJ9LCJwYWdlX3NpemUiOjUsIm9mZnNldCI6MTB9"</span> -u :&lt;API-KEY&gt;
 </code></pre>
 <h3 id="query-parameters">Query Parameters</h3>
 
@@ -1207,6 +1227,12 @@ curl <span class="s2">"https://api.affinity.vc/persons?term=doe&amp;page_token=e
 <td>string</td>
 <td>true</td>
 <td>A string used to search all the persons in your team&rsquo;s address book. This could be an email address, a first name or a last name.</td>
+</tr>
+<tr>
+<td>with_interaction_dates</td>
+<td>boolean</td>
+<td>false</td>
+<td>When true, interaction dates will be present on the returned resources. Only persons that have interactions will be returned.</td>
 </tr>
 <tr>
 <td>page_size</td>
@@ -1227,14 +1253,16 @@ curl <span class="s2">"https://api.affinity.vc/persons?term=doe&amp;page_token=e
 <p>An object with two fields: <code class="prettyprint">persons</code> and <code class="prettyprint">next_page_token</code>. <code class="prettyprint">persons</code> maps to an array of
 all the person resources that match the search criteria. Does not include the associated
 <code class="prettyprint">organization_ids</code> or <code class="prettyprint">list_entries</code>. <code class="prettyprint">next_page_token</code> includes a token to be sent along
-with the next request as the <code class="prettyprint">page_token</code> parameter to fetch the next page of results.</p>
+with the next request as the <code class="prettyprint">page_token</code> parameter to fetch the next page of results.
+When <code class="prettyprint">with_interaction_dates</code> is passed in the returned resources will have
+<code class="prettyprint">interaction_dates</code> fields.</p>
 
 <h2 id="get-a-specific-person">Get a specific person</h2>
 
 <blockquote>
 <p>Example Request</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.affinity.vc/persons/38706"</span> -u :&lt;API-KEY&gt;
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.affinity.co/persons/38706"</span> -u :&lt;API-KEY&gt;
 </code></pre>
 <blockquote>
 <p>Example Response</p>
@@ -1248,7 +1276,7 @@ with the next request as the <code class="prettyprint">page_token</code> paramet
   </span><span class="s2">"primary_email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"john@affinity.co"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"emails"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="s2">"john@affinity.co"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"john@affinity.vc"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"john@affinity.co"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"jdoe@alumni.stanford.edu"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"johndoe@gmail.com"</span><span class="p">,</span><span class="w">
   </span><span class="p">],</span><span class="w">
@@ -1285,6 +1313,12 @@ with the next request as the <code class="prettyprint">page_token</code> paramet
 <td>true</td>
 <td>The unique id of the person that needs to be retrieved.</td>
 </tr>
+<tr>
+<td>with_interaction_dates</td>
+<td>boolean</td>
+<td>false</td>
+<td>When true, interaction dates will be present on the returned resources.</td>
+</tr>
 </tbody></table>
 
 <h3 id="returns">Returns</h3>
@@ -1296,7 +1330,7 @@ with the next request as the <code class="prettyprint">page_token</code> paramet
 <blockquote>
 <p>Example Request</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.affinity.vc/persons"</span> <span class="se">\</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.affinity.co/persons"</span> <span class="se">\</span>
   -u :&lt;API-KEY&gt; <span class="se">\</span>
   -d <span class="nv">first_name</span><span class="o">=</span><span class="s2">"Alice"</span> <span class="se">\</span>
   -d <span class="nv">last_name</span><span class="o">=</span><span class="s2">"Doe"</span> <span class="se">\</span>
@@ -1382,7 +1416,7 @@ of the API.</li>
 <blockquote>
 <p>Example Request</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.affinity.vc/860197"</span> <span class="se">\</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.affinity.co/860197"</span> <span class="se">\</span>
   -u :&lt;API-KEY&gt; <span class="se">\</span>
   -d phone_numbers[]<span class="o">=</span><span class="s2">"123-123-123"</span> <span class="se">\</span>
   -d phone_numbers[]<span class="o">=</span><span class="s2">"234-234-234"</span> <span class="se">\</span>
@@ -1486,7 +1520,7 @@ supplied as parameters.</p>
 <blockquote>
 <p>Example Request</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.affinity.vc/persons/860197"</span> <span class="se">\</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.affinity.co/persons/860197"</span> <span class="se">\</span>
   -u :&lt;API-KEY&gt; <span class="se">\</span>
   -X <span class="s2">"DELETE"</span>
 </code></pre>
@@ -1535,7 +1569,7 @@ section first.</p>
 <blockquote>
 <p>Example Request</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.affinity.vc/persons/fields"</span> -u :&lt;API-KEY&gt;
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.affinity.co/persons/fields"</span> -u :&lt;API-KEY&gt;
 </code></pre>
 <blockquote>
 <p>Example Response</p>
@@ -1617,6 +1651,12 @@ spreadsheet), please check out the <a href="#field-values">Field Values</a> sect
     </span><span class="p">},</span><span class="w">
     </span><span class="err">...</span><span class="w">
   </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"interaction_dates"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"last_email_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-03-04T05:06:07.890-08:00"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"last_event_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2011-12-11T02:26:56.537-08:00"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"last_interaction_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-03-04T05:06:07.890-08:00"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"next_event_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-03-04T05:06:07.890-08:00"</span><span class="p">,</span><span class="w">
+  </span><span class="p">},</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>Each organization object has a unique <code class="prettyprint">id</code>. It also has a <code class="prettyprint">name</code>, <code class="prettyprint">domain</code> (the website
@@ -1631,6 +1671,11 @@ organization. You also cannot delete a <code class="prettyprint">global</code> o
 
 <p>Of course, if an organization is manually created by your team, all fields can be
 modified and the organization can be deleted.</p>
+
+<p>Dates of the most recent and upcoming interactions with an organization are available in the
+<code class="prettyprint">interaction_dates</code> field. This data is only included when passing
+<code class="prettyprint">with_interaction_dates=true</code> as a query parameter to the <code class="prettyprint">/organizations</code> or
+the <code class="prettyprint">/organizations/{organization_id}</code> endpoints.</p>
 
 <table><thead>
 <tr>
@@ -1669,6 +1714,11 @@ modified and the organization can be deleted.</p>
 <td>ListEntry[]</td>
 <td>An array of list entry resources associated with the organization, only returned as part of the <a href="#get-a-specific-organization">Get a specific organization</a> endpoint.</td>
 </tr>
+<tr>
+<td>interaction_dates</td>
+<td>object</td>
+<td>An object with four string date fields representing the most recent and upcoming interactions with this organization: <code class="prettyprint">last_email_date</code>, <code class="prettyprint">last_event_date</code>, <code class="prettyprint">last_interacton_date</code> and <code class="prettyprint">next_event_date</code>. Only returned when passing <code class="prettyprint">with_interaction_dates=true</code>.</td>
+</tr>
 </tbody></table>
 
 <h2 id="search-for-organizations">Search for organizations</h2>
@@ -1690,10 +1740,14 @@ though its presence does not necessarily indicated that there are <em>more</em> 
 fetched. The next page may be empty (but then would <code class="prettyprint">next_page_token</code> would be <code class="prettyprint">null</code> to
 confirm that there are no more resources).</p>
 
+<p>Pass <code class="prettyprint">with_interaction_dates=true</code> as a query parameter to include dates of the most
+recent and upcoming interactions with organizations. When this parameter is included,
+organizations with no interactions will not be returned in the response.</p>
+
 <blockquote>
 <p>Example Request</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.affinity.vc/organizations?term=affinity"</span> -u :&lt;API-KEY&gt;
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.affinity.co/organizations?term=affinity"</span> -u :&lt;API-KEY&gt;
 </code></pre>
 <blockquote>
 <p>Example Response</p>
@@ -1721,7 +1775,7 @@ confirm that there are no more resources).</p>
 <p>Example pagination</p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code><span class="c"># To get the second page of results, issue the following query:</span>
-curl <span class="s2">"https://api.affinity.vc/organizations?term=affinity&amp;page_token=eyJwYXJhbXMiOnsidGVybSI6IiJ9LCJwYWdlX3NpemUiOjUsIm9mZnNldCI6MTB9"</span> -u :&lt;API-KEY&gt;
+curl <span class="s2">"https://api.affinity.co/organizations?term=affinity&amp;page_token=eyJwYXJhbXMiOnsidGVybSI6IiJ9LCJwYWdlX3NpemUiOjUsIm9mZnNldCI6MTB9"</span> -u :&lt;API-KEY&gt;
 </code></pre>
 <h3 id="query-parameters">Query Parameters</h3>
 
@@ -1738,6 +1792,12 @@ curl <span class="s2">"https://api.affinity.vc/organizations?term=affinity&amp;p
 <td>string</td>
 <td>false</td>
 <td>A string used to search all the organizations in your team&rsquo;s address book. This could be a name or a domain name.</td>
+</tr>
+<tr>
+<td>with_interaction_dates</td>
+<td>boolean</td>
+<td>false</td>
+<td>When true, interaction dates will be present on the returned resources. Only organizations that have interactions will be returned.</td>
 </tr>
 <tr>
 <td>page_size</td>
@@ -1758,14 +1818,15 @@ curl <span class="s2">"https://api.affinity.vc/organizations?term=affinity&amp;p
 <p>An object with two fields: <code class="prettyprint">organizations</code> and <code class="prettyprint">next_page_token</code>. <code class="prettyprint">organizations</code> maps to
 an array of all the organization resources that match the search criteria.
 <code class="prettyprint">next_page_token</code> includes a token to be sent along with the next request as the
-<code class="prettyprint">page_token</code> parameter to fetch the next page of results.</p>
+<code class="prettyprint">page_token</code> parameter to fetch the next page of results. When <code class="prettyprint">with_interaction_dates</code> is
+passed in the returned resources will have <code class="prettyprint">interaction_dates</code> fields.</p>
 
 <h2 id="get-a-specific-organization">Get a specific organization</h2>
 
 <blockquote>
 <p>Example Request</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.affinity.vc/organizations/64779194"</span> -u :&lt;API-KEY&gt;
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.affinity.co/organizations/64779194"</span> -u :&lt;API-KEY&gt;
 </code></pre>
 <blockquote>
 <p>Example Response</p>
@@ -1808,6 +1869,12 @@ an array of all the organization resources that match the search criteria.
 <td>true</td>
 <td>The unique id of the organization that needs to be retrieved.</td>
 </tr>
+<tr>
+<td>with_interaction_dates</td>
+<td>boolean</td>
+<td>false</td>
+<td>When true, interaction dates will be present on the returned resources.</td>
+</tr>
 </tbody></table>
 
 <h3 id="returns">Returns</h3>
@@ -1819,7 +1886,7 @@ an array of all the organization resources that match the search criteria.
 <blockquote>
 <p>Example Request</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.affinity.vc/organizations"</span> <span class="se">\</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.affinity.co/organizations"</span> <span class="se">\</span>
   -u :&lt;API-KEY&gt; <span class="se">\</span>
   -d <span class="nv">name</span><span class="o">=</span><span class="s2">"Acme Corporation"</span> <span class="se">\</span>
   -d <span class="nv">domain</span><span class="o">=</span><span class="s2">"acme.co"</span> <span class="se">\</span>
@@ -1882,7 +1949,7 @@ the <a href="#list-entries">List Entries</a> section of the API.</p>
 <blockquote>
 <p>Example Request</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.affinity.vc/organizations/120611418"</span> <span class="se">\</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.affinity.co/organizations/120611418"</span> <span class="se">\</span>
   -u :&lt;API-KEY&gt; <span class="se">\</span>
   -d <span class="nv">name</span><span class="o">=</span><span class="s2">"Acme Corp."</span> <span class="se">\</span>
   -d person_ids[]<span class="o">=</span>38706 <span class="se">\</span>
@@ -1969,7 +2036,7 @@ the <a href="#list-entries">List Entries</a> section of the API.</p>
 <blockquote>
 <p>Example Request</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.affinity.vc/organizations/120611418"</span> <span class="se">\</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.affinity.co/organizations/120611418"</span> <span class="se">\</span>
   -u :&lt;API-KEY&gt; <span class="se">\</span>
   -X <span class="s2">"DELETE"</span>
 </code></pre>
@@ -2017,7 +2084,7 @@ Such field values exist linked to either global or list-specific fields.</li>
 <blockquote>
 <p>Example Request</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.affinity.vc/organizations/fields"</span> -u :&lt;API-KEY&gt;
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.affinity.co/organizations/fields"</span> -u :&lt;API-KEY&gt;
 </code></pre>
 <blockquote>
 <p>Example Response</p>
@@ -2213,7 +2280,7 @@ attributes that give it the appropriate associations, as noted in the example ab
 <blockquote>
 <p>Example Request</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.affinity.vc/field-values?person_id=38706"</span> -u :&lt;API-KEY&gt;
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.affinity.co/field-values?person_id=38706"</span> -u :&lt;API-KEY&gt;
 </code></pre>
 <blockquote>
 <p>Example Response</p>
@@ -2313,7 +2380,7 @@ exist for the given person or organization.</li>
 <blockquote>
 <p>Example Request</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.affinity.vc/field-values"</span> <span class="se">\</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.affinity.co/field-values"</span> <span class="se">\</span>
   -u :&lt;API-KEY&gt; <span class="se">\</span>
   -d <span class="nv">field_id</span><span class="o">=</span>1284 <span class="se">\</span>
   -d <span class="nv">value</span><span class="o">=</span><span class="s2">"Architecture"</span> <span class="se">\</span>
@@ -2379,7 +2446,7 @@ exist for the given person or organization.</li>
 <blockquote>
 <p>Example Request</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.affinity.vc/field-values/20406836"</span> <span class="se">\</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.affinity.co/field-values/20406836"</span> <span class="se">\</span>
   -u :&lt;API-KEY&gt; <span class="se">\</span>
   -d <span class="nv">value</span><span class="o">=</span><span class="s2">"Healthcare"</span> <span class="se">\</span>
   -X <span class="s2">"PUT"</span>
@@ -2449,7 +2516,7 @@ exist for the given person or organization.</li>
 <blockquote>
 <p>Example Request</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.affinity.vc/field-values/20406836"</span> <span class="se">\</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.affinity.co/field-values/20406836"</span> <span class="se">\</span>
   -u :&lt;API-KEY&gt; <span class="se">\</span>
   -X <span class="s2">"DELETE"</span>
 </code></pre>
@@ -2552,7 +2619,7 @@ organization will display linked notes on their profiles.</p>
 <blockquote>
 <p>Example Request</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.affinity.vc/notes"</span> <span class="se">\</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.affinity.co/notes"</span> <span class="se">\</span>
   -u :&lt;API-KEY&gt; <span class="se">\</span>
   -d person_ids[]<span class="o">=</span>38706 <span class="se">\</span>
   -d person_ids[]<span class="o">=</span>624289 <span class="se">\</span>
@@ -2576,6 +2643,15 @@ organization will display linked notes on their profiles.</p>
 <p><code class="prettyprint">POST /notes</code></p>
 
 <p>Creates a new note with the supplied parameters.</p>
+
+<p>Affinity&rsquo;s Gmail Chrome Extension allows users to save an email as a note in Affinity.
+This same functionality is exposed in our API via the <code class="prettyprint">gmail_id</code> parameter. Passing in the
+<code class="prettyprint">id</code> of a Gmail
+<a href="https://developers.google.com/gmail/api/v1/reference/users/messages">message</a> will
+automatically sync the email to Affinity (if it hasn&rsquo;t synced with Affinity already)
+and associate it with the newly created note. (Make sure that Affinity has access to the
+account that owns the Gmail mesage.) A note associated with an email cannot have any
+<code class="prettyprint">content</code>.</p>
 
 <h3 id="path-parameters">Path Parameters</h3>
 
@@ -2602,8 +2678,14 @@ organization will display linked notes on their profiles.</p>
 <tr>
 <td>content</td>
 <td>string</td>
-<td>true</td>
+<td>false</td>
 <td>The string containing the content of the new note.</td>
+</tr>
+<tr>
+<td>gmail_id</td>
+<td>string</td>
+<td>false</td>
+<td>The id of a Gmail message to save as the content of the note.</td>
 </tr>
 <tr>
 <td>creator_id</td>
@@ -2612,6 +2694,8 @@ organization will display linked notes on their profiles.</p>
 <td>The id of a Person resource who should be recorded as the author of the note. Must be a person who can access Affinity. If not provided the creator defaults to the owner of the API key.</td>
 </tr>
 </tbody></table>
+
+<p>Note that either <code class="prettyprint">content</code> or <code class="prettyprint">gmail_id</code> must be specified.</p>
 
 <h3 id="returns">Returns</h3>
 
