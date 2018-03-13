@@ -1,152 +1,94 @@
-# Lists
-Lists are the primary data structure that you can interact with in Affinity. Each list
-manages a collection of either people or organizations. We call people or organizations
-"entities".
+# Relationship Strengths
 
-A list in Affinity is easily represented as a spreadsheet. The rows of the spreadsheet
-are the list entries, and each list entry corresponds to a single person in a list of
-people, or organization in a list of organizations.
+Affinity calculates relationship strengths between internal and external people based on
+previous interactions (emails, logged calls, calendar events).
 
-Lists in Affinity can also have any number of custom attributes. These attributes allow
-you to fully customize your workflow and model the data for your use case. We call these
-attributes "fields", and each fields represents a column in the
-spreadsheet representation.
+If an internal and external person have no previous interactions, there may be no relation
+strength resource for their relationship.
 
-As a simple example:
-A list called "Important People" might have 25 people in it. Two of the columns in the
-sheet could be "Title" and "Industry".
-
-This list would have 25 "list entries". Each list entry would be associated with a single
-person entity. Furthermore, the list would have two "fields" with the names
-"Title" and "Industry".
-
-## The list resource
+## The relationship strength resource
 
 > Example Response
 
 ```json
 {
-  "id": 450,
-  "type": 0,
-  "name": "My List of People",
-  "public": true,
-  "owner_id": 38706,
-  "list_size": 67
+  "external_person_id": 1234,
+  "internal_person_id": 2345,
+  "strength": 0.5,
 }
 ```
 
 Attribute | Type | Description
 --------- | ------- | -----------
-id | integer | The unique identifier of the list object.
-type | integer | The type of the entities contained within the list. A list can contain people or organizations, but not both.
-name | string | The title of the list that is displayed in Affinity.
-public | boolean | If the list is publicly accessible to all users in your team, this is true. Otherwise, this is false.
-owner_id | integer | The unique id of the internal person who created this list.
-list_size | integer | The number of list entries contained within the list.
+internal_person_id | integer | The internal person associated with this relationship strength.
+external_person_id | integer | The external person associated with this relationship strength.
+strength | float | The actual relationship strength. This is currently a number between 0 and 1, but may change in the future.
 
-### List types
 
-List Type | Value | Description
---------- | ------- | -----------
-person | 0 | Type specifying a list of people.
-organization | 1 | Type specifying a list of organizations.
+## Search for a relationship strength
 
-## Get all lists
+Get the relationship strength between an internal person and an external person:
+
 
 > Example Request
 
 ```shell
-# Returns an array of all lists that you have access to.
-curl "https://api.affinity.co/lists" -u :<API-KEY>
-```
-
-> Example Response
-
-```json
-[
-  {
-    "id": 450,
-    "name": "My List of People",
-    "type": 0,
-  },
-  {
-    "id": 383,
-    "name": "My List of Companies",
-    "type": 1,
-  },
-  ...
-]
-```
-
-`GET /lists`
-
-Returns a collection of all the lists visible to you.
-
-### Parameters
-None
-
-### Returns
-An array of all the list resources for lists visible to you. Each list resource in the
-array includes the `id`, `name`, and `type` (refer to the
-[list resource](#the-list-resource) above for further help).
-
-## Get a specific list
-
-> Example Request
-
-```shell
-# Returns the list with the specified `list_id`
-curl "https://api.affinity.co/lists/450" -u :<API-KEY>
+# Returns an array relationship strengths matching the criteria.
+curl "https://api.affinity.co/relationships-strengths?external_person_id=1234&internal_person_id=2345" -u :<API-KEY>
 ```
 
 > Example Response
 
 ```json
 {
-  "id": 450,
-  "type": 0,
-  "name": "My List of People",
-  "public": true,
-  "owner_id": 38706,
-  "list_size": 67
-  "fields": [
+  "relationship_strengths": [
     {
-      "id": 1625,
-      "name": "Status",
-      "value_type": 7,
-      "allows_multiple": false,
-      "dropdown_options": [
-        {
-          "id": 886,
-          "text": "Interested",
-          "rank": 1,
-          "color": 0
-        }
-      ]
-    },
-    {
-      "id": 1626,
-      "name": "Owners",
-      "value_type": 0,
-      "allows_multiple": true,
-      "dropdown_options": [],
-    },
-    ...
-  ]
+      "internal_person_id": 1234,
+      "external_person_id": 2345,
+      "strength": 0.5,
+    }
+  ],
 }
 ```
 
-`GET /lists/{list_id}`
+Get the relationship strength between all internal people and an external person:
 
-Gets the details for a specific list given the existing list id.
+> Example Request
 
-### Path Parameters
+```shell
+# Returns an array relationship strengths matching the criteria.
+curl "https://api.affinity.co/relationships-strengths?external_person_id=1234" -u :<API-KEY>
+```
+
+> Example Response
+
+```json
+{
+  "relationship_strengths": [
+    {
+      "external_person_id": 1234,
+      "internal_person_id": 2345,
+      "strength": 0.5,
+    },
+    {
+      "external_person_id": 1234,
+      "internal_person_id": 3456,
+      "strength": 0.9,
+    },
+    ...
+  ],
+}
+```
+
+### Parameters
 
 Parameter | Type | Required | Description
 --------- | ------- | ---------- | -----------
-list_id | integer | true | The unique id of the list object to be retrieved.
+internal_person_id | integer | false | The internal person associated with this relationship strength.
+external_person_id | integer | true | The external person associated with this relationship strength.
 
 ### Returns
-The details of the list resource corresponding to the list id specified in the path
-parameter. These details include an array of the fields that are specific
-to this list. An appropriate error is returned if an invalid list is supplied.
+An array of the relationship strengths matching the criteria.
+
+If `internal_person_id` is provided, the list will contain either one item or no items (if
+there is no relationship strength available).
