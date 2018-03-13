@@ -3,8 +3,12 @@
 Affinity calculates relationship strengths between internal and external people based on
 previous interactions (emails, logged calls, calendar events).
 
-If an internal and external person have no previous interactions, there may be no relation
-strength resource for their relationship.
+A higher numeric value means that the relationship strength between the two people is
+higher. Emails, calls, and meetings don't tell the whole story of a relationship, so treat
+the strength as an estimate. If an internal and external person have no previous
+interactions, there may be no relation strength resource for their relationship.
+
+Relationship strengths are usually recalculated daily.
 
 ## The relationship strength resource
 
@@ -17,6 +21,10 @@ strength resource for their relationship.
   "strength": 0.5,
 }
 ```
+
+The relationship strength resource specifies the two [Persons](#persons) the relationship
+strength is about, along with the actual value. There may be at most one resource for
+every (internal, external) pair.
 
 Attribute | Type | Description
 --------- | ------- | -----------
