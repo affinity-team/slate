@@ -33,7 +33,7 @@ external_person_id | integer | The external person associated with this relation
 strength | float | The actual relationship strength. This is currently a number between 0 and 1, but may change in the future.
 
 
-## Search for a relationship strength
+## Fetch a relationship strength
 
 Get the relationship strength between an internal person and an external person:
 
