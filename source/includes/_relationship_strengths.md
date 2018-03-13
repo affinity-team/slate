@@ -48,15 +48,13 @@ curl "https://api.affinity.co/relationships-strengths?external_person_id=1234&in
 > Example Response
 
 ```json
-{
-  "relationship_strengths": [
-    {
-      "internal_person_id": 1234,
-      "external_person_id": 2345,
-      "strength": 0.5,
-    }
-  ],
-}
+[
+  {
+    "internal_person_id": 1234,
+    "external_person_id": 2345,
+    "strength": 0.5,
+  }
+]
 ```
 
 Get the relationship strength between all internal people and an external person:
@@ -71,21 +69,19 @@ curl "https://api.affinity.co/relationships-strengths?external_person_id=1234" -
 > Example Response
 
 ```json
-{
-  "relationship_strengths": [
-    {
-      "external_person_id": 1234,
-      "internal_person_id": 2345,
-      "strength": 0.5,
-    },
-    {
-      "external_person_id": 1234,
-      "internal_person_id": 3456,
-      "strength": 0.9,
-    },
-    ...
-  ],
-}
+[
+  {
+    "external_person_id": 1234,
+    "internal_person_id": 2345,
+    "strength": 0.5,
+  },
+  {
+    "external_person_id": 1234,
+    "internal_person_id": 3456,
+    "strength": 0.9,
+  },
+  ...
+]
 ```
 
 ### Parameters
