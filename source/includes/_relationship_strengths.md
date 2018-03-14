@@ -16,8 +16,8 @@ Relationship strengths are usually recalculated daily.
 
 ```json
 {
-  "external_person_id": 1234,
-  "internal_person_id": 2345,
+  "external_id": 1234,
+  "internal_id": 2345,
   "strength": 0.5,
 }
 ```
@@ -28,8 +28,8 @@ every (internal, external) pair.
 
 Attribute | Type | Description
 --------- | ------- | -----------
-internal_person_id | integer | The internal person associated with this relationship strength.
-external_person_id | integer | The external person associated with this relationship strength.
+internal_id | integer | The internal person associated with this relationship strength.
+external_id | integer | The external person associated with this relationship strength.
 strength | float | The actual relationship strength. This is currently a number between 0 and 1, but may change in the future.
 
 
@@ -42,7 +42,7 @@ Get the relationship strength between an internal person and an external person:
 
 ```shell
 # Returns an array relationship strengths matching the criteria.
-curl "https://api.affinity.co/relationships-strengths?external_person_id=1234&internal_person_id=2345" -u :<API-KEY>
+curl "https://api.affinity.co/relationships-strengths?external_id=1234&internal_id=2345" -u :<API-KEY>
 ```
 
 > Example Response
@@ -50,8 +50,8 @@ curl "https://api.affinity.co/relationships-strengths?external_person_id=1234&in
 ```json
 [
   {
-    "internal_person_id": 1234,
-    "external_person_id": 2345,
+    "internal_id": 1234,
+    "external_id": 2345,
     "strength": 0.5,
   }
 ]
@@ -63,7 +63,7 @@ Get the relationship strength between all internal people and an external person
 
 ```shell
 # Returns an array relationship strengths matching the criteria.
-curl "https://api.affinity.co/relationships-strengths?external_person_id=1234" -u :<API-KEY>
+curl "https://api.affinity.co/relationships-strengths?external_id=1234" -u :<API-KEY>
 ```
 
 > Example Response
@@ -71,13 +71,13 @@ curl "https://api.affinity.co/relationships-strengths?external_person_id=1234" -
 ```json
 [
   {
-    "external_person_id": 1234,
-    "internal_person_id": 2345,
+    "external_id": 1234,
+    "internal_id": 2345,
     "strength": 0.5,
   },
   {
-    "external_person_id": 1234,
-    "internal_person_id": 3456,
+    "external_id": 1234,
+    "internal_id": 3456,
     "strength": 0.9,
   },
   ...
@@ -88,11 +88,11 @@ curl "https://api.affinity.co/relationships-strengths?external_person_id=1234" -
 
 Parameter | Type | Required | Description
 --------- | ------- | ---------- | -----------
-internal_person_id | integer | false | The internal person associated with this relationship strength.
-external_person_id | integer | true | The external person associated with this relationship strength.
+internal_id | integer | false | The internal person associated with this relationship strength.
+external_id | integer | true | The external person associated with this relationship strength.
 
 ### Returns
 An array of the relationship strengths matching the criteria.
 
-If `internal_person_id` is provided, the list will contain either one item or no items (if
+If `internal_id` is provided, the list will contain either one item or no items (if
 there is no relationship strength available).
