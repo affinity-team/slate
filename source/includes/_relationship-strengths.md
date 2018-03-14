@@ -35,8 +35,7 @@ strength | float | The actual relationship strength. This is currently a number 
 
 ## Fetch a relationship strength
 
-Get the relationship strength between an internal person and an external person:
-
+`GET /relationship-strengths`
 
 > Example Request
 
@@ -56,8 +55,6 @@ curl "https://api.affinity.co/relationships-strengths?external_id=1234&internal_
   }
 ]
 ```
-
-Get the relationship strength between all internal people and an external person:
 
 > Example Request
 
@@ -84,9 +81,7 @@ curl "https://api.affinity.co/relationships-strengths?external_id=1234" -u :<API
 ]
 ```
 
-Note: The results are not guaranteed to be sorted in any way.
-
-### Parameters
+### Query Parameters
 
 Parameter | Type | Required | Description
 --------- | ------- | ---------- | -----------
@@ -94,7 +89,13 @@ internal_id | integer | false | The internal person associated with this relatio
 external_id | integer | true | The external person associated with this relationship strength.
 
 ### Returns
+
 An array of the relationship strengths matching the criteria.
 
-If `internal_id` is provided, the list will contain either one item or no items (if
-there is no relationship strength available).
+If an `internal_id` is given, returns the relationship strength between the given internal
+and external person. The returned list will have a length of 1 or 0 (if no relationship
+strength is available between the two people).
+
+If no `internal_id` is given, returns the relationship strengths between all internal
+people and the given external person. The results are not guaranteed to be sorted in any
+way.
