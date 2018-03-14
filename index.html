@@ -1607,6 +1607,139 @@ section first.</p>
 
 <p>An array of the global fields that exist on people for your team.</p>
 
+          <h1 id="relationship-strengths">Relationship Strengths</h1>
+
+<p>Affinity calculates relationship strengths between internal and external people based on
+previous interactions (emails, logged calls, calendar events).</p>
+
+<p>A higher numeric value means that the relationship strength between the two people is
+higher. Emails, calls, and meetings don&rsquo;t tell the whole story of a relationship, so treat
+the strength as an estimate.</p>
+
+<p>Relationship strengths are usually recalculated daily.</p>
+
+<h2 id="the-relationship-strength-resource">The relationship strength resource</h2>
+
+<blockquote>
+<p>Example Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"external_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1234</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"internal_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2345</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"strength"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.5</span><span class="p">,</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>The relationship strength resource specifies the two <a href="#persons">Persons</a> the relationship
+strength is about, along with the actual value.</p>
+
+<p>There may be at most one resource for
+every (internal, external) pair. If an internal and external person have no previous
+interactions, there may be no relationship strength resource for the pair.</p>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>internal_id</td>
+<td>integer</td>
+<td>The internal person associated with this relationship strength.</td>
+</tr>
+<tr>
+<td>external_id</td>
+<td>integer</td>
+<td>The external person associated with this relationship strength.</td>
+</tr>
+<tr>
+<td>strength</td>
+<td>float</td>
+<td>The actual relationship strength. This is currently a number between 0 and 1, but may change in the future.</td>
+</tr>
+</tbody></table>
+
+<h2 id="fetch-a-relationship-strength">Fetch a relationship strength</h2>
+
+<p><code class="prettyprint">GET /relationship-strengths</code></p>
+
+<blockquote>
+<p>Example Request</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code><span class="c"># Returns an array relationship strengths matching the criteria.</span>
+curl <span class="s2">"https://api.affinity.co/relationships-strengths?external_id=1234&amp;internal_id=2345"</span> -u :&lt;API-KEY&gt;
+</code></pre>
+<blockquote>
+<p>Example Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"internal_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1234</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"external_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2345</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"strength"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.5</span><span class="p">,</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>Example Request</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code><span class="c"># Returns an array relationship strengths matching the criteria.</span>
+curl <span class="s2">"https://api.affinity.co/relationships-strengths?external_id=1234"</span> -u :&lt;API-KEY&gt;
+</code></pre>
+<blockquote>
+<p>Example Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"external_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1234</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"internal_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2345</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"strength"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.5</span><span class="p">,</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"external_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1234</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"internal_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3456</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"strength"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.9</span><span class="p">,</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="err">...</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+<h3 id="query-parameters">Query Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>internal_id</td>
+<td>integer</td>
+<td>false</td>
+<td>The internal person associated with this relationship strength.</td>
+</tr>
+<tr>
+<td>external_id</td>
+<td>integer</td>
+<td>true</td>
+<td>The external person associated with this relationship strength.</td>
+</tr>
+</tbody></table>
+
+<h3 id="returns">Returns</h3>
+
+<p>An array of the relationship strengths matching the criteria.</p>
+
+<p>If an <code class="prettyprint">internal_id</code> is given, returns the relationship strength between the given internal
+and external person. The returned list will have a length of 1 or 0 (if no relationship
+strength is available between the two people).</p>
+
+<p>If no <code class="prettyprint">internal_id</code> is given, returns the relationship strengths between all internal
+people and the given external person. The results are not guaranteed to be sorted in any
+way.</p>
+
           <h1 id="organizations">Organizations</h1>
 
 <p>An organization in Affinity represents an external company that your team is in touch
