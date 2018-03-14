@@ -84,6 +84,8 @@ curl "https://api.affinity.co/relationships-strengths?external_id=1234" -u :<API
 ]
 ```
 
+Note: The results are not guaranteed to be sorted in any way.
+
 ### Parameters
 
 Parameter | Type | Required | Description
