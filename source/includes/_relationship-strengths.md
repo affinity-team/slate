@@ -5,8 +5,7 @@ previous interactions (emails, logged calls, calendar events).
 
 A higher numeric value means that the relationship strength between the two people is
 higher. Emails, calls, and meetings don't tell the whole story of a relationship, so treat
-the strength as an estimate. If an internal and external person have no previous
-interactions, there may be no relationship strength resource for their relationship.
+the strength as an estimate.
 
 Relationship strengths are usually recalculated daily.
 
@@ -23,8 +22,11 @@ Relationship strengths are usually recalculated daily.
 ```
 
 The relationship strength resource specifies the two [Persons](#persons) the relationship
-strength is about, along with the actual value. There may be at most one resource for
-every (internal, external) pair.
+strength is about, along with the actual value.
+
+There may be at most one resource for
+every (internal, external) pair. If an internal and external person have no previous
+interactions, there may be no relationship strength resource for the pair.
 
 Attribute | Type | Description
 --------- | ------- | -----------
