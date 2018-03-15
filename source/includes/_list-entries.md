@@ -200,7 +200,7 @@ you might want to make sure that it does not exist in the list already.
 Parameter | Type | Required | Description
 --------- | ------- | ---------- | -----------
 list_id | integer | true | The unique id of the list whose list entries are to be retrieved.
-entity_id | integer | true| The unique id of the entity (person, company, or opportunity) to add to this list.
+entity_id | integer | true| The unique id of the entity (person, organization, or opportunity) to add to this list.
 creator_id | integer | false | The id of a Person resource who should be recorded as adding the entry to the list. Must be a person who can access Affinity. If not provided the creator defaults to the owner of the API key.
 
 ### Returns

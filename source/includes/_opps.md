@@ -6,14 +6,15 @@ of and revenue generated from sales and deals in your pipeline with a specific o
 
 Unlike people and organizations, an opportunity can only belong to a single list and, thus,
 does not have global fields. This list must be provided at the creation of the opportunity.
-If the list containing the opportunity gets deleted, then the opportunity subsequently gets
-deleted. If a user does not have permission to access a list with opps, the user cannot view
-any of those opps.
+If the list or list entry containing the opportunity gets deleted, then the opportunity subsequently gets
+deleted. If a user does not have permission to access a list with opportunities, the user cannot view
+any of those opportunities.
 
 **Note:**
 
-1. If you are looking to remove an opportunity from a list, please check out the
-[List Entries](#list-entries) section of the API.
+1. If you are looking to remove an opportunity from a list, note that deleting an opportunity
+is the same as removing an opportunity from a list because an opportunity can only exist on
+a single list with a single list entry.
 2. If you are looking to modify a field value (one of the cells on Affinity's
 spreadsheet), please check out the [Field Values](#field-values) section of the API.
 
@@ -63,7 +64,8 @@ id | integer | The unique identifier of the opportunity object.
 name | integer | The name of the opportunity (see below).
 person_ids | number[] | An array of unique identifiers for persons that are associated with the opportunity
 organization_ids | number[] | An array of unique identifiers for organizations that are associated with the opportunity
-list_entries | ListEntry[] | An array of list entry resources associated with the opportunity (will only contain one list entry)
+list_entries | ListEntry[] | An array of list entry resources associated with the opportunity (at most 1 list entry). If the
+user corresponding to the API key does not have access to the list, this will be empty.
 
 ## Search for opportunities
 
@@ -76,8 +78,8 @@ This result is paginated. An initial request returns an object with two fields:
 `opportunities` and `next_page_token`. `opportunities` contains an array of opportunity
 resources. The value of `next_page_token` should be sent as the query parameter
 `page_token` in another request to retrieve the next page of results. While paginating
-through results each request must have identical query parameters other than the changing
-`page_token`, otherwise an `Invalid page_token variable` error will be returned.
+through results, each request must have identical query parameters other than the changing
+`page_token`. Otherwise, an `Invalid page_token variable` error will be returned.
 
 The absence of a `next_page_token` indicates that all the records have been fetched,
 though its presence does not necessarily indicate that there are _more_ resources to be
@@ -194,7 +196,7 @@ curl "https://api.affinity.co/opportunities/117" -u :<API-KEY>
   "list_entries": [
     {
       "id":442313,
-      "creator":{
+      "creator": {
         "id":1124736,
         "type":1,
         "emails": ["john@affinity.co", "johnjdoe@gmail.com"],
@@ -207,9 +209,9 @@ curl "https://api.affinity.co/opportunities/117" -u :<API-KEY>
         "hiddenExternal":false,
         "primaryEmail":"john@affinity.co"
       },
-    "listId":4974,
-    "entityId":121,
-    "createdAt":"2018-03-03T23:02:46.412-08:00"
+      "listId":4974,
+      "entityId":121,
+      "createdAt":"2018-03-03T23:02:46.412-08:00"
     },
   ],
 }
@@ -249,13 +251,13 @@ curl "https://api.affinity.co/opportunities" \
   "name":"Penny Opportunity",
   "person_ids":[38706],
   "organization_ids":[21442],
-  "list_entries":[
-    {"id":999886,
-    "creator":
-      {
+  "list_entries": [
+    {
+      "id":999886,
+      "creator": {
         "id":1127776,
         "type":1,
-        "emails":["john@affinity.co", "john@berkeley.edu"]
+        "emails":["john@affinity.co", "john@berkeley.edu"],
         "firstName":"John",
         "lastName":"Doe",
         "photoUrl":"https://dapjjo8h3d36y.cloudfront.net/315dc7f40516f73259b807a06f6d826a",
@@ -268,7 +270,7 @@ curl "https://api.affinity.co/opportunities" \
       "listId":6645,
       "entityId":50,
       "createdAt":"2018-03-07T16:32:35.794-08:00"
-    }
+    },
   ]
 }
 ```
@@ -310,13 +312,13 @@ curl "https://api.affinity.co/opportunities/120611418" \
   "name":"Penny Opp",
   "person_ids":[38706,89734],
   "organization_ids":[21442],
-  "list_entries":[
-    {"id":999886,
-    "creator":
-      {
+  "list_entries": [
+    {
+      "id":999886,
+      "creator": {
         "id":1127776,
         "type":1,
-        "emails":["john@affinity.co", "john@berkeley.edu"]
+        "emails":["john@affinity.co", "john@berkeley.edu"],
         "firstName":"John",
         "lastName":"Doe",
         "photoUrl":"https://dapjjo8h3d36y.cloudfront.net/315dc7f40516f73259b807a06f6d826a",
