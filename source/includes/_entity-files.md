@@ -23,7 +23,7 @@ curl "https://api.affinity.co/entity-files" \
 
 Uploads files attached to the entity with the given id.
 
-The file will  display on the entity's profile, provided that the entity is not a person internal to the user's organization.
+The file will display on the entity's profile, provided that the entity is not a person internal to the user's organization.
 
 ### Path Parameters
 
