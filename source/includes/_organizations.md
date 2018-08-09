@@ -116,7 +116,7 @@ curl "https://api.affinity.co/organizations?term=affinity" -u :<API-KEY>
       "id":64779194,
       "name":"Affinity",
       "domain":"affinity.co",
-      "crunchbase_uuid":"ca0e6bd5-7de2-0a26-f648-0bf66e88b05c",
+      "crunchbase_uuid":null,
       "global":false
     },
     {
