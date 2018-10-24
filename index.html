@@ -298,15 +298,18 @@ data in order to ensure your sensitive information remains secure.</p>
 
           <h1 id="data-model">Data Model</h1>
 
-<p>The two top-level objects in Affinity are Persons and Organizations, and everything in the
-product is centered around these two resources. We refer to a data model that is either
-a person or organization as an Entity.</p>
+<p>The three top-level objects in Affinity are Persons, Organizations, and Opportunities, and
+everything in the product is centered around these three resources. We refer to a data
+model that is a person, organization, or opportunity as an Entity.</p>
 
 <p>The data stored in Affinity can be easily understood as a spreadsheet, with many rows,
 columns and cells. For each part of a spreadsheet, there are directly equivalent
 data models in Affinity.</p>
 
-<p>The List in Affinity represents the spreadsheet itself. A List is a collection of many rows, and the Affinity equivalent of a row is a List Entry. Each column in a spreadsheet is represented by a &ldquo;Field&rdquo; in Affinity, and the value in each cell is represented by a &ldquo;Field Value&rdquo;.</p>
+<p>The List in Affinity represents the spreadsheet itself. A List is a collection of many
+rows, and the Affinity equivalent of a row is a List Entry. Each column in a spreadsheet
+is represented by a &ldquo;Field&rdquo; in Affinity, and the value in each cell is represented by a
+&ldquo;Field Value&rdquo;.</p>
 
           <h1 id="fields">Fields</h1>
 
@@ -389,7 +392,7 @@ It does not support updating, deleting, or creating fields. Modifying or
 creating an field must be done through the web product.</p>
 
 <p>For accessing person global fields, see the <a href="#get-global-fields">Person Fields</a> endpoint.
-For accessing company global fields, see the <a href="#get-global-fields33">Company Fields</a> endpoint.
+For accessing organization global fields, see the <a href="#get-global-fields33">Organization Fields</a> endpoint.
 For accessing list specific fields on a list, see the <a href="#get-a-specific-list">Specific List</a> endpoint.</p>
 
 <table><thead>
@@ -557,7 +560,7 @@ curl <span class="s2">"https://api.affinity.co/lists"</span> -u :&lt;API-KEY&gt;
   </span><span class="p">},</span><span class="w">
   </span><span class="p">{</span><span class="w">
     </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">383</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My List of Companies"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My List of Organizations"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="err">...</span><span class="w">
@@ -922,7 +925,7 @@ you might want to make sure that it does not exist in the list already.</p>
 <td>entity_id</td>
 <td>integer</td>
 <td>true</td>
-<td>The unique id of the entity (person or company) to add to this list.</td>
+<td>The unique id of the entity (person, organization, or opportunity) to add to this list.</td>
 </tr>
 <tr>
 <td>creator_id</td>
@@ -955,8 +958,14 @@ you might want to make sure that it does not exist in the list already.</p>
 
 <p>Deletes a list entry with a specified <code class="prettyprint">list_entry_id</code>.</p>
 
-<p><strong>Note:</strong> This will also delete all the field values, if any, associated with the list entry.
-Such field values will only exist in fields specific to this list.</p>
+<p><strong>Note:</strong></p>
+
+<ol>
+<li>This will also delete all the field values, if any, associated with the list entry.
+Such field values will only exist in fields specific to this list.</li>
+<li>If the list entry belongs to an Opportunity list, then the opportunity that the list
+entry is associated with will also be deleted.</li>
+</ol>
 
 <h3 id="path-parameters">Path Parameters</h3>
 
@@ -1033,6 +1042,7 @@ spreadsheet), please check out the <a href="#field-values">Field Values</a> sect
     </span><span class="err">...</span><span class="w">
   </span><span class="p">],</span><span class="w">
   </span><span class="s2">"interaction_dates"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"first_email_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2011-11-23T08:12:45.328-08:00"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"last_email_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-03-04T05:06:07.890-08:00"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"last_event_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2011-12-11T02:26:56.537-08:00"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"last_interaction_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-03-04T05:06:07.890-08:00"</span><span class="p">,</span><span class="w">
@@ -1118,7 +1128,7 @@ the <code class="prettyprint">/persons/{person_id}</code> endpoints.</p>
 <tr>
 <td>interaction_dates</td>
 <td>object</td>
-<td>An object with four string date fields representing the most recent and upcoming interactions with this person: <code class="prettyprint">last_email_date</code>, <code class="prettyprint">last_event_date</code>, <code class="prettyprint">last_interacton_date</code> and <code class="prettyprint">next_event_date</code>. Only returned when passing <code class="prettyprint">with_interaction_dates=true</code>.</td>
+<td>An object with four string date fields representing the most recent and upcoming interactions with this person: <code class="prettyprint">first_email_date</code>, <code class="prettyprint">last_email_date</code>, <code class="prettyprint">last_event_date</code>, <code class="prettyprint">last_interacton_date</code> and <code class="prettyprint">next_event_date</code>. Only returned when passing <code class="prettyprint">with_interaction_dates=true</code>.</td>
 </tr>
 </tbody></table>
 
@@ -1153,18 +1163,22 @@ The search term can be part of an email address, a first name or a last name.</p
 <p>This result is paginated. An initial request returns an object with two fields: <code class="prettyprint">persons</code>
 and <code class="prettyprint">next_page_token</code>. <code class="prettyprint">persons</code> contains an array of person resources. The value of
 <code class="prettyprint">next_page_token</code> should be sent as the query parameter <code class="prettyprint">page_token</code> in another request to
-retrieve the next page of results. While paginating through results each request must have
-identical query parameters other than the changing <code class="prettyprint">page_token</code>, otherwise an <code class="prettyprint">Invalid
+retrieve the next page of results. While paginating through results, each request must have
+identical query parameters other than the changing <code class="prettyprint">page_token</code>. Otherwise, an <code class="prettyprint">Invalid
 page_token variable</code> error will be returned.</p>
 
 <p>The absence of a <code class="prettyprint">next_page_token</code> indicates that all the records have been fetched,
-though its presence does not necessarily indicated that there are <em>more</em> resources to be
-fetched. The next page may be empty (but then would <code class="prettyprint">next_page_token</code> would be <code class="prettyprint">null</code> to
+though its presence does not necessarily indicate that there are <em>more</em> resources to be
+fetched. The next page may be empty (but then <code class="prettyprint">next_page_token</code> would be <code class="prettyprint">null</code> to
 confirm that there are no more resources).</p>
 
 <p>Pass <code class="prettyprint">with_interaction_dates=true</code> as a query parameter to include dates of the most
 recent and upcoming interactions with persons. When this parameter is included, persons
 with no interactions will not be returned in the response.</p>
+
+<p>You can filter by interaction dates by providing additional query parameters like
+<code class="prettyprint">min_last_email_date</code> or <code class="prettyprint">max_next_event_date</code>. The value of these query parameters should
+be ISO 8601 formatted date strings.</p>
 
 <blockquote>
 <p>Example Request</p>
@@ -1233,6 +1247,12 @@ curl <span class="s2">"https://api.affinity.co/persons?term=doe&amp;page_token=e
 <td>boolean</td>
 <td>false</td>
 <td>When true, interaction dates will be present on the returned resources. Only persons that have interactions will be returned.</td>
+</tr>
+<tr>
+<td>{min,max}_<interaction>_date</td>
+<td>string</td>
+<td>false</td>
+<td>Only returns persons with the given interaction type above or below the given value. <code class="prettyprint">interaction</code> can be one of <code class="prettyprint">first_email</code>, <code class="prettyprint">last_email</code>, <code class="prettyprint">last_interaction</code>, <code class="prettyprint">last_event</code>, or `next_event.</td>
 </tr>
 <tr>
 <td>page_size</td>
@@ -1772,6 +1792,7 @@ spreadsheet), please check out the <a href="#field-values">Field Values</a> sect
   </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">64779194</span><span class="p">,</span><span class="w">
   </span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"Affinity"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"domain"</span><span class="p">:</span><span class="s2">"affinity.co"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"crunchbase_uuid"</span><span class="p">:</span><span class="s2">"ca0e6bd5-7de2-0a26-f648-0bf66e88b05c"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"global"</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w">
   </span><span class="s2">"person_ids"</span><span class="p">:[</span><span class="mi">89734</span><span class="p">,</span><span class="w"> </span><span class="mi">117270</span><span class="p">,</span><span class="w"> </span><span class="mi">138123</span><span class="p">,</span><span class="w"> </span><span class="mi">274492</span><span class="p">,</span><span class="w"> </span><span class="mi">304848</span><span class="p">,</span><span class="w"> </span><span class="err">...</span><span class="p">]</span><span class="w">
   </span><span class="s2">"list_entries"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -1785,6 +1806,7 @@ spreadsheet), please check out the <a href="#field-values">Field Values</a> sect
     </span><span class="err">...</span><span class="w">
   </span><span class="p">],</span><span class="w">
   </span><span class="s2">"interaction_dates"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"first_email_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2011-11-23T08:12:45.328-08:00"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"last_email_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-03-04T05:06:07.890-08:00"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"last_event_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2011-12-11T02:26:56.537-08:00"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"last_interaction_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-03-04T05:06:07.890-08:00"</span><span class="p">,</span><span class="w">
@@ -1833,6 +1855,11 @@ the <code class="prettyprint">/organizations/{organization_id}</code> endpoints.
 <td>The website name of the organization. This is used by Affinity to automatically associate person objects with an organization.</td>
 </tr>
 <tr>
+<td>crunchbase_uuid</td>
+<td>string</td>
+<td>The <a href="https://data.crunchbase.com/docs/uuid">Crunchbase UUID</a> of the organization</td>
+</tr>
+<tr>
 <td>person_ids</td>
 <td>string[]</td>
 <td>An array of unique identifiers of person that are associated with the organization</td>
@@ -1850,7 +1877,7 @@ the <code class="prettyprint">/organizations/{organization_id}</code> endpoints.
 <tr>
 <td>interaction_dates</td>
 <td>object</td>
-<td>An object with four string date fields representing the most recent and upcoming interactions with this organization: <code class="prettyprint">last_email_date</code>, <code class="prettyprint">last_event_date</code>, <code class="prettyprint">last_interacton_date</code> and <code class="prettyprint">next_event_date</code>. Only returned when passing <code class="prettyprint">with_interaction_dates=true</code>.</td>
+<td>An object with four string date fields representing the most recent and upcoming interactions with this organization: <code class="prettyprint">first_email_date</code>, <code class="prettyprint">last_email_date</code>, <code class="prettyprint">last_event_date</code>, <code class="prettyprint">last_interacton_date</code> and <code class="prettyprint">next_event_date</code>. Only returned when passing <code class="prettyprint">with_interaction_dates=true</code>.</td>
 </tr>
 </tbody></table>
 
@@ -1865,17 +1892,21 @@ The search term can be a part of an organization&rsquo;s name or domain.</p>
 <code class="prettyprint">organizations</code> and <code class="prettyprint">next_page_token</code>. <code class="prettyprint">organizations</code> contains an array of organization
 resources. The value of <code class="prettyprint">next_page_token</code> should be sent as the query parameter
 <code class="prettyprint">page_token</code> in another request to retrieve the next page of results. While paginating
-through results each request must have identical query parameters other than the changing
-<code class="prettyprint">page_token</code>, otherwise an <code class="prettyprint">Invalid page_token variable</code> error will be returned.</p>
+through results, each request must have identical query parameters other than the changing
+<code class="prettyprint">page_token</code>. Otherwise, an <code class="prettyprint">Invalid page_token variable</code> error will be returned.</p>
 
 <p>The absence of a <code class="prettyprint">next_page_token</code> indicates that all the records have been fetched,
-though its presence does not necessarily indicated that there are <em>more</em> resources to be
-fetched. The next page may be empty (but then would <code class="prettyprint">next_page_token</code> would be <code class="prettyprint">null</code> to
+though its presence does not necessarily indicate that there are <em>more</em> resources to be
+fetched. The next page may be empty (but then <code class="prettyprint">next_page_token</code> would be <code class="prettyprint">null</code> to
 confirm that there are no more resources).</p>
 
 <p>Pass <code class="prettyprint">with_interaction_dates=true</code> as a query parameter to include dates of the most
 recent and upcoming interactions with organizations. When this parameter is included,
 organizations with no interactions will not be returned in the response.</p>
+
+<p>You can filter by interaction dates by providing additional query parameters like
+<code class="prettyprint">min_last_email_date</code> or <code class="prettyprint">max_next_event_date</code>. The value of these query parameters should
+be ISO 8601 formatted date strings.</p>
 
 <blockquote>
 <p>Example Request</p>
@@ -1891,12 +1922,14 @@ organizations with no interactions will not be returned in the response.</p>
       </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">64779194</span><span class="p">,</span><span class="w">
       </span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"Affinity"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"domain"</span><span class="p">:</span><span class="s2">"affinity.co"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"crunchbase_uuid"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="s2">"global"</span><span class="p">:</span><span class="kc">false</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">1513682</span><span class="p">,</span><span class="w">
       </span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"Brand Affinity Technologies"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"domain"</span><span class="p">:</span><span class="s2">"brandaffinity.net"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"crunchbase_uuid"</span><span class="p">:</span><span class="s2">"035ed4bb-7a8c-f713-5032-91a81a4b4bb9"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"global"</span><span class="p">:</span><span class="kc">true</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="err">...</span><span class="w">
@@ -1931,6 +1964,12 @@ curl <span class="s2">"https://api.affinity.co/organizations?term=affinity&amp;p
 <td>boolean</td>
 <td>false</td>
 <td>When true, interaction dates will be present on the returned resources. Only organizations that have interactions will be returned.</td>
+</tr>
+<tr>
+<td>{min,max}_<interaction>_date</td>
+<td>string</td>
+<td>false</td>
+<td>Only returns organizations with the given interaction type above or below the given value. <code class="prettyprint">interaction</code> can be one of <code class="prettyprint">first_email</code>, <code class="prettyprint">last_email</code>, <code class="prettyprint">last_interaction</code>, <code class="prettyprint">last_event</code>, or `next_event.</td>
 </tr>
 <tr>
 <td>page_size</td>
@@ -1968,6 +2007,7 @@ passed in the returned resources will have <code class="prettyprint">interaction
   </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">64779194</span><span class="p">,</span><span class="w">
   </span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"Affinity"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"domain"</span><span class="p">:</span><span class="s2">"affinity.co"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"crunchbase_uuid"</span><span class="p">:</span><span class="s2">"ca0e6bd5-7de2-0a26-f648-0bf66e88b05c"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"global"</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w">
   </span><span class="s2">"person_ids"</span><span class="p">:[</span><span class="mi">89734</span><span class="p">,</span><span class="w"> </span><span class="mi">117270</span><span class="p">,</span><span class="w"> </span><span class="mi">138123</span><span class="p">,</span><span class="w"> </span><span class="mi">274492</span><span class="p">,</span><span class="w"> </span><span class="mi">304848</span><span class="p">,</span><span class="w"> </span><span class="err">...</span><span class="p">],</span><span class="w">
   </span><span class="s2">"list_entries"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -2032,6 +2072,7 @@ passed in the returned resources will have <code class="prettyprint">interaction
   </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">120611418</span><span class="p">,</span><span class="w">
   </span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"Acme Corporation"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"domain"</span><span class="p">:</span><span class="s2">"acme.co"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"crunchbase_uuid"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="s2">"global"</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w">
   </span><span class="s2">"person_ids"</span><span class="p">:[</span><span class="mi">38706</span><span class="p">],</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -2096,6 +2137,7 @@ the <a href="#list-entries">List Entries</a> section of the API.</p>
   </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">120611418</span><span class="p">,</span><span class="w">
   </span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"Acme Corp."</span><span class="p">,</span><span class="w">
   </span><span class="s2">"domain"</span><span class="p">:</span><span class="s2">"acme.co"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"crunchbase_uuid"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="s2">"global"</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w">
   </span><span class="s2">"person_ids"</span><span class="p">:[</span><span class="mi">38706</span><span class="p">,</span><span class="mi">89734</span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -2261,6 +2303,540 @@ If you aren&rsquo;t sure about what fields are, please read the
 
 <p>An array of the fields that exist on all organizations for your team.</p>
 
+          <h1 id="opportunities">Opportunities</h1>
+
+<p>An opportunity in Affinity represents a potential future sale or deal for your team. It
+can have multiple people - your team&rsquo;s main points of contacts for the opportunity - and
+organization(s) associated with it. Opportunities are generally used to track the progress
+of and revenue generated from sales and deals in your pipeline with a specific organization.</p>
+
+<p>Unlike people and organizations, an opportunity can only belong to a single list and, thus,
+does not have global fields. This list must be provided at the creation of the opportunity.
+If the list or list entry containing the opportunity gets deleted, then the opportunity subsequently gets
+deleted. If a user does not have permission to access a list with opportunities, the user cannot view
+any of those opportunities.</p>
+
+<p><strong>Note:</strong></p>
+
+<ol>
+<li>If you are looking to remove an opportunity from a list, note that deleting an opportunity
+is the same as removing an opportunity from a list because an opportunity can only exist on
+a single list with a single list entry.</li>
+<li>If you are looking to modify a field value (one of the cells on Affinity&rsquo;s
+spreadsheet), please check out the <a href="#field-values">Field Values</a> section of the API.</li>
+</ol>
+
+<h2 id="the-opportunity-resource">The opportunity resource</h2>
+
+<blockquote>
+<p>Example Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">117</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"Affinity Opp"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"person_ids"</span><span class="p">:[</span><span class="mi">38706</span><span class="p">],</span><span class="w">
+  </span><span class="s2">"organization_ids"</span><span class="p">:[</span><span class="mi">21442</span><span class="p">],</span><span class="w">
+  </span><span class="s2">"list_entries"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">442313</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"creator"</span><span class="p">:{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">38706</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"type"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"emails"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"john@affinity.co"</span><span class="p">,</span><span class="w"> </span><span class="s2">"johnjdoe@gmail.com"</span><span class="p">],</span><span class="w">
+        </span><span class="s2">"firstName"</span><span class="p">:</span><span class="s2">"John"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"lastName"</span><span class="p">:</span><span class="s2">"Doe"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"photoUrl"</span><span class="p">:</span><span class="s2">"https://dapjjo8h3d36y.cloudfront.net/315dc7f40516f732ds9b817a03f6d826e"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"entityType"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"inferredType"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"interactionsHidden"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"hiddenExternal"</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"primaryEmail"</span><span class="p">:</span><span class="s2">"john@affinity.co"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"listId"</span><span class="p">:</span><span class="mi">4974</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"entityId"</span><span class="p">:</span><span class="mi">117</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="s2">"2018-03-03T23:02:46.412-08:00"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Each opportunity object has a unique <code class="prettyprint">id</code>. It also has a <code class="prettyprint">name</code>, <code class="prettyprint">persons_ids</code> and
+<code class="prettyprint">organization_ids</code> associated with it, and an array of <code class="prettyprint">list_entries</code>. An important attribute to note
+is <code class="prettyprint">list_entries</code>. Because an opportunity can only belong to a single list, <code class="prettyprint">list_entries</code>
+can only have one list entry.</p>
+
+<p>Of course, all fields can be modified and the opportunity can be deleted.</p>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>integer</td>
+<td>The unique identifier of the opportunity object.</td>
+</tr>
+<tr>
+<td>name</td>
+<td>integer</td>
+<td>The name of the opportunity (see below).</td>
+</tr>
+<tr>
+<td>person_ids</td>
+<td>number[]</td>
+<td>An array of unique identifiers for persons that are associated with the opportunity</td>
+</tr>
+<tr>
+<td>organization_ids</td>
+<td>number[]</td>
+<td>An array of unique identifiers for organizations that are associated with the opportunity</td>
+</tr>
+<tr>
+<td>list_entries</td>
+<td>ListEntry[]</td>
+<td>An array of list entry resources associated with the opportunity (at most 1 list entry). If the</td>
+</tr>
+</tbody></table>
+
+<p>user corresponding to the API key does not have access to the list, this will be empty.</p>
+
+<h2 id="search-for-opportunities">Search for opportunities</h2>
+
+<p><code class="prettyprint">GET /opportunities</code></p>
+
+<p>Searches your team&rsquo;s data and fetches all the opportunities that meet the search criteria.
+The search term can be a part of an opportunity&rsquo;s name.</p>
+
+<p>This result is paginated. An initial request returns an object with two fields:
+<code class="prettyprint">opportunities</code> and <code class="prettyprint">next_page_token</code>. <code class="prettyprint">opportunities</code> contains an array of opportunity
+resources. The value of <code class="prettyprint">next_page_token</code> should be sent as the query parameter
+<code class="prettyprint">page_token</code> in another request to retrieve the next page of results. While paginating
+through results, each request must have identical query parameters other than the changing
+<code class="prettyprint">page_token</code>. Otherwise, an <code class="prettyprint">Invalid page_token variable</code> error will be returned.</p>
+
+<p>The absence of a <code class="prettyprint">next_page_token</code> indicates that all the records have been fetched,
+though its presence does not necessarily indicate that there are <em>more</em> resources to be
+fetched. The next page may be empty (but then <code class="prettyprint">next_page_token</code> would be <code class="prettyprint">null</code> to
+confirm that there are no more resources).</p>
+
+<blockquote>
+<p>Example Request</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.affinity.co/opportunities?term=affinity"</span> -u :&lt;API-KEY&gt;
+</code></pre>
+<blockquote>
+<p>Example Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"opportunities"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">121</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"Affinity Opp"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"person_ids"</span><span class="p">:[</span><span class="mi">3526824</span><span class="p">],</span><span class="w">
+      </span><span class="s2">"organization_ids"</span><span class="p">:[</span><span class="mi">128367168</span><span class="p">],</span><span class="w">
+      </span><span class="s2">"list_entries"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">442313</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"creator"</span><span class="p">:{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">1124736</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"type"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"emails"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"john@affinity.co"</span><span class="p">,</span><span class="w"> </span><span class="s2">"johnjdoe@gmail.com"</span><span class="p">],</span><span class="w">
+            </span><span class="s2">"firstName"</span><span class="p">:</span><span class="s2">"John"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"lastName"</span><span class="p">:</span><span class="s2">"Doe"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"photoUrl"</span><span class="p">:</span><span class="s2">"https://dapjjo8h3d36y.cloudfront.net/315dc7f40516f732ds9b817a03f6d826e"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"entityType"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"inferredType"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"interactionsHidden"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"hiddenExternal"</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"primaryEmail"</span><span class="p">:</span><span class="s2">"john@affinity.co"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"listId"</span><span class="p">:</span><span class="mi">4974</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"entityId"</span><span class="p">:</span><span class="mi">121</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="s2">"2018-03-03T23:02:46.412-08:00"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">150</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"Affinity Opp 2"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"person_ids"</span><span class="p">:[</span><span class="mi">5326214</span><span class="p">],</span><span class="w">
+      </span><span class="s2">"organization_ids"</span><span class="p">:[</span><span class="mi">128367168</span><span class="p">],</span><span class="w">
+      </span><span class="s2">"list_entries"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">442421</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"creator"</span><span class="p">:{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">1124736</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"type"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"emails"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"john@affinity.co"</span><span class="p">,</span><span class="w"> </span><span class="s2">"johnjdoe@gmail.com"</span><span class="p">],</span><span class="w">
+            </span><span class="s2">"firstName"</span><span class="p">:</span><span class="s2">"John"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"lastName"</span><span class="p">:</span><span class="s2">"Doe"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"photoUrl"</span><span class="p">:</span><span class="s2">"https://dapjjo8h3d36y.cloudfront.net/315dc7f40516f732ds9b817a03f6d826e"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"entityType"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"inferredType"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"interactionsHidden"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"hiddenExternal"</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"primaryEmail"</span><span class="p">:</span><span class="s2">"john@affinity.co"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"listId"</span><span class="p">:</span><span class="mi">4974</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"entityId"</span><span class="p">:</span><span class="mi">150</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="s2">"2018-03-08T23:02:46.412-08:00"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+    </span><span class="err">...</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"next_page_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eyJwYXJhbXMiOnsidGVybSI6IiJ9LCJwYWdlX3NpemUiOjUsIm9mZnNldCI6MTB9"</span><span class="p">,</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>Example pagination</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code><span class="c"># To get the second page of results, issue the following query:</span>
+curl <span class="s2">"https://api.affinity.co/opportunities?term=affinity&amp;page_token=eyJwYXJhbXMiOnsidGVybSI6IiJ9LCJwYWdlX3NpemUiOjUsIm9mZnNldCI6MTB9"</span> -u :&lt;API-KEY&gt;
+</code></pre>
+<h3 id="query-parameters">Query Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>term</td>
+<td>string</td>
+<td>false</td>
+<td>A string used to search all the opportunities in your team&rsquo;s database. This could be part of a name.</td>
+</tr>
+<tr>
+<td>page_size</td>
+<td>number</td>
+<td>false</td>
+<td>How many results to return per page. (Default is the maximum value of 500.)</td>
+</tr>
+<tr>
+<td>page_token</td>
+<td>string</td>
+<td>false</td>
+<td>The <code class="prettyprint">next_page_token</code> from the previous response required to retrieve the next page of results.</td>
+</tr>
+</tbody></table>
+
+<h3 id="returns">Returns</h3>
+
+<p>An object with two fields: <code class="prettyprint">opportunities</code> and <code class="prettyprint">next_page_token</code>. <code class="prettyprint">opportunities</code> maps to
+an array of all the opportunity resources that match the search criteria.
+<code class="prettyprint">next_page_token</code> includes a token to be sent along with the next request as the
+<code class="prettyprint">page_token</code> parameter to fetch the next page of results.</p>
+
+<h2 id="get-a-specific-opportunity">Get a specific opportunity</h2>
+
+<blockquote>
+<p>Example Request</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.affinity.co/opportunities/117"</span> -u :&lt;API-KEY&gt;
+</code></pre>
+<blockquote>
+<p>Example Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">121</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"Affinity Opp"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"person_ids"</span><span class="p">:[</span><span class="mi">3526824</span><span class="p">],</span><span class="w">
+  </span><span class="s2">"organization_ids"</span><span class="p">:[</span><span class="mi">128367168</span><span class="p">],</span><span class="w">
+  </span><span class="s2">"list_entries"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">442313</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"creator"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">1124736</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"type"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"emails"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"john@affinity.co"</span><span class="p">,</span><span class="w"> </span><span class="s2">"johnjdoe@gmail.com"</span><span class="p">],</span><span class="w">
+        </span><span class="s2">"firstName"</span><span class="p">:</span><span class="s2">"John"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"lastName"</span><span class="p">:</span><span class="s2">"Doe"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"photoUrl"</span><span class="p">:</span><span class="s2">"https://dapjjo8h3d36y.cloudfront.net/315dc7f40516f732ds9b817a03f6d826e"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"entityType"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"inferredType"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"interactionsHidden"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"hiddenExternal"</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"primaryEmail"</span><span class="p">:</span><span class="s2">"john@affinity.co"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"listId"</span><span class="p">:</span><span class="mi">4974</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"entityId"</span><span class="p">:</span><span class="mi">121</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="s2">"2018-03-03T23:02:46.412-08:00"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code class="prettyprint">GET /opportunities/{opportunity_id}</code></p>
+
+<p>Fetches an opportunity with a specified <code class="prettyprint">opportunity_id</code>.</p>
+
+<h3 id="path-parameters">Path Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>opportunity_id</td>
+<td>integer</td>
+<td>true</td>
+<td>The unique id of the opportunity that needs to be retrieved.</td>
+</tr>
+</tbody></table>
+
+<h3 id="returns">Returns</h3>
+
+<p>The opportunity object corresponding to the <code class="prettyprint">opportunity_id</code>.</p>
+
+<h2 id="create-a-new-opportunity">Create a new opportunity</h2>
+
+<blockquote>
+<p>Example Request</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.affinity.co/opportunities"</span> <span class="se">\</span>
+  -u :&lt;API-KEY&gt; <span class="se">\</span>
+  -d <span class="nv">name</span><span class="o">=</span><span class="s2">"Penny Opportunity"</span> <span class="se">\</span>
+  -d <span class="nv">list_id</span><span class="o">=</span>6645 <span class="se">\</span>
+  -d person_ids[]<span class="o">=</span>38706 <span class="se">\</span>
+  -d organization_ids[]<span class="o">=</span>21442
+</code></pre>
+<blockquote>
+<p>Example Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">50</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"Penny Opportunity"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"person_ids"</span><span class="p">:[</span><span class="mi">38706</span><span class="p">],</span><span class="w">
+  </span><span class="s2">"organization_ids"</span><span class="p">:[</span><span class="mi">21442</span><span class="p">],</span><span class="w">
+  </span><span class="s2">"list_entries"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">999886</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"creator"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">1127776</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"type"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"emails"</span><span class="p">:[</span><span class="s2">"john@affinity.co"</span><span class="p">,</span><span class="w"> </span><span class="s2">"john@berkeley.edu"</span><span class="p">],</span><span class="w">
+        </span><span class="s2">"firstName"</span><span class="p">:</span><span class="s2">"John"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"lastName"</span><span class="p">:</span><span class="s2">"Doe"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"photoUrl"</span><span class="p">:</span><span class="s2">"https://dapjjo8h3d36y.cloudfront.net/315dc7f40516f73259b807a06f6d826a"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"entityType"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"inferredType"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"interactionsHidden"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"hiddenExternal"</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"primaryEmail"</span><span class="p">:</span><span class="s2">"john@affinity.co"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"listId"</span><span class="p">:</span><span class="mi">6645</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"entityId"</span><span class="p">:</span><span class="mi">50</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="s2">"2018-03-07T16:32:35.794-08:00"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code class="prettyprint">POST /opportunities</code></p>
+
+<p>Creates a new opportunity with the supplied parameters.</p>
+
+<h3 id="payload-parameters">Payload Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>true</td>
+<td>The name of the opportunity.</td>
+</tr>
+<tr>
+<td>list_id</td>
+<td>integer</td>
+<td>true</td>
+<td>An unique identifier of the list that the new opportunity will be associated with. This list must be of type opportunity.</td>
+</tr>
+<tr>
+<td>person_ids</td>
+<td>integer[]</td>
+<td>false</td>
+<td>An array of unique identifiers of persons that the new opportunity will be associated with.</td>
+</tr>
+<tr>
+<td>organization_ids</td>
+<td>integer[]</td>
+<td>false</td>
+<td>An array of unique identifiers of organizations that the new opportunity will be associated with.</td>
+</tr>
+</tbody></table>
+
+<h3 id="returns">Returns</h3>
+
+<p>The opportunity resource that was just created by a successful request (without <code class="prettyprint">person_ids</code> and <code class="prettyprint">organization_ids</code>).</p>
+
+<h2 id="update-an-opportunity">Update an opportunity</h2>
+
+<blockquote>
+<p>Example Request</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.affinity.co/opportunities/120611418"</span> <span class="se">\</span>
+  -u :&lt;API-KEY&gt; <span class="se">\</span>
+  -d <span class="nv">name</span><span class="o">=</span><span class="s2">"Penny Opp"</span> <span class="se">\</span>
+  -d person_ids[]<span class="o">=</span>38706 <span class="se">\</span>
+  -d person_ids[]<span class="o">=</span>89734 <span class="se">\</span>
+  -X <span class="s2">"PUT"</span>
+</code></pre>
+<blockquote>
+<p>Example Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">50</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"Penny Opp"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"person_ids"</span><span class="p">:[</span><span class="mi">38706</span><span class="p">,</span><span class="mi">89734</span><span class="p">],</span><span class="w">
+  </span><span class="s2">"organization_ids"</span><span class="p">:[</span><span class="mi">21442</span><span class="p">],</span><span class="w">
+  </span><span class="s2">"list_entries"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">999886</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"creator"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">1127776</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"type"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"emails"</span><span class="p">:[</span><span class="s2">"john@affinity.co"</span><span class="p">,</span><span class="w"> </span><span class="s2">"john@berkeley.edu"</span><span class="p">],</span><span class="w">
+        </span><span class="s2">"firstName"</span><span class="p">:</span><span class="s2">"John"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"lastName"</span><span class="p">:</span><span class="s2">"Doe"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"photoUrl"</span><span class="p">:</span><span class="s2">"https://dapjjo8h3d36y.cloudfront.net/315dc7f40516f73259b807a06f6d826a"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"entityType"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"inferredType"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"interactionsHidden"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"hiddenExternal"</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"primaryEmail"</span><span class="p">:</span><span class="s2">"john@affinity.co"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"listId"</span><span class="p">:</span><span class="mi">6645</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"entityId"</span><span class="p">:</span><span class="mi">50</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="s2">"2018-03-07T16:32:35.794-08:00"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code class="prettyprint">PUT /opportunities/{opportunity_id}</code></p>
+
+<p>Updates an existing opportunity with <code class="prettyprint">opportunity_id</code> with the supplied parameters.</p>
+
+<p><strong>Note:</strong></p>
+
+<p>If you are trying to add a person to an opportunity, the existing values for
+<code class="prettyprint">person_ids</code> must also be passed into the endpoint.</p>
+
+<p>If you are trying to add an organization to an opportunity, the existing values for
+<code class="prettyprint">organization_ids</code> must also be passed into the endpoint.</p>
+
+<h3 id="path-parameters">Path Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>opportunity_id</td>
+<td>integer</td>
+<td>true</td>
+<td>The unique id of the opportunity to be updated.</td>
+</tr>
+</tbody></table>
+
+<h3 id="payload-parameters">Payload Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>false</td>
+<td>The name of the opportunity.</td>
+</tr>
+<tr>
+<td>person_ids</td>
+<td>integer[]</td>
+<td>false</td>
+<td>An array of unique identifiers of persons that the opportunity will be associated with.</td>
+</tr>
+<tr>
+<td>organization_ids</td>
+<td>integer[]</td>
+<td>false</td>
+<td>An array of unique identifiers of organizations that the opportunity will be associated with.</td>
+</tr>
+</tbody></table>
+
+<h3 id="returns">Returns</h3>
+
+<p>The opportunity resource that was just updated through a successful request.</p>
+
+<h2 id="delete-an-opportunity">Delete an opportunity</h2>
+
+<blockquote>
+<p>Example Request</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.affinity.co/opportunities/120611418"</span> <span class="se">\</span>
+  -u :&lt;API-KEY&gt; <span class="se">\</span>
+  -X <span class="s2">"DELETE"</span>
+</code></pre>
+<blockquote>
+<p>Example Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="s2">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code class="prettyprint">DELETE /opportunities/{opportunity_id}</code></p>
+
+<p>Deletes an opportunity with a specified <code class="prettyprint">opportunity_id</code>.</p>
+
+<p><strong>Note:</strong></p>
+
+<ol>
+<li>This will also delete all the field values, if any, associated with the opportunity.</li>
+</ol>
+
+<h3 id="path-parameters">Path Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>opportunity_id</td>
+<td>integer</td>
+<td>true</td>
+<td>The unique id of the opportunity that needs to be deleted.</td>
+</tr>
+</tbody></table>
+
+<h3 id="returns">Returns</h3>
+
+<p><code class="prettyprint">{success: true}</code>.</p>
+
           <h1 id="field-values">Field Values</h1>
 
 <p>Field values are displayed in Affinity as the data in the cells of an Affinity
@@ -2346,7 +2922,7 @@ attributes that give it the appropriate associations, as noted in the example ab
 <tr>
 <td>entity_id</td>
 <td>integer</td>
-<td>The unique identifier of the person or organization object the field value is associated with.</td>
+<td>The unique identifier of the person, organization, or opportunity object the field value is associated with.</td>
 </tr>
 <tr>
 <td>list_entry_id</td>
@@ -2463,7 +3039,7 @@ attributes that give it the appropriate associations, as noted in the example ab
 </span></code></pre>
 <p><code class="prettyprint">GET /field-values</code></p>
 
-<p>Returns all field values attached to a <code class="prettyprint">person</code>, <code class="prettyprint">organization</code> or <code class="prettyprint">list_entry</code>.</p>
+<p>Returns all field values attached to a <code class="prettyprint">person</code>, <code class="prettyprint">organization</code>, <code class="prettyprint">opportunity</code>, or <code class="prettyprint">list_entry</code>.</p>
 
 <h3 id="query-parameters">Query Parameters</h3>
 
@@ -2488,6 +3064,12 @@ attributes that give it the appropriate associations, as noted in the example ab
 <td>A unique id that represents an organization object whose field values are to be retrieved.</td>
 </tr>
 <tr>
+<td>opportunity_id</td>
+<td>integer</td>
+<td>custom*</td>
+<td>A unique id that represents an opportunity object whose field values are to be retrieved.</td>
+</tr>
+<tr>
 <td>list_entry_id</td>
 <td>integer</td>
 <td>custom*</td>
@@ -2498,15 +3080,15 @@ attributes that give it the appropriate associations, as noted in the example ab
 <p><strong>Note:</strong></p>
 
 <ol>
-<li>custom*: Only one of <code class="prettyprint">person_id</code>, <code class="prettyprint">organization_id</code>, <code class="prettyprint">list_entry_id</code> can be specified to the endpoint.</li>
-<li>If a <code class="prettyprint">person_id</code> or <code class="prettyprint">organization_id</code> is specified, the endpoint returns all field values tied to these entities - including those that are associated with all list entries that
-exist for the given person or organization.</li>
+<li>custom*: Only one of <code class="prettyprint">person_id</code>, <code class="prettyprint">organization_id</code>, <code class="prettyprint">opportunity_id</code>, or <code class="prettyprint">list_entry_id</code> can be specified to the endpoint.</li>
+<li>If a <code class="prettyprint">person_id</code>, <code class="prettyprint">organization_id</code>, or <code class="prettyprint">opportunity_id</code> is specified, the endpoint returns all field values tied to these entities - including those that are associated with all list entries that
+exist for the given person or organization. Opportunities can only have one list entry.</li>
 </ol>
 
 <h3 id="returns">Returns</h3>
 
 <p>An array of all the field values associated with the supplied <code class="prettyprint">person</code>,
-<code class="prettyprint">organization</code> or <code class="prettyprint">list_entry</code>.</p>
+<code class="prettyprint">organization</code>, <code class="prettyprint">opportunity</code>, or <code class="prettyprint">list_entry</code>.</p>
 
 <h2 id="create-a-new-field-value">Create a new field value</h2>
 
@@ -2554,7 +3136,7 @@ exist for the given person or organization.</li>
 <td>entity_id</td>
 <td>integer</td>
 <td>true</td>
-<td>The unique identifier of the entity (person or company) that the field value is associated with.</td>
+<td>The unique identifier of the entity (person, organization, or opportunity) that the field value is associated with.</td>
 </tr>
 <tr>
 <td>list_entry_id</td>
@@ -2694,6 +3276,7 @@ exist for the given person or organization.</li>
   </span><span class="s2">"creator_id"</span><span class="p">:</span><span class="mi">860197</span><span class="p">,</span><span class="w">
   </span><span class="s2">"person_ids"</span><span class="p">:[</span><span class="mi">38706</span><span class="p">,</span><span class="mi">89734</span><span class="p">],</span><span class="w">
   </span><span class="s2">"organization_ids"</span><span class="p">:[</span><span class="mi">64779194</span><span class="p">],</span><span class="w">
+  </span><span class="s2">"opportunity_ids"</span><span class="p">:[</span><span class="mi">117</span><span class="p">],</span><span class="w">
   </span><span class="s2">"content"</span><span class="p">:</span><span class="s2">"Had a lunch meeting with Jane and John today. They are looking to invest."</span><span class="p">,</span><span class="w">
   </span><span class="s2">"created_at"</span><span class="p">:</span><span class="s2">"2017-03-28 00:38:41 -0700"</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -2705,8 +3288,8 @@ store logged activity from a prospect&rsquo;s visit to your website.</p>
 <h2 id="the-note-resource">The note resource</h2>
 
 <p>A note object contains <code class="prettyprint">content</code>, which is a string containing the note body. In
-addition, a note can be associated with multiple people or organizations. Each person or
-organization will display linked notes on their profiles.</p>
+addition, a note can be associated with multiple people, organizations, or opportunities.
+Each person, organization, or opportunity will display linked notes on their profiles.</p>
 
 <table><thead>
 <tr>
@@ -2736,6 +3319,11 @@ organization will display linked notes on their profiles.</p>
 <td>An array of unique identifiers of organization objects that are associated with the note.</td>
 </tr>
 <tr>
+<td>opportunity_ids</td>
+<td>integer[]</td>
+<td>An array of unique identifiers of opportunity objects that are associated with the note.</td>
+</tr>
+<tr>
 <td>content</td>
 <td>string</td>
 <td>The string containing the content of the note.</td>
@@ -2757,6 +3345,7 @@ organization will display linked notes on their profiles.</p>
   -d person_ids[]<span class="o">=</span>38706 <span class="se">\</span>
   -d person_ids[]<span class="o">=</span>624289 <span class="se">\</span>
   -d organization_ids[]<span class="o">=</span>120611418 <span class="se">\</span>
+  -d opportunity_ids[]<span class="o">=</span>167 <span class="se">\</span>
   -d <span class="nv">content</span><span class="o">=</span><span class="s2">"Had a lunch meeting with Jane and </span><span class="se">\</span><span class="s2">
               John today. They want to invest in </span><span class="se">\</span><span class="s2">
               Acme Corp."</span>
@@ -2769,6 +3358,7 @@ organization will display linked notes on their profiles.</p>
   </span><span class="s2">"creator_id"</span><span class="p">:</span><span class="mi">860197</span><span class="p">,</span><span class="w">
   </span><span class="s2">"person_ids"</span><span class="p">:[</span><span class="mi">38706</span><span class="p">,</span><span class="mi">89734</span><span class="p">],</span><span class="w">
   </span><span class="s2">"organization_ids"</span><span class="p">:[</span><span class="mi">64779194</span><span class="p">],</span><span class="w">
+  </span><span class="s2">"opportunity_ids"</span><span class="p">:[</span><span class="mi">117</span><span class="p">],</span><span class="w">
   </span><span class="s2">"content"</span><span class="p">:</span><span class="s2">"Had a lunch meeting with Jane ... "</span><span class="p">,</span><span class="w">
   </span><span class="s2">"created_at"</span><span class="p">:</span><span class="s2">"2017-03-28 00:38:41 -0700"</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -2809,6 +3399,12 @@ account that owns the Gmail mesage.) A note associated with an email cannot have
 <td>An array of unique identifiers of organization objects that are associated with the new note.</td>
 </tr>
 <tr>
+<td>opportunity_ids</td>
+<td>integer[]</td>
+<td>false</td>
+<td>An array of unique identifiers of opportunity objects that are associated with the new note.</td>
+</tr>
+<tr>
 <td>content</td>
 <td>string</td>
 <td>false</td>
@@ -2826,6 +3422,12 @@ account that owns the Gmail mesage.) A note associated with an email cannot have
 <td>false</td>
 <td>The id of a Person resource who should be recorded as the author of the note. Must be a person who can access Affinity. If not provided the creator defaults to the owner of the API key.</td>
 </tr>
+<tr>
+<td>created_at</td>
+<td>datetime</td>
+<td>false</td>
+<td>A string (formatted according to <a href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a>) representing the creation time to be recorded for the note. If not provided, defaults to the current time.</td>
+</tr>
 </tbody></table>
 
 <p>Note that either <code class="prettyprint">content</code> or <code class="prettyprint">gmail_id</code> must be specified.</p>
@@ -2833,6 +3435,85 @@ account that owns the Gmail mesage.) A note associated with an email cannot have
 <h3 id="returns">Returns</h3>
 
 <p>The note resource created through this request.</p>
+
+          <h1 id="entity-files">Entity Files</h1>
+
+<p>Entity files are files uploaded to a relevant entity. Possible files, for example, would be a pitch deck for an opportunity or a physical mail correspondence for a person.</p>
+
+<h2 id="upload-files">Upload files</h2>
+
+<blockquote>
+<p>Example Request</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.affinity.co/entity-files"</span> <span class="se">\</span>
+  -u :&lt;API-KEY&gt; <span class="se">\</span>
+  -F files[]<span class="o">=</span>@Pitch.pdf <span class="se">\</span>
+  -F files[]<span class="o">=</span>@10_01_18_meeting.txt <span class="se">\</span>
+  -F <span class="nv">person_id</span><span class="o">=</span>4113456
+</code></pre>
+<blockquote>
+<p>Example Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="s2">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code class="prettyprint">POST /entity-files</code></p>
+
+<p>Uploads files attached to the entity with the given id.</p>
+
+<p>The file will display on the entity&rsquo;s profile, provided that the entity is not a person internal to the user&rsquo;s organization.</p>
+
+<h3 id="path-parameters">Path Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>file</td>
+<td>File</td>
+<td>false</td>
+<td>A singular file to be uploaded, formatted as form data (multipart/form-data).</td>
+</tr>
+<tr>
+<td>files</td>
+<td>File[]</td>
+<td>false</td>
+<td>An array of files to be uploaded, formatted as form data (multipart/form-data).</td>
+</tr>
+<tr>
+<td>person_id</td>
+<td>integer</td>
+<td>false</td>
+<td>The unique identifier of the person object to attach the file(s) to.</td>
+</tr>
+<tr>
+<td>organization_id</td>
+<td>integer</td>
+<td>false</td>
+<td>The unique identifier of the organization object to attach the file(s) to.</td>
+</tr>
+<tr>
+<td>opportunity_id</td>
+<td>integer</td>
+<td>false</td>
+<td>The unique identifier of the opportunity object to attach the file(s) to.</td>
+</tr>
+</tbody></table>
+
+<p><strong>Note:</strong></p>
+
+<ol>
+<li>Files must be attached to a single entity, specified using one of the three entity id parameters (<code class="prettyprint">person_id</code>, <code class="prettyprint">organization_id</code>, and <code class="prettyprint">opportunity_id</code>).</li>
+<li>At least one file must be uploaded using the <code class="prettyprint">file</code> or <code class="prettyprint">files</code> parameters.</li>
+</ol>
+
+<h3 id="returns">Returns</h3>
+
+<p><code class="prettyprint">{&quot;success&quot;: true}</code></p>
 
           <h1 id="additional-materials">Additional Materials</h1>
 
