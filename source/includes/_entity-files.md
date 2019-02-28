@@ -11,7 +11,7 @@ Entity files are files uploaded to a relevant entity. Possible files, for exampl
     "id": 43212,
     "name": "JohnDoeFriends.csv",
     "size": 993,
-    "personId": null,
+    "personId": 10,
     "organizationId": null,
     "opportunityId": null,
     "createdAt": "2011-01-25T09:59:35.288-08:00",
@@ -115,10 +115,10 @@ curl "https://api.affinity.co/entity-files/43212" -u :<API-KEY>
 ```json
 {
     "id": 43212,
-    "name": "JohnDoeFriends.csv",
+    "name": "GoogleFriends.csv",
     "size": 993,
     "personId": null,
-    "organizationId": null,
+    "organizationId": 10,
     "opportunityId": null,
     "createdAt": "2011-01-25T09:59:35.288-08:00",
     "uploaderId": 10
