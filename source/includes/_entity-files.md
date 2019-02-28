@@ -19,7 +19,7 @@ curl "https://api.affinity.co/entity-files" -u :<API-KEY>
             "id": 43212,
             "name": "JohnDoeFriends.csv",
             "size": 993,
-            "personId": null,
+            "personId": 142,
             "organizationId": null,
             "opportunityId": null,
             "createdAt": "2011-01-25T09:59:35.288-08:00",
@@ -50,7 +50,17 @@ curl "https://api.affinity.co/entity-files?page_token=eyJwYXJhbXMiOnsidGVybSI6Ii
 
 `GET /entity-files`
 
-Returns all entity files within your organization. This result is paginated.
+Returns all entity files within your organization. This result will be
+an object with two fields: `entity_files` and `next_page_token`. `entity_files ` maps to an
+array of all the entity file resources. The value of `next_page_token` should be sent as the
+query parameter `page_token` in another request to retrieve the next page of results. While
+paginating through results, each request must have identical query parameters other than the
+changing `page_token`. Otherwise, an `Invalid page_token variable` error will be returned.
+
+The absence of a `next_page_token` indicates that all the records have been fetched,
+though its presence does not necessarily indicate that there are _more_ resources to be
+fetched. The next page may be empty (but then `next_page_token` would be `null` to
+confirm that there are no more resources).
 
 
 ### Query Parameters
@@ -62,17 +72,7 @@ page_token | string | false | The `next_page_token` from the previous response r
 
 ### Returns
 An object with two fields: `entity_files` and `next_page_token`. `entity_files ` maps to an
-array of all the entity file resources. `next_page_token` includes a token to be sent along
-with the next request as the `page_token` parameter to fetch the next page of results.
-The value of `next_page_token` should be sent as the query parameter `page_token` in another
-request to retrieve the next page of results. While paginating through results, each request
-must have identical query parameters other than the changing `page_token`. Otherwise, an
-Invalid `page_token` variable error will be returned.
-
-The absence of a `next_page_token` indicates that all the records have been fetched,
-though its presence does not necessarily indicate that there are _more_ resources to be
-fetched. The next page may be empty (but then `next_page_token` would be `null` to
-confirm that there are no more resources).
+array of all the entity file resources. See description for more details on pagination.
 
 ## Get a specific file
 
@@ -110,17 +110,34 @@ entity_file_id | integer | true | The unique id of the entity file that needs to
 ### Returns
 The entity file resource corresponding to the `entity_file_id`.
 
-## Upload files
+## Download File
 
 > Example Request
 
 ```shell
-curl "https://api.affinity.co/entity-files" \
+curl "https://api.affinity.co/entity-files/download/12345" \
   -u :<API-KEY> \
-  -F files[]=@Pitch.pdf \
-  -F files[]=@10_01_18_meeting.txt \
-  -F person_id=4113456
+  -L place_to_store_file.png
 ```
+
+`GET /entity-files/download/{entity_file_id}`
+
+Downloads an entity file with a specified `entity_file_id`
+
+### Path Parameters
+
+Parameter | Type | Required | Description
+--------- | ------- | ---------- | -----------
+entity_file_id | integer | true | The unique id of the entity file that needs to be retrieved.
+
+### Returns
+The actual entity file corresponding to the `entity_file_id`.
+
+## Upload files
+
+> Example Request
+
+
 > Example Response
 
 ```json
