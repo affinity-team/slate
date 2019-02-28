@@ -137,6 +137,13 @@ The actual entity file corresponding to the `entity_file_id`.
 
 > Example Request
 
+```shell
+curl "https://api.affinity.co/entity-files" \
+  -u :<API-KEY> \
+  -F files[]=@Pitch.pdf \
+  -F files[]=@10_01_18_meeting.txt \
+  -F person_id=4113456
+```
 
 > Example Response
 
