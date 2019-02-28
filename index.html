@@ -3564,6 +3564,239 @@ account that owns the Gmail mesage.) A note associated with an email cannot have
 
 <p>Entity files are files uploaded to a relevant entity. Possible files, for example, would be a pitch deck for an opportunity or a physical mail correspondence for a person.</p>
 
+<h2 id="the-entity-file-resource">The entity file resource</h2>
+
+<blockquote>
+<p>Example Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">43212</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"JohnDoeFriends.csv"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"size"</span><span class="p">:</span><span class="w"> </span><span class="mi">993</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"personId"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"organizationId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"opportunityId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2011-01-25T09:59:35.288-08:00"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"uploaderId"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>integer</td>
+<td>The unique identifier of the entity file object.</td>
+</tr>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>The name of the file.</td>
+</tr>
+<tr>
+<td>size</td>
+<td>string</td>
+<td>The size of the file in bytes.</td>
+</tr>
+<tr>
+<td>personId</td>
+<td>integer</td>
+<td>The unique identifier of the person corresponding to the entity file.</td>
+</tr>
+<tr>
+<td>organizationId</td>
+<td>integer</td>
+<td>The unique identifier of the organization corresponding to the entity file.</td>
+</tr>
+<tr>
+<td>opportunityId</td>
+<td>integer</td>
+<td>The unique identifier of the opportunity corresponding to the entity file.</td>
+</tr>
+<tr>
+<td>uploaderId</td>
+<td>integer</td>
+<td>The unique identifier of the user who created the entity file.</td>
+</tr>
+<tr>
+<td>created_at</td>
+<td>datetime</td>
+<td>The time when the entity file was created.</td>
+</tr>
+</tbody></table>
+
+<h2 id="get-all-files">Get all files</h2>
+
+<blockquote>
+<p>Example Request</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.affinity.co/entity-files"</span> -u :&lt;API-KEY&gt;
+</code></pre>
+<blockquote>
+<p>Example Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"entity_files"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">43212</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"JohnDoeFriends.csv"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"size"</span><span class="p">:</span><span class="w"> </span><span class="mi">993</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"personId"</span><span class="p">:</span><span class="w"> </span><span class="mi">142</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"organizationId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"opportunityId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2011-01-25T09:59:35.288-08:00"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"uploaderId"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">131</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Import.csv"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"size"</span><span class="p">:</span><span class="w"> </span><span class="mi">227224</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"personId"</span><span class="p">:</span><span class="w"> </span><span class="mi">38654</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"organizationId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"opportunityId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-01-13T12:52:51.539-08:00"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"uploaderId"</span><span class="p">:</span><span class="w"> </span><span class="mi">101</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="err">...</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"next_page_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eyJwYXJhbXMiOnt9LCJwYWdlX3NpemUiOjUwMCwib2Zmc2V0Ijo1MDB9"</span><span class="p">,</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>Example pagination</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code><span class="c"># To get the second page of results, issue the following query:</span>
+curl <span class="s2">"https://api.affinity.co/entity-files?page_token=eyJwYXJhbXMiOnsidGVybSI6IiJ9LCJwYWdlX3NpemUiOjUsIm9mZnNldCI6MTB9"</span> -u :&lt;API-KEY&gt;
+</code></pre>
+<p><code class="prettyprint">GET /entity-files</code></p>
+
+<p>Returns all entity files within your organization. This result will be
+an object with two fields: <code class="prettyprint">entity_files</code> and <code class="prettyprint">next_page_token</code>. <code class="prettyprint">entity_files</code> maps to an
+array of all the entity file resources. The value of <code class="prettyprint">next_page_token</code> should be sent as the
+query parameter <code class="prettyprint">page_token</code> in another request to retrieve the next page of results. While
+paginating through results, each request must have identical query parameters other than the
+changing <code class="prettyprint">page_token</code>. Otherwise, an <code class="prettyprint">Invalid page_token variable</code> error will be returned.</p>
+
+<p>The absence of a <code class="prettyprint">next_page_token</code> indicates that all the records have been fetched,
+though its presence does not necessarily indicate that there are <em>more</em> resources to be
+fetched. The next page may be empty (but then <code class="prettyprint">next_page_token</code> would be <code class="prettyprint">null</code> to
+confirm that there are no more resources).</p>
+
+<h3 id="query-parameters">Query Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>page_size</td>
+<td>number</td>
+<td>false</td>
+<td>How many results to return per page. (Default is the maximum value of 500.)</td>
+</tr>
+<tr>
+<td>page_token</td>
+<td>string</td>
+<td>false</td>
+<td>The <code class="prettyprint">next_page_token</code> from the previous response required to retrieve the next page of results.</td>
+</tr>
+</tbody></table>
+
+<h3 id="returns">Returns</h3>
+
+<p>An object with two fields: <code class="prettyprint">entity_files</code> and <code class="prettyprint">next_page_token</code>. <code class="prettyprint">entity_files</code> maps to an
+array of all the entity file resources. See description for more details on pagination.</p>
+
+<h2 id="get-a-specific-file">Get a specific file</h2>
+
+<blockquote>
+<p>Example Request</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.affinity.co/entity-files/43212"</span> -u :&lt;API-KEY&gt;
+</code></pre>
+<blockquote>
+<p>Example Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">43212</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GoogleFriends.csv"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"size"</span><span class="p">:</span><span class="w"> </span><span class="mi">993</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"personId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"organizationId"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"opportunityId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2011-01-25T09:59:35.288-08:00"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"uploaderId"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code class="prettyprint">GET /entity-files/{entity_file_id}</code></p>
+
+<p>Fetches an entity with a specified <code class="prettyprint">entity_file_id</code>.</p>
+
+<h3 id="path-parameters">Path Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>entity_file_id</td>
+<td>integer</td>
+<td>true</td>
+<td>The unique id of the entity file that needs to be retrieved.</td>
+</tr>
+</tbody></table>
+
+<h3 id="returns">Returns</h3>
+
+<p>The entity file resource corresponding to the <code class="prettyprint">entity_file_id</code>.</p>
+
+<h2 id="download-file">Download File</h2>
+
+<blockquote>
+<p>Example Request</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.affinity.co/entity-files/download/12345"</span> <span class="se">\</span>
+  -u :&lt;API-KEY&gt; <span class="se">\</span>
+  --location place_to_store_file.png
+</code></pre>
+<p><code class="prettyprint">GET /entity-files/download/{entity_file_id}</code></p>
+
+<p>Downloads an entity file with a specified <code class="prettyprint">entity_file_id</code></p>
+
+<h3 id="path-parameters">Path Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>entity_file_id</td>
+<td>integer</td>
+<td>true</td>
+<td>The unique id of the entity file that needs to be downloaded.</td>
+</tr>
+</tbody></table>
+
+<h3 id="returns">Returns</h3>
+
+<p>The actual entity file corresponding to the <code class="prettyprint">entity_file_id</code>.</p>
+
 <h2 id="upload-files">Upload files</h2>
 
 <blockquote>
