@@ -3872,6 +3872,91 @@ array of all the entity file resources. See description for more details on pagi
 
 <p><code class="prettyprint">{&quot;success&quot;: true}</code></p>
 
+          <h1 id="webhooks">Webhooks</h1>
+
+<p>Webhooks allow you to be notified of events that happen on your Affinity instance. For example, your app can be notified when a list is created, a field value is updated, a person is deleted, and more. These events will fire immediately after the corresponding action takes place.</p>
+
+<h2 id="create-a-webhook-subscription">Create a Webhook Subscription</h2>
+
+<p>We don&rsquo;t currently support this via the API. Please reach out to support@affinity.co with the URL you would like us to POST webhooks to.</p>
+
+<h2 id="supported-webhook-events">Supported Webhook Events</h2>
+
+<h3 id="list-events">List Events</h3>
+
+<ul>
+<li>&lsquo;list.created&rsquo;</li>
+<li>&lsquo;list.updated&rsquo;</li>
+<li>&lsquo;list.deleted&rsquo;</li>
+<li>&lsquo;list_entry.created&rsquo;</li>
+<li>&lsquo;list_entry.deleted&rsquo;</li>
+</ul>
+
+<h3 id="note-events">Note Events</h3>
+
+<ul>
+<li>&lsquo;note.created&rsquo;</li>
+<li>&lsquo;note.updated&rsquo;</li>
+<li>&lsquo;note.deleted&rsquo;</li>
+</ul>
+
+<h3 id="field-events">Field Events</h3>
+
+<ul>
+<li>&lsquo;field.created&rsquo;</li>
+<li>&lsquo;field.updated&rsquo;</li>
+<li>&lsquo;field.deleted&rsquo;</li>
+<li>&lsquo;field_value.created&rsquo;</li>
+<li>&lsquo;field_value.updated&rsquo;</li>
+<li>&lsquo;field_value.deleted&rsquo;</li>
+</ul>
+
+<h3 id="person-events">Person Events</h3>
+
+<ul>
+<li>&lsquo;person.created&rsquo;</li>
+<li>&lsquo;person.updated&rsquo;</li>
+<li>&lsquo;person.deleted&rsquo;</li>
+</ul>
+
+<h3 id="organization-events">Organization Events</h3>
+
+<ul>
+<li>&lsquo;organization.created&rsquo;</li>
+<li>&lsquo;organization.updated&rsquo;</li>
+<li>&lsquo;organization.deleted&rsquo;</li>
+</ul>
+
+<h3 id="opportunity-events">Opportunity Events</h3>
+
+<ul>
+<li>&lsquo;opportunity.created&rsquo;</li>
+<li>&lsquo;opportunity.updated&rsquo;</li>
+<li>&lsquo;opportunity.deleted&rsquo;</li>
+</ul>
+
+<h3 id="entity-file-events">Entity File Events</h3>
+
+<ul>
+<li>&lsquo;file.created&rsquo;</li>
+<li>&lsquo;file.deleted&rsquo;</li>
+</ul>
+
+<h2 id="limitations">Limitations</h2>
+
+<ul>
+<li>A webhook subscription automatically subscribes to all events, there is currently
+no way to only subscribe to certain events.</li>
+<li>The following triggers will not create webhook events:
+
+<ul>
+<li>resources created/updated/deleted via our importer tool</li>
+<li>resources created/updated/deleted via Email Bot.</li>
+<li>organizations created automatically based on email/event interactions.</li>
+<li>field values created/updated/deleted in automated global organization fields (i.e. location, last round raised, etc.)</li>
+</ul></li>
+</ul>
+
           <h1 id="additional-materials">Additional Materials</h1>
 
 <h2 id="sdk-and-native-client-support">SDK and Native Client support</h2>
