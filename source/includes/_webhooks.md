@@ -1,6 +1,6 @@
 # Webhooks
 
-Webhooks allow you to be notified of events that happen on your Affinity instance. For example, your app can be notified when a list is created, a field value is updated, a person is deleted, and more.
+Webhooks allow you to be notified of events that happen on your Affinity instance. For example, your app can be notified when a list is created, a field value is updated, a person is deleted, and more. These events will fire immediately after the corresponding action takes place.
 
 ## Create a Webhook Subscription
 
@@ -53,6 +53,6 @@ We don't currently support this via the API. Please reach out to support@affinit
 no way to only subscribe to certain events.
 - The following triggers will not create webhook events:
 	- resources created/updated/deleted via our importer tool
-	- resources created/updated/delete via Email Bot.
+	- resources created/updated/deleted via Email Bot.
 	- organizations created automatically based on email/event interactions.
-	- automated global organization fields (i.e. location, last round raised, etc.)
+	- field values created/updated/deleted in automated global organization fields (i.e. location, last round raised, etc.)
