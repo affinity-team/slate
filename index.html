@@ -3355,7 +3355,7 @@ Each person, organization, or opportunity will display linked notes on their pro
 <td>person_id</td>
 <td>integer</td>
 <td>false</td>
-<td>A unique identifier that reperesents a Person that was tagged in the retrieved notes.</td>
+<td>A unique identifier that represents a Person that was tagged in the retrieved notes.</td>
 </tr>
 <tr>
 <td>organization_id</td>
@@ -3656,6 +3656,9 @@ though its presence does not necessarily indicate that there are <em>more</em> r
 fetched. The next page may be empty (but then <code class="prettyprint">next_page_token</code> would be <code class="prettyprint">null</code> to
 confirm that there are no more resources).</p>
 
+<p>Can optionally be filtered to return only entity files associated with a specific <code class="prettyprint">person</code>,
+<code class="prettyprint">organization</code>, or <code class="prettyprint">opportunity</code>.</p>
+
 <h3 id="query-parameters">Query Parameters</h3>
 
 <table><thead>
@@ -3677,6 +3680,24 @@ confirm that there are no more resources).</p>
 <td>string</td>
 <td>false</td>
 <td>The <code class="prettyprint">next_page_token</code> from the previous response required to retrieve the next page of results.</td>
+</tr>
+<tr>
+<td>person_id</td>
+<td>integer</td>
+<td>false</td>
+<td>A unique id that represents a Person whose associated files should be retrieved.</td>
+</tr>
+<tr>
+<td>organization_id</td>
+<td>integer</td>
+<td>false</td>
+<td>A unique id that represents an Organization whose associated files should be retrieved.</td>
+</tr>
+<tr>
+<td>opportunity_id</td>
+<td>integer</td>
+<td>false</td>
+<td>A unique id that represents an Opportunity whose associated files should be retrieved.</td>
 </tr>
 </tbody></table>
 
