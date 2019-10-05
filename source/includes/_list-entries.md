@@ -157,7 +157,7 @@ If the `page_size` is not passed in as a parameter, an array of all the list ent
 resources corresponding to the provided list will be returned.
 If the `page_size` is passed in as a parameter, an object with two fields: `list_entries` 
 and `next_page_token` are returned. `list_entries` maps to an array of up to `page_size` 
-list entries.b `next_page_token` includes a token to be sent along with the next request 
+list entries. `next_page_token` includes a token to be sent along with the next request 
 as the `page_token` parameter to fetch the next page of results.
 Each list entry in the both cases includes all the attributes as specified in the
 [list entry resource](#the-list-entry-resource) section above.
