@@ -293,7 +293,7 @@ data in order to ensure your sensitive information remains secure.</p>
 
 <h2 id="rate-limiting">Rate Limiting</h2>
 
-<p>Each API key is limited to 150k requests per day. Once you hit the quota, all further requests will return an error code of
+<p>Each API key is limited to 450k requests per day. Once you hit the quota, all further requests will return an error code of
 429 - this will reset as soon as the next day begins.</p>
 
           <h1 id="data-model">Data Model</h1>
@@ -777,9 +777,53 @@ handle updating individual cells in columns.</p>
   </span><span class="err">...</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
+<blockquote>
+<p>Example Response with Pagingation</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"list_entries"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">64608</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"list_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">222</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"creator_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">287843</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"entity_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">62034</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-05-04 10:44:31 -0700"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"entity"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Affinity"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Team"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"primary_email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"team@affinity.co"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"emails"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="s2">"team@affinity.co"</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">53510</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"list_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">222</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"creator_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">38596</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"entity_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">241576</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-02-22 15:22:21 -0800"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"entity"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Doe"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"primary_email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jdoe@stanford.edu"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"emails"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="s2">"jdoe@stanford.edu"</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="err">...</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"next_page_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eyJwYXJhbXMiOnsidGVybSI6IiJ9LCJwYWdlX3NpemUiOjUsIm9mZnNldCI6MTB9"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
 <p><code class="prettyprint">GET /lists/{list_id}/list-entries</code></p>
 
-<p>Fetches all the list entries in the list with the supplied list id.</p>
+<p>If no page size is specified, fetches all the list entries in the list with the supplied 
+list id. If a page size is specified, fetches up to that number of list entries in the 
+list with the supplied list id.</p>
 
 <h3 id="path-parameters">Path Parameters</h3>
 
@@ -797,12 +841,29 @@ handle updating individual cells in columns.</p>
 <td>true</td>
 <td>The unique id of the list whose list entries are to be retrieved.</td>
 </tr>
+<tr>
+<td>page_size</td>
+<td>integer</td>
+<td>false</td>
+<td>How many results to return per page. (Default is to return all results.)</td>
+</tr>
+<tr>
+<td>page_token</td>
+<td>string</td>
+<td>false</td>
+<td>The <code class="prettyprint">next_page_token</code> from the previous response required to retrieve the next page of results.</td>
+</tr>
 </tbody></table>
 
 <h3 id="returns">Returns</h3>
 
-<p>An array of all the list entry resources corresponding to the provided list.
-Each list entry in the array includes all the attributes as specified in the
+<p>If the <code class="prettyprint">page_size</code> is not passed in as a parameter, an array of all the list entry 
+resources corresponding to the provided list will be returned.
+If the <code class="prettyprint">page_size</code> is passed in as a parameter, an object with two fields: <code class="prettyprint">list_entries</code> 
+and <code class="prettyprint">next_page_token</code> are returned. <code class="prettyprint">list_entries</code> maps to an array of up to <code class="prettyprint">page_size</code> 
+list entries. <code class="prettyprint">next_page_token</code> includes a token to be sent along with the next request 
+as the <code class="prettyprint">page_token</code> parameter to fetch the next page of results.
+Each list entry in the both cases includes all the attributes as specified in the
 <a href="#the-list-entry-resource">list entry resource</a> section above.</p>
 
 <h2 id="get-a-specific-list-entry">Get a specific list entry</h2>
