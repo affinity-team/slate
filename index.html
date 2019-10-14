@@ -3308,6 +3308,7 @@ exist for the given person or organization. Opportunities can only have one list
   </span><span class="s2">"person_ids"</span><span class="p">:[</span><span class="mi">38706</span><span class="p">,</span><span class="mi">89734</span><span class="p">],</span><span class="w">
   </span><span class="s2">"organization_ids"</span><span class="p">:[</span><span class="mi">64779194</span><span class="p">],</span><span class="w">
   </span><span class="s2">"opportunity_ids"</span><span class="p">:[</span><span class="mi">117</span><span class="p">],</span><span class="w">
+  </span><span class="s2">"parent_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="s2">"content"</span><span class="p">:</span><span class="s2">"Had a lunch meeting with Jane and John today. They are looking to invest."</span><span class="p">,</span><span class="w">
   </span><span class="s2">"created_at"</span><span class="p">:</span><span class="s2">"2017-03-28 00:38:41 -0700"</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -3355,6 +3356,11 @@ Each person, organization, or opportunity will display linked notes on their pro
 <td>An array of unique identifiers of opportunity objects that are associated with the note.</td>
 </tr>
 <tr>
+<td>parent_id</td>
+<td>integer</td>
+<td>The unique identifier of the note that this note is a reply to. If this field is <code class="prettyprint">null</code>, the note is not a reply. Note replies will never have values for <code class="prettyprint">opportunity_ids</code>, <code class="prettyprint">person_ids</code>, and <code class="prettyprint">organization_ids</code>. Only the parent note is associated with an entity. You can fetch the parent note resource to identify the root entity.</td>
+</tr>
+<tr>
 <td>content</td>
 <td>string</td>
 <td>The string containing the content of the note.</td>
@@ -3383,6 +3389,7 @@ Each person, organization, or opportunity will display linked notes on their pro
     </span><span class="s2">"person_ids"</span><span class="p">:[</span><span class="mi">38706</span><span class="p">,</span><span class="mi">89734</span><span class="p">],</span><span class="w">
     </span><span class="s2">"organization_ids"</span><span class="p">:[</span><span class="mi">64779194</span><span class="p">],</span><span class="w">
     </span><span class="s2">"opportunity_ids"</span><span class="p">:[</span><span class="mi">117</span><span class="p">],</span><span class="w">
+    </span><span class="s2">"parent_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="s2">"content"</span><span class="p">:</span><span class="s2">"Had a lunch meeting with Jane ... "</span><span class="p">,</span><span class="w">
     </span><span class="s2">"created_at"</span><span class="p">:</span><span class="s2">"2017-03-28 00:38:41 -0700"</span><span class="w">
   </span><span class="p">},</span><span class="w">
@@ -3392,6 +3399,7 @@ Each person, organization, or opportunity will display linked notes on their pro
     </span><span class="s2">"person_ids"</span><span class="p">:[],</span><span class="w">
     </span><span class="s2">"organization_ids"</span><span class="p">:[</span><span class="mi">64779194</span><span class="p">],</span><span class="w">
     </span><span class="s2">"opportunity_ids"</span><span class="p">:[</span><span class="mi">115</span><span class="p">],</span><span class="w">
+    </span><span class="s2">"parent_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="s2">"content"</span><span class="p">:</span><span class="s2">"Had a lunch meeting @ Google ... "</span><span class="p">,</span><span class="w">
     </span><span class="s2">"created_at"</span><span class="p">:</span><span class="s2">"2018-03-28 00:38:41 -0700"</span><span class="w">
   </span><span class="p">},</span><span class="w">
@@ -3459,6 +3467,7 @@ curl <span class="s2">"https://api.affinity.co/notes/22984"</span> -u :&lt;API-K
   </span><span class="s2">"person_ids"</span><span class="p">:[</span><span class="mi">38706</span><span class="p">,</span><span class="mi">89734</span><span class="p">],</span><span class="w">
   </span><span class="s2">"organization_ids"</span><span class="p">:[</span><span class="mi">64779194</span><span class="p">],</span><span class="w">
   </span><span class="s2">"opportunity_ids"</span><span class="p">:[</span><span class="mi">117</span><span class="p">],</span><span class="w">
+  </span><span class="s2">"parent_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="s2">"content"</span><span class="p">:</span><span class="s2">"Had a lunch meeting with Jane ... "</span><span class="p">,</span><span class="w">
   </span><span class="s2">"created_at"</span><span class="p">:</span><span class="s2">"2017-03-28 00:38:41 -0700"</span><span class="w">
 </span><span class="p">},</span><span class="w">
@@ -3514,6 +3523,7 @@ parameter. An appropriate error is returned if an invalid note is supplied.</p>
   </span><span class="s2">"person_ids"</span><span class="p">:[</span><span class="mi">38706</span><span class="p">,</span><span class="mi">89734</span><span class="p">],</span><span class="w">
   </span><span class="s2">"organization_ids"</span><span class="p">:[</span><span class="mi">64779194</span><span class="p">],</span><span class="w">
   </span><span class="s2">"opportunity_ids"</span><span class="p">:[</span><span class="mi">117</span><span class="p">],</span><span class="w">
+  </span><span class="s2">"parent_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="s2">"content"</span><span class="p">:</span><span class="s2">"Had a lunch meeting with Jane ... "</span><span class="p">,</span><span class="w">
   </span><span class="s2">"created_at"</span><span class="p">:</span><span class="s2">"2017-03-28 00:38:41 -0700"</span><span class="w">
 </span><span class="p">}</span><span class="w">
