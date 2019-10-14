@@ -31,7 +31,7 @@ creator_id | integer | The unique identifier of the person object who created th
 person_ids | integer[] | An array of unique identifiers of person objects that are associated with the note.
 organization_ids | integer[] | An array of unique identifiers of organization objects that are associated with the note.
 opportunity_ids | integer[] | An array of unique identifiers of opportunity objects that are associated with the note.
-parent_id | integer | The unique identifier of the note that this note is a reply to.
+parent_id | integer | The unique identifier of the note that this note is a reply to. If this field is `null`, the note is not a reply. Note replies will never have values for `opportunity_ids`, `person_ids`, and `organization_ids`. Only the parent note is associated with an entity. You can fetch the parent note resource to identify the root entity.
 content | string | The string containing the content of the note.
 created_at | datetime | The string representing the time when the note was created.
 
