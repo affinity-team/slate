@@ -9,7 +9,7 @@ Webhooks allow you to be notified of events that happen on your Affinity instanc
 ```json
 {
   "id": 1234,
-  "client_endpoint": "https://hooks.example.com/webhook",
+  "webhook_url": "https://hooks.example.com/webhook",
   "subscriptions": [
     "list.created",
     "person.created",
@@ -19,13 +19,13 @@ Webhooks allow you to be notified of events that happen on your Affinity instanc
 }
 ```
 
-Each webhook subscription object has a unique `id`. It also has a `client_endpoint` and `subscriptions` associated with it.
+Each webhook subscription object has a unique `id`. It also has a `webhook_url` and `subscriptions` associated with it.
 
-| Attribute       | Type     | Description                                                                                                                                                                                                           |
-| --------------- | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| id              | integer  | The unique identifier of the webhook subscription object.                                                                                                                                                             |
-| client_endpoint | string   | The URL to which the webhooks are sent to.                                                                                                                                                                            |
-| subscriptions   | string[] | An array of webhook events that are enabled for that endpoint. An empty array indicates subscription to all webhook events. See [below](#supported-webhook-events) for the complete list of supported webhook events. |
+| Attribute     | Type     | Description                                                                                                                                                                                                           |
+| ------------- | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| id            | integer  | The unique identifier of the webhook subscription object.                                                                                                                                                             |
+| webhook_url   | string   | The URL to which the webhooks are sent to.                                                                                                                                                                            |
+| subscriptions | string[] | An array of webhook events that are enabled for that endpoint. An empty array indicates subscription to all webhook events. See [below](#supported-webhook-events) for the complete list of supported webhook events. |
 
 ## Supported Webhook Events
 
@@ -55,7 +55,7 @@ curl "https://api.affinity.co/webhook" -u :<API-KEY>
 [
   {
     "id": 1234,
-    "client_endpoint": "https://hooks.example.com/webhook-create",
+    "webhook_url": "https://hooks.example.com/webhook-create",
     "subscriptions": [
       "list.created",
       "person.created",
@@ -65,10 +65,9 @@ curl "https://api.affinity.co/webhook" -u :<API-KEY>
   },
   {
     "id": 2345,
-    "client_endpoint": "https://hooks.example.com/webhook-all",
+    "webhook_url": "https://hooks.example.com/webhook-all",
     "subscriptions": []
-  },
-  ...
+  }
 ]
 ```
 
@@ -89,7 +88,7 @@ curl "https://api.affinity.co/webhook/1234" -u :<API-KEY>
 ```json
 {
   "id": 1234,
-  "client_endpoint": "https://hooks.example.com/webhook",
+  "webhook_url": "https://hooks.example.com/webhook",
   "subscriptions": [
     "list.created",
     "person.created",
@@ -128,14 +127,14 @@ curl "https://api.affinity.co/webhook/subscribe" \
 ```json
 {
   "id": 1234,
-  "client_endpoint": "https://hooks.example.com/webhook",
+  "webhook_url": "https://hooks.example.com/webhook",
   "subscriptions": []
 }
 ```
 
 `POST /webhook/subscribe`
 
-Creates a new webhook subscription with the supplied parameters.
+Creates a new webhook subscription with the supplied parameters. If the endpoint returns an invalid response, the webhook creation will fail.
 
 **Note:**
 
@@ -184,9 +183,11 @@ Deletes a webhook subscription with a specified `webhook_subscription_id`.
 
 ## Limitations
 
-The following triggers will not create webhook events:
+- The following triggers will not create webhook events:
 
-- Resources created/updated/deleted via our importer tool
-- Resources created/updated/deleted via Email Bot.
-- Organizations created automatically based on email/event interactions.
-- Field values created/updated/deleted in automated global organization fields (i.e. location, last round raised, etc.)
+  - Resources created/updated/deleted via our importer tool
+  - Resources created/updated/deleted via Email Bot.
+  - Organizations created automatically based on email/event interactions.
+  - Field values created/updated/deleted in automated global organization fields (i.e. location, last round raised, etc.)
+
+- There is a limit of three webhook subscriptions. If you have any questions at all regarding webhooks, please reach out to support@affinity.co.
