@@ -3938,85 +3938,279 @@ array of all the entity file resources. See description for more details on pagi
 
 <p>Webhooks allow you to be notified of events that happen on your Affinity instance. For example, your app can be notified when a list is created, a field value is updated, a person is deleted, and more. These events will fire immediately after the corresponding action takes place.</p>
 
-<h2 id="create-a-webhook-subscription">Create a Webhook Subscription</h2>
+<h2 id="the-webhook-subscription-resource">The webhook subscription resource</h2>
 
-<p>We don&rsquo;t currently support this via the API. Please reach out to support@affinity.co with the URL you would like us to POST webhooks to.</p>
+<blockquote>
+<p>Example Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1234</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"webhook_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://hooks.example.com/webhook"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"subscriptions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"list.created"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"person.created"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"organization.created"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"opportunity.created"</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Each webhook subscription object has a unique <code class="prettyprint">id</code>. It also has a <code class="prettyprint">webhook_url</code> and <code class="prettyprint">subscriptions</code> associated with it.</p>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>integer</td>
+<td>The unique identifier of the webhook subscription object.</td>
+</tr>
+<tr>
+<td>webhook_url</td>
+<td>string</td>
+<td>The URL to which the webhooks are sent to.</td>
+</tr>
+<tr>
+<td>subscriptions</td>
+<td>string[]</td>
+<td>An array of webhook events that are enabled for that endpoint. An empty array indicates subscription to all webhook events. See <a href="#supported-webhook-events">below</a> for the complete list of supported webhook events.</td>
+</tr>
+</tbody></table>
 
 <h2 id="supported-webhook-events">Supported Webhook Events</h2>
 
-<h3 id="list-events">List Events</h3>
+<table><thead>
+<tr>
+<th>Object Type</th>
+<th>Events</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>List</td>
+<td><code class="prettyprint">list.created</code>, <code class="prettyprint">list.updated</code>, <code class="prettyprint">list.deleted</code></td>
+</tr>
+<tr>
+<td>List Entry</td>
+<td><code class="prettyprint">list_entry.created</code>, <code class="prettyprint">list_entry.deleted</code></td>
+</tr>
+<tr>
+<td>Note</td>
+<td><code class="prettyprint">note.created</code>, <code class="prettyprint">note.updated</code>, <code class="prettyprint">note.deleted</code></td>
+</tr>
+<tr>
+<td>Field</td>
+<td><code class="prettyprint">field.created</code>, <code class="prettyprint">field.updated</code>, <code class="prettyprint">field.deleted</code></td>
+</tr>
+<tr>
+<td>Field Value</td>
+<td><code class="prettyprint">field_value.created</code>, <code class="prettyprint">field_value.updated</code>, <code class="prettyprint">field_value.deleted</code></td>
+</tr>
+<tr>
+<td>Person</td>
+<td><code class="prettyprint">person.created</code>, <code class="prettyprint">person.updated</code>, <code class="prettyprint">person.deleted</code></td>
+</tr>
+<tr>
+<td>Organization</td>
+<td><code class="prettyprint">organization.created</code>, <code class="prettyprint">organization.updated</code>, <code class="prettyprint">organization.deleted</code></td>
+</tr>
+<tr>
+<td>Opportunity</td>
+<td><code class="prettyprint">opportunity.created</code>, <code class="prettyprint">opportunity.updated</code>, <code class="prettyprint">opportunity.deleted</code></td>
+</tr>
+<tr>
+<td>Entity File</td>
+<td><code class="prettyprint">file.created</code>, <code class="prettyprint">file.deleted</code></td>
+</tr>
+</tbody></table>
 
-<ul>
-<li>&lsquo;list.created&rsquo;</li>
-<li>&lsquo;list.updated&rsquo;</li>
-<li>&lsquo;list.deleted&rsquo;</li>
-<li>&lsquo;list_entry.created&rsquo;</li>
-<li>&lsquo;list_entry.deleted&rsquo;</li>
-</ul>
+<h2 id="get-all-webhook-subscriptions">Get all webhook subscriptions</h2>
 
-<h3 id="note-events">Note Events</h3>
+<blockquote>
+<p>Example Request</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.affinity.co/webhook"</span> -u :&lt;API-KEY&gt;
+</code></pre>
+<blockquote>
+<p>Example Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1234</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"webhook_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://hooks.example.com/webhook-create"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"subscriptions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"list.created"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"person.created"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"organization.created"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"opportunity.created"</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2345</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"webhook_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://hooks.example.com/webhook-all"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"subscriptions"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+<p><code class="prettyprint">GET /webhook</code></p>
 
-<ul>
-<li>&lsquo;note.created&rsquo;</li>
-<li>&lsquo;note.updated&rsquo;</li>
-<li>&lsquo;note.deleted&rsquo;</li>
-</ul>
+<p>Returns all of your organization&rsquo;s webhook subscriptions.</p>
 
-<h3 id="field-events">Field Events</h3>
+<h2 id="get-a-specific-webhook-subscription">Get a specific webhook subscription</h2>
 
-<ul>
-<li>&lsquo;field.created&rsquo;</li>
-<li>&lsquo;field.updated&rsquo;</li>
-<li>&lsquo;field.deleted&rsquo;</li>
-<li>&lsquo;field_value.created&rsquo;</li>
-<li>&lsquo;field_value.updated&rsquo;</li>
-<li>&lsquo;field_value.deleted&rsquo;</li>
-</ul>
+<blockquote>
+<p>Example Request</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.affinity.co/webhook/1234"</span> -u :&lt;API-KEY&gt;
+</code></pre>
+<blockquote>
+<p>Example Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1234</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"webhook_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://hooks.example.com/webhook"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"subscriptions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"list.created"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"person.created"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"organization.created"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"opportunity.created"</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code class="prettyprint">GET /webhook/{webhook_subscription_id}</code></p>
 
-<h3 id="person-events">Person Events</h3>
+<p>Gets the details for a specific webhook subscription given the specified <code class="prettyprint">webhook_subscription_id</code>.</p>
 
-<ul>
-<li>&lsquo;person.created&rsquo;</li>
-<li>&lsquo;person.updated&rsquo;</li>
-<li>&lsquo;person.deleted&rsquo;</li>
-</ul>
+<h3 id="path-parameters">Path Parameters</h3>
 
-<h3 id="organization-events">Organization Events</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>webhook_subscription_id</td>
+<td>integer</td>
+<td>true</td>
+<td>The unique id of the webhook subscription that needs to be retrieved.</td>
+</tr>
+</tbody></table>
 
-<ul>
-<li>&lsquo;organization.created&rsquo;</li>
-<li>&lsquo;organization.updated&rsquo;</li>
-<li>&lsquo;organization.deleted&rsquo;</li>
-</ul>
+<h3 id="returns">Returns</h3>
 
-<h3 id="opportunity-events">Opportunity Events</h3>
+<p>The webhook subscription object corresponding to the <code class="prettyprint">webhook_subscription_id</code>.</p>
 
-<ul>
-<li>&lsquo;opportunity.created&rsquo;</li>
-<li>&lsquo;opportunity.updated&rsquo;</li>
-<li>&lsquo;opportunity.deleted&rsquo;</li>
-</ul>
+<h2 id="create-a-new-webhook-subscription">Create a new webhook subscription</h2>
 
-<h3 id="entity-file-events">Entity File Events</h3>
+<blockquote>
+<p>Example Request</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.affinity.co/webhook/subscribe"</span> <span class="se">\</span>
+  -u :&lt;API-KEY&gt; <span class="se">\</span>
+  -d <span class="nv">webhook_url</span><span class="o">=</span><span class="s2">"https://hooks.example.com/webhook"</span>
+</code></pre>
+<blockquote>
+<p>Example Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1234</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"webhook_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://hooks.example.com/webhook"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"subscriptions"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code class="prettyprint">POST /webhook/subscribe</code></p>
 
-<ul>
-<li>&lsquo;file.created&rsquo;</li>
-<li>&lsquo;file.deleted&rsquo;</li>
-</ul>
+<p>Creates a new webhook subscription with the supplied parameters. If the endpoint returns an invalid response, the webhook creation will fail.</p>
+
+<p><strong>Note:</strong></p>
+
+<p>There is currently a limit of 3 webhook subscriptions.</p>
+
+<h3 id="payload-parameters">Payload Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>webhook_url</td>
+<td>string</td>
+<td>true</td>
+<td>The URL to which the webhooks will be sent to.</td>
+</tr>
+<tr>
+<td>subscriptions</td>
+<td>string[]</td>
+<td>false</td>
+<td>An array of webhook events that will be enabled for that endpoint. Leave out this parameter or pass an empty array to subscribe to all webhook events. You can find the complete list of supported webhook events <a href="#supported-webhook-events">here</a>.</td>
+</tr>
+</tbody></table>
+
+<h3 id="returns">Returns</h3>
+
+<p>The webhook subscription object that was just created from this successful request.</p>
+
+<h2 id="delete-a-specific-webhook-subscription">Delete a specific webhook subscription</h2>
+
+<blockquote>
+<p>Example Request</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.affinity.co/webhook/1234"</span> <span class="se">\</span>
+  -u :&lt;API-KEY&gt; <span class="se">\</span>
+  -X <span class="s2">"DELETE"</span>
+</code></pre>
+<blockquote>
+<p>Example Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w"> </span><span class="s2">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code class="prettyprint">DELETE /webhook/{webhook_subscription_id}</code></p>
+
+<p>Deletes a webhook subscription with a specified <code class="prettyprint">webhook_subscription_id</code>.</p>
+
+<h3 id="path-parameters">Path Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>webhook_subscription_id</td>
+<td>integer</td>
+<td>true</td>
+<td>The unique id of the webhook subscription that needs to be deleted.</td>
+</tr>
+</tbody></table>
+
+<h3 id="returns">Returns</h3>
+
+<p><code class="prettyprint">{success: true}</code>.</p>
 
 <h2 id="limitations">Limitations</h2>
 
 <ul>
-<li>A webhook subscription automatically subscribes to all events, there is currently
-no way to only subscribe to certain events.</li>
-<li>The following triggers will not create webhook events:
+<li><p>The following triggers will not create webhook events:</p>
 
 <ul>
-<li>resources created/updated/deleted via our importer tool</li>
-<li>resources created/updated/deleted via Email Bot.</li>
-<li>organizations created automatically based on email/event interactions.</li>
-<li>field values created/updated/deleted in automated global organization fields (i.e. location, last round raised, etc.)</li>
+<li>Resources created/updated/deleted via our importer tool</li>
+<li>Resources created/updated/deleted via Email Bot.</li>
+<li>Organizations created automatically based on email/event interactions.</li>
+<li>Field values created/updated/deleted in automated global organization fields (i.e. location, last round raised, etc.)</li>
 </ul></li>
+<li><p>There is a limit of three webhook subscriptions. If you have any questions at all regarding webhooks, please reach out to support@affinity.co.</p></li>
 </ul>
 
           <h1 id="additional-materials">Additional Materials</h1>
