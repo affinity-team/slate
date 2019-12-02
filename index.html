@@ -365,6 +365,11 @@ sort, or filter all of them.</p>
 <td>The name of the field.</td>
 </tr>
 <tr>
+<td>list_id</td>
+<td>integer</td>
+<td>The unique identifier of the list that the field object belongs to if it is specific to a list. This is <code class="prettyprint">null</code> if the field is global.</td>
+</tr>
+<tr>
 <td>allows_multiple</td>
 <td>boolean</td>
 <td>This determines whether multiple values can be added to a single cell for the field.</td>
@@ -669,10 +674,7 @@ to this list. An appropriate error is returned if an invalid list is supplied.</
     </span><span class="s2">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Doe"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"primary_email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jdoe@jdoe.com"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"emails"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="s2">"jdoe@jdoe.com"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"jdoe2@jdoe2.com"</span><span class="p">,</span><span class="w">
-    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"emails"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"jdoe@jdoe.com"</span><span class="p">,</span><span class="w"> </span><span class="s2">"jdoe2@jdoe2.com"</span><span class="p">]</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-01-16 16:34:03 -0800"</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -821,8 +823,8 @@ handle updating individual cells in columns.</p>
 </span></code></pre>
 <p><code class="prettyprint">GET /lists/{list_id}/list-entries</code></p>
 
-<p>If no page size is specified, fetches all the list entries in the list with the supplied 
-list id. If a page size is specified, fetches up to that number of list entries in the 
+<p>If no page size is specified, fetches all the list entries in the list with the supplied
+list id. If a page size is specified, fetches up to that number of list entries in the
 list with the supplied list id.</p>
 
 <h3 id="path-parameters">Path Parameters</h3>
@@ -857,11 +859,11 @@ list with the supplied list id.</p>
 
 <h3 id="returns">Returns</h3>
 
-<p>If the <code class="prettyprint">page_size</code> is not passed in as a parameter, an array of all the list entry 
+<p>If the <code class="prettyprint">page_size</code> is not passed in as a parameter, an array of all the list entry
 resources corresponding to the provided list will be returned.
-If the <code class="prettyprint">page_size</code> is passed in as a parameter, an object with two fields: <code class="prettyprint">list_entries</code> 
-and <code class="prettyprint">next_page_token</code> are returned. <code class="prettyprint">list_entries</code> maps to an array of up to <code class="prettyprint">page_size</code> 
-list entries. <code class="prettyprint">next_page_token</code> includes a token to be sent along with the next request 
+If the <code class="prettyprint">page_size</code> is passed in as a parameter, an object with two fields: <code class="prettyprint">list_entries</code>
+and <code class="prettyprint">next_page_token</code> are returned. <code class="prettyprint">list_entries</code> maps to an array of up to <code class="prettyprint">page_size</code>
+list entries. <code class="prettyprint">next_page_token</code> includes a token to be sent along with the next request
 as the <code class="prettyprint">page_token</code> parameter to fetch the next page of results.
 Each list entry in the both cases includes all the attributes as specified in the
 <a href="#the-list-entry-resource">list entry resource</a> section above.</p>
@@ -891,10 +893,8 @@ Each list entry in the both cases includes all the attributes as specified in th
     </span><span class="s2">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Doe"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"primary_email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jdoe@stanford.edu"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"emails"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="s2">"jdoe@stanford.edu"</span><span class="w">
-    </span><span class="p">],</span><span class="w">
-  </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"emails"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"jdoe@stanford.edu"</span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <h3 id="path-parameters">Path Parameters</h3>
@@ -948,10 +948,8 @@ Each list entry in the both cases includes all the attributes as specified in th
     </span><span class="s2">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Doe"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"primary_email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jdoe@stanford.edu"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"emails"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="s2">"jdoe@stanford.edu"</span><span class="w">
-    </span><span class="p">],</span><span class="w">
-  </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"emails"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"jdoe@stanford.edu"</span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><code class="prettyprint">POST /lists/{list_id}/list-entries</code></p>
@@ -1008,7 +1006,7 @@ you might want to make sure that it does not exist in the list already.</p>
 <blockquote>
 <p>Example Response</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="s2">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">}</span><span class="w">
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w"> </span><span class="s2">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><code class="prettyprint">DELETE /lists/{list_id}/list-entries/{list_entry_id}</code></p>
 
@@ -1017,9 +1015,9 @@ you might want to make sure that it does not exist in the list already.</p>
 <p><strong>Note:</strong></p>
 
 <ol>
-<li>This will also delete all the field values, if any, associated with the list entry.
+<li> This will also delete all the field values, if any, associated with the list entry.
 Such field values will only exist in fields specific to this list.</li>
-<li>If the list entry belongs to an Opportunity list, then the opportunity that the list
+<li> If the list entry belongs to an Opportunity list, then the opportunity that the list
 entry is associated with will also be deleted.</li>
 </ol>
 
@@ -1062,9 +1060,9 @@ list has a given email address.</p>
 <p><strong>Note:</strong></p>
 
 <ol>
-<li>If you are looking to add or remove a person from a list, please check out the
+<li> If you are looking to add or remove a person from a list, please check out the
 <a href="#list-entries">List Entries</a> section of the API.</li>
-<li>If you are looking to modify a person&rsquo;s field values (one of the cells on Affinity&rsquo;s
+<li> If you are looking to modify a person&rsquo;s field values (one of the cells on Affinity&rsquo;s
 spreadsheet), please check out the <a href="#field-values">Field Values</a> section of the API.</li>
 </ol>
 
@@ -1214,8 +1212,7 @@ The search term can be part of an email address, a first name or a last name.</p
 and <code class="prettyprint">next_page_token</code>. <code class="prettyprint">persons</code> contains an array of person resources. The value of
 <code class="prettyprint">next_page_token</code> should be sent as the query parameter <code class="prettyprint">page_token</code> in another request to
 retrieve the next page of results. While paginating through results, each request must have
-identical query parameters other than the changing <code class="prettyprint">page_token</code>. Otherwise, an <code class="prettyprint">Invalid
-page_token variable</code> error will be returned.</p>
+identical query parameters other than the changing <code class="prettyprint">page_token</code>. Otherwise, an <code class="prettyprint">Invalid page_token variable</code> error will be returned.</p>
 
 <p>The absence of a <code class="prettyprint">next_page_token</code> indicates that all the records have been fetched,
 though its presence does not necessarily indicate that there are <em>more</em> resources to be
@@ -1408,13 +1405,13 @@ When <code class="prettyprint">with_interaction_dates</code> is passed in the re
 <p>Example Response</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">860197</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"type"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"first_name"</span><span class="p">:</span><span class="s2">"Alice"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"last_name"</span><span class="p">:</span><span class="s2">"Doe"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"primary_email"</span><span class="p">:</span><span class="s2">"alice@affinity.co"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"emails"</span><span class="p">:[</span><span class="s2">"alice@affinity.co"</span><span class="p">],</span><span class="w">
-  </span><span class="s2">"organization_ids"</span><span class="p">:[</span><span class="mi">1687449</span><span class="p">]</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">860197</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Alice"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Doe"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"primary_email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"alice@affinity.co"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"emails"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"alice@affinity.co"</span><span class="p">],</span><span class="w">
+  </span><span class="s2">"organization_ids"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">1687449</span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><code class="prettyprint">POST /persons</code></p>
@@ -1424,9 +1421,9 @@ When <code class="prettyprint">with_interaction_dates</code> is passed in the re
 <p><strong>Note:</strong></p>
 
 <ol>
-<li>If one of the supplied email addresses conflicts with another person object, this
+<li> If one of the supplied email addresses conflicts with another person object, this
 request will fail and an appropriate error will be returned.</li>
-<li>If you are looking to add an existing person to a list, please check the <a href="#list-entries">List Entries</a> section
+<li> If you are looking to add an existing person to a list, please check the <a href="#list-entries">List Entries</a> section
 of the API.</li>
 </ol>
 
@@ -1486,13 +1483,13 @@ of the API.</li>
 <p>Example Response</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">860197</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"type"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"first_name"</span><span class="p">:</span><span class="s2">"Allison"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"last_name"</span><span class="p">:</span><span class="s2">"Doe"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"primary_email"</span><span class="p">:</span><span class="s2">"alice@affinity.co"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"emails"</span><span class="p">:[</span><span class="s2">"alice@affinity.co"</span><span class="p">,</span><span class="w"> </span><span class="s2">"allison@example.com"</span><span class="p">,</span><span class="w"> </span><span class="s2">"allison@gmail.com"</span><span class="p">],</span><span class="w">
-  </span><span class="s2">"organization_ids"</span><span class="p">:[</span><span class="mi">1687449</span><span class="p">]</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">860197</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Allison"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Doe"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"primary_email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"alice@affinity.co"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"emails"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"alice@affinity.co"</span><span class="p">,</span><span class="w"> </span><span class="s2">"allison@example.com"</span><span class="p">,</span><span class="w"> </span><span class="s2">"allison@gmail.com"</span><span class="p">],</span><span class="w">
+  </span><span class="s2">"organization_ids"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">1687449</span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><code class="prettyprint">PUT /persons/{person_id}</code></p>
@@ -1578,7 +1575,7 @@ existing values for <code class="prettyprint">emails</code> and <code class="pre
 <blockquote>
 <p>Example Response</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="s2">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">}</span><span class="w">
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w"> </span><span class="s2">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><code class="prettyprint">DELETE /persons/{person_id}</code></p>
 
@@ -1677,7 +1674,7 @@ the strength as an estimate.</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"external_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1234</span><span class="p">,</span><span class="w">
   </span><span class="s2">"internal_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2345</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"strength"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.5</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"strength"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.5</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>The relationship strength resource specifies the two <a href="#persons">Persons</a> the relationship
@@ -1728,7 +1725,7 @@ curl <span class="s2">"https://api.affinity.co/relationships-strengths?external_
   </span><span class="p">{</span><span class="w">
     </span><span class="s2">"internal_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1234</span><span class="p">,</span><span class="w">
     </span><span class="s2">"external_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2345</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"strength"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.5</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"strength"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.5</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
@@ -1808,9 +1805,9 @@ We use this database to minimize data entry for you as you use Affinity&rsquo;s 
 <p><strong>Note:</strong></p>
 
 <ol>
-<li>If you are looking to add or remove an organization from a list, please check out the
+<li> If you are looking to add or remove an organization from a list, please check out the
 <a href="#list-entries">List Entries</a> section of the API.</li>
-<li>If you are looking to modify a field value (one of the cells on Affinity&rsquo;s
+<li> If you are looking to modify a field value (one of the cells on Affinity&rsquo;s
 spreadsheet), please check out the <a href="#field-values">Field Values</a> section of the API.</li>
 </ol>
 
@@ -2100,12 +2097,12 @@ passed in the returned resources will have <code class="prettyprint">interaction
 <p>Example Response</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">120611418</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"Acme Corporation"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"domain"</span><span class="p">:</span><span class="s2">"acme.co"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"crunchbase_uuid"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"global"</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"person_ids"</span><span class="p">:[</span><span class="mi">38706</span><span class="p">],</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">120611418</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Acme Corporation"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"domain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"acme.co"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"crunchbase_uuid"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"global"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"person_ids"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">38706</span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><code class="prettyprint">POST /organizations</code></p>
@@ -2165,12 +2162,12 @@ the <a href="#list-entries">List Entries</a> section of the API.</p>
 <p>Example Response</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">120611418</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"Acme Corp."</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"domain"</span><span class="p">:</span><span class="s2">"acme.co"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"crunchbase_uuid"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"global"</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"person_ids"</span><span class="p">:[</span><span class="mi">38706</span><span class="p">,</span><span class="mi">89734</span><span class="p">]</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">120611418</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Acme Corp."</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"domain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"acme.co"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"crunchbase_uuid"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"global"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"person_ids"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">38706</span><span class="p">,</span><span class="w"> </span><span class="mi">89734</span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><code class="prettyprint">PUT /organizations/{organization_id}</code></p>
@@ -2249,7 +2246,7 @@ the <a href="#list-entries">List Entries</a> section of the API.</p>
 <blockquote>
 <p>Example Response</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="s2">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">}</span><span class="w">
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w"> </span><span class="s2">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><code class="prettyprint">DELETE /organizations/{organization_id}</code></p>
 
@@ -2258,8 +2255,8 @@ the <a href="#list-entries">List Entries</a> section of the API.</p>
 <p><strong>Note:</strong></p>
 
 <ol>
-<li>An appropriate error will be returned if you are trying to delete a <code class="prettyprint">global</code> organization.</li>
-<li>This will also delete all the field values, if any, associated with the organization.
+<li> An appropriate error will be returned if you are trying to delete a <code class="prettyprint">global</code> organization.</li>
+<li> This will also delete all the field values, if any, associated with the organization.
 Such field values exist linked to either global or list-specific fields.</li>
 </ol>
 
@@ -2350,10 +2347,10 @@ any of those opportunities.</p>
 <p><strong>Note:</strong></p>
 
 <ol>
-<li>If you are looking to remove an opportunity from a list, note that deleting an opportunity
+<li> If you are looking to remove an opportunity from a list, note that deleting an opportunity
 is the same as removing an opportunity from a list because an opportunity can only exist on
 a single list with a single list entry.</li>
-<li>If you are looking to modify a field value (one of the cells on Affinity&rsquo;s
+<li> If you are looking to modify a field value (one of the cells on Affinity&rsquo;s
 spreadsheet), please check out the <a href="#field-values">Field Values</a> section of the API.</li>
 </ol>
 
@@ -2363,31 +2360,32 @@ spreadsheet), please check out the <a href="#field-values">Field Values</a> sect
 <p>Example Response</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">117</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"Affinity Opp"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"person_ids"</span><span class="p">:[</span><span class="mi">38706</span><span class="p">],</span><span class="w">
-  </span><span class="s2">"organization_ids"</span><span class="p">:[</span><span class="mi">21442</span><span class="p">],</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">117</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Affinity Opp"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"person_ids"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">38706</span><span class="p">],</span><span class="w">
+  </span><span class="s2">"organization_ids"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">21442</span><span class="p">],</span><span class="w">
   </span><span class="s2">"list_entries"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">442313</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"creator"</span><span class="p">:{</span><span class="w">
-        </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">38706</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"type"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">442313</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"creator"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">38706</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
         </span><span class="s2">"emails"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"john@affinity.co"</span><span class="p">,</span><span class="w"> </span><span class="s2">"johnjdoe@gmail.com"</span><span class="p">],</span><span class="w">
-        </span><span class="s2">"firstName"</span><span class="p">:</span><span class="s2">"John"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"lastName"</span><span class="p">:</span><span class="s2">"Doe"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"photoUrl"</span><span class="p">:</span><span class="s2">"https://dapjjo8h3d36y.cloudfront.net/315dc7f40516f732ds9b817a03f6d826e"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"entityType"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"inferredType"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"interactionsHidden"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"hiddenExternal"</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"primaryEmail"</span><span class="p">:</span><span class="s2">"john@affinity.co"</span><span class="w">
+        </span><span class="s2">"firstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"lastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Doe"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"photoUrl"</span><span class="p">:</span><span class="w">
+          </span><span class="s2">"https://dapjjo8h3d36y.cloudfront.net/315dc7f40516f732ds9b817a03f6d826e"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"entityType"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"inferredType"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"interactionsHidden"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"hiddenExternal"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"primaryEmail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"john@affinity.co"</span><span class="w">
       </span><span class="p">},</span><span class="w">
-      </span><span class="s2">"listId"</span><span class="p">:</span><span class="mi">4974</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"entityId"</span><span class="p">:</span><span class="mi">117</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="s2">"2018-03-03T23:02:46.412-08:00"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-  </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"listId"</span><span class="p">:</span><span class="w"> </span><span class="mi">4974</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"entityId"</span><span class="p">:</span><span class="w"> </span><span class="mi">117</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-03-03T23:02:46.412-08:00"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>Each opportunity object has a unique <code class="prettyprint">id</code>. It also has a <code class="prettyprint">name</code>, <code class="prettyprint">persons_ids</code> and
@@ -2575,31 +2573,32 @@ an array of all the opportunity resources that match the search criteria.
 <p>Example Response</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">121</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"Affinity Opp"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"person_ids"</span><span class="p">:[</span><span class="mi">3526824</span><span class="p">],</span><span class="w">
-  </span><span class="s2">"organization_ids"</span><span class="p">:[</span><span class="mi">128367168</span><span class="p">],</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">121</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Affinity Opp"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"person_ids"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">3526824</span><span class="p">],</span><span class="w">
+  </span><span class="s2">"organization_ids"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">128367168</span><span class="p">],</span><span class="w">
   </span><span class="s2">"list_entries"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">442313</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">442313</span><span class="p">,</span><span class="w">
       </span><span class="s2">"creator"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">1124736</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"type"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1124736</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
         </span><span class="s2">"emails"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"john@affinity.co"</span><span class="p">,</span><span class="w"> </span><span class="s2">"johnjdoe@gmail.com"</span><span class="p">],</span><span class="w">
-        </span><span class="s2">"firstName"</span><span class="p">:</span><span class="s2">"John"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"lastName"</span><span class="p">:</span><span class="s2">"Doe"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"photoUrl"</span><span class="p">:</span><span class="s2">"https://dapjjo8h3d36y.cloudfront.net/315dc7f40516f732ds9b817a03f6d826e"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"entityType"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"inferredType"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"interactionsHidden"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"hiddenExternal"</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"primaryEmail"</span><span class="p">:</span><span class="s2">"john@affinity.co"</span><span class="w">
+        </span><span class="s2">"firstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"lastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Doe"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"photoUrl"</span><span class="p">:</span><span class="w">
+          </span><span class="s2">"https://dapjjo8h3d36y.cloudfront.net/315dc7f40516f732ds9b817a03f6d826e"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"entityType"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"inferredType"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"interactionsHidden"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"hiddenExternal"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"primaryEmail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"john@affinity.co"</span><span class="w">
       </span><span class="p">},</span><span class="w">
-      </span><span class="s2">"listId"</span><span class="p">:</span><span class="mi">4974</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"entityId"</span><span class="p">:</span><span class="mi">121</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="s2">"2018-03-03T23:02:46.412-08:00"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-  </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"listId"</span><span class="p">:</span><span class="w"> </span><span class="mi">4974</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"entityId"</span><span class="p">:</span><span class="w"> </span><span class="mi">121</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-03-03T23:02:46.412-08:00"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><code class="prettyprint">GET /opportunities/{opportunity_id}</code></p>
@@ -2644,30 +2643,31 @@ an array of all the opportunity resources that match the search criteria.
 <p>Example Response</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">50</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"Penny Opportunity"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"person_ids"</span><span class="p">:[</span><span class="mi">38706</span><span class="p">],</span><span class="w">
-  </span><span class="s2">"organization_ids"</span><span class="p">:[</span><span class="mi">21442</span><span class="p">],</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Penny Opportunity"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"person_ids"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">38706</span><span class="p">],</span><span class="w">
+  </span><span class="s2">"organization_ids"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">21442</span><span class="p">],</span><span class="w">
   </span><span class="s2">"list_entries"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">999886</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">999886</span><span class="p">,</span><span class="w">
       </span><span class="s2">"creator"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">1127776</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"type"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"emails"</span><span class="p">:[</span><span class="s2">"john@affinity.co"</span><span class="p">,</span><span class="w"> </span><span class="s2">"john@berkeley.edu"</span><span class="p">],</span><span class="w">
-        </span><span class="s2">"firstName"</span><span class="p">:</span><span class="s2">"John"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"lastName"</span><span class="p">:</span><span class="s2">"Doe"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"photoUrl"</span><span class="p">:</span><span class="s2">"https://dapjjo8h3d36y.cloudfront.net/315dc7f40516f73259b807a06f6d826a"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"entityType"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"inferredType"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"interactionsHidden"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"hiddenExternal"</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"primaryEmail"</span><span class="p">:</span><span class="s2">"john@affinity.co"</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1127776</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"emails"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"john@affinity.co"</span><span class="p">,</span><span class="w"> </span><span class="s2">"john@berkeley.edu"</span><span class="p">],</span><span class="w">
+        </span><span class="s2">"firstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"lastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Doe"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"photoUrl"</span><span class="p">:</span><span class="w">
+          </span><span class="s2">"https://dapjjo8h3d36y.cloudfront.net/315dc7f40516f73259b807a06f6d826a"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"entityType"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"inferredType"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"interactionsHidden"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"hiddenExternal"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"primaryEmail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"john@affinity.co"</span><span class="w">
       </span><span class="p">},</span><span class="w">
-      </span><span class="s2">"listId"</span><span class="p">:</span><span class="mi">6645</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"entityId"</span><span class="p">:</span><span class="mi">50</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="s2">"2018-03-07T16:32:35.794-08:00"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"listId"</span><span class="p">:</span><span class="w"> </span><span class="mi">6645</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"entityId"</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-03-07T16:32:35.794-08:00"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -2731,29 +2731,30 @@ an array of all the opportunity resources that match the search criteria.
 <p>Example Response</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">50</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"Penny Opp"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"person_ids"</span><span class="p">:[</span><span class="mi">38706</span><span class="p">,</span><span class="mi">89734</span><span class="p">],</span><span class="w">
-  </span><span class="s2">"organization_ids"</span><span class="p">:[</span><span class="mi">21442</span><span class="p">],</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Penny Opp"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"person_ids"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">38706</span><span class="p">,</span><span class="w"> </span><span class="mi">89734</span><span class="p">],</span><span class="w">
+  </span><span class="s2">"organization_ids"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">21442</span><span class="p">],</span><span class="w">
   </span><span class="s2">"list_entries"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">999886</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">999886</span><span class="p">,</span><span class="w">
       </span><span class="s2">"creator"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">1127776</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"type"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"emails"</span><span class="p">:[</span><span class="s2">"john@affinity.co"</span><span class="p">,</span><span class="w"> </span><span class="s2">"john@berkeley.edu"</span><span class="p">],</span><span class="w">
-        </span><span class="s2">"firstName"</span><span class="p">:</span><span class="s2">"John"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"lastName"</span><span class="p">:</span><span class="s2">"Doe"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"photoUrl"</span><span class="p">:</span><span class="s2">"https://dapjjo8h3d36y.cloudfront.net/315dc7f40516f73259b807a06f6d826a"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"entityType"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"inferredType"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"interactionsHidden"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"hiddenExternal"</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"primaryEmail"</span><span class="p">:</span><span class="s2">"john@affinity.co"</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1127776</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"emails"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"john@affinity.co"</span><span class="p">,</span><span class="w"> </span><span class="s2">"john@berkeley.edu"</span><span class="p">],</span><span class="w">
+        </span><span class="s2">"firstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"lastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Doe"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"photoUrl"</span><span class="p">:</span><span class="w">
+          </span><span class="s2">"https://dapjjo8h3d36y.cloudfront.net/315dc7f40516f73259b807a06f6d826a"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"entityType"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"inferredType"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"interactionsHidden"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"hiddenExternal"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"primaryEmail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"john@affinity.co"</span><span class="w">
       </span><span class="p">},</span><span class="w">
-      </span><span class="s2">"listId"</span><span class="p">:</span><span class="mi">6645</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"entityId"</span><span class="p">:</span><span class="mi">50</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="s2">"2018-03-07T16:32:35.794-08:00"</span><span class="w">
+      </span><span class="s2">"listId"</span><span class="p">:</span><span class="w"> </span><span class="mi">6645</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"entityId"</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-03-07T16:32:35.794-08:00"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -2834,7 +2835,7 @@ an array of all the opportunity resources that match the search criteria.
 <blockquote>
 <p>Example Response</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="s2">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">}</span><span class="w">
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w"> </span><span class="s2">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><code class="prettyprint">DELETE /opportunities/{opportunity_id}</code></p>
 
@@ -2843,7 +2844,7 @@ an array of all the opportunity resources that match the search criteria.
 <p><strong>Note:</strong></p>
 
 <ol>
-<li>This will also delete all the field values, if any, associated with the opportunity.</li>
+<li> This will also delete all the field values, if any, associated with the opportunity.</li>
 </ol>
 
 <h3 id="path-parameters">Path Parameters</h3>
@@ -2876,13 +2877,13 @@ spreadsheet.</p>
 <p>As an example for how a field value is created:</p>
 
 <ol>
-<li>Assume there exists a list of people called &ldquo;Business Development Leads&rdquo;.</li>
-<li>A custom field called &ldquo;Deal Size&rdquo; is created on this list. Fields are visually displayed
+<li> Assume there exists a list of people called &ldquo;Business Development Leads&rdquo;.</li>
+<li> A custom field called &ldquo;Deal Size&rdquo; is created on this list. Fields are visually displayed
 as columns.</li>
-<li>A person X is added to this list. This action creates a list entry for this person.</li>
-<li>A value, 50,000, is entered in the cell corresponding to person X in the Deal Size
+<li> A person X is added to this list. This action creates a list entry for this person.</li>
+<li> A value, 50,000, is entered in the cell corresponding to person X in the Deal Size
 column.</li>
-<li>50,000 is now a field value tied to the list entry corresponding to person X,
+<li> 50,000 is now a field value tied to the list entry corresponding to person X,
 and the &ldquo;Deal Size&rdquo; field.</li>
 </ol>
 
@@ -3111,8 +3112,8 @@ attributes that give it the appropriate associations, as noted in the example ab
 <p><strong>Note:</strong></p>
 
 <ol>
-<li>custom*: Only one of <code class="prettyprint">person_id</code>, <code class="prettyprint">organization_id</code>, <code class="prettyprint">opportunity_id</code>, or <code class="prettyprint">list_entry_id</code> can be specified to the endpoint.</li>
-<li>If a <code class="prettyprint">person_id</code>, <code class="prettyprint">organization_id</code>, or <code class="prettyprint">opportunity_id</code> is specified, the endpoint returns all field values tied to these entities - including those that are associated with all list entries that
+<li> custom*: Only one of <code class="prettyprint">person_id</code>, <code class="prettyprint">organization_id</code>, <code class="prettyprint">opportunity_id</code>, or <code class="prettyprint">list_entry_id</code> can be specified to the endpoint.</li>
+<li> If a <code class="prettyprint">person_id</code>, <code class="prettyprint">organization_id</code>, or <code class="prettyprint">opportunity_id</code> is specified, the endpoint returns all field values tied to these entities - including those that are associated with all list entries that
 exist for the given person or organization. Opportunities can only have one list entry.</li>
 </ol>
 
@@ -3136,11 +3137,11 @@ exist for the given person or organization. Opportunities can only have one list
 <p>Example Response</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">20406836</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"field_id"</span><span class="p">:</span><span class="mi">1284</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"list_entry_id"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"entity_id"</span><span class="p">:</span><span class="mi">38706</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"value"</span><span class="p">:</span><span class="s2">"Architecture"</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">20406836</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"field_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1284</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"list_entry_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"entity_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">38706</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Architecture"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><code class="prettyprint">POST /field-values</code></p>
@@ -3201,11 +3202,11 @@ exist for the given person or organization. Opportunities can only have one list
 <p>Example Response</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">20406836</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"field_id"</span><span class="p">:</span><span class="mi">1284</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"list_entry_id"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"entity_id"</span><span class="p">:</span><span class="mi">38706</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"value"</span><span class="p">:</span><span class="s2">"Healthcare"</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">20406836</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"field_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1284</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"list_entry_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"entity_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">38706</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Healthcare"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><code class="prettyprint">PUT /field-values/{field_value_id}</code></p>
@@ -3269,7 +3270,7 @@ exist for the given person or organization. Opportunities can only have one list
 <blockquote>
 <p>Example Response</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="s2">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">}</span><span class="w">
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w"> </span><span class="s2">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><code class="prettyprint">DELETE /field-values/{field_value_id}</code></p>
 
@@ -3303,14 +3304,15 @@ exist for the given person or organization. Opportunities can only have one list
 <p>Example Response</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">22984</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"creator_id"</span><span class="p">:</span><span class="mi">860197</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"person_ids"</span><span class="p">:[</span><span class="mi">38706</span><span class="p">,</span><span class="mi">89734</span><span class="p">],</span><span class="w">
-  </span><span class="s2">"organization_ids"</span><span class="p">:[</span><span class="mi">64779194</span><span class="p">],</span><span class="w">
-  </span><span class="s2">"opportunity_ids"</span><span class="p">:[</span><span class="mi">117</span><span class="p">],</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">22984</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"creator_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">860197</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"person_ids"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">38706</span><span class="p">,</span><span class="w"> </span><span class="mi">89734</span><span class="p">],</span><span class="w">
+  </span><span class="s2">"organization_ids"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">64779194</span><span class="p">],</span><span class="w">
+  </span><span class="s2">"opportunity_ids"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">117</span><span class="p">],</span><span class="w">
   </span><span class="s2">"parent_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"content"</span><span class="p">:</span><span class="s2">"Had a lunch meeting with Jane and John today. They are looking to invest."</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"created_at"</span><span class="p">:</span><span class="s2">"2017-03-28 00:38:41 -0700"</span><span class="w">
+  </span><span class="s2">"content"</span><span class="p">:</span><span class="w">
+    </span><span class="s2">"Had a lunch meeting with Jane and John today. They are looking to invest."</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-03-28 00:38:41 -0700"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>Just like field values, notes are used to keep track of state on an entity. They could be
@@ -3518,14 +3520,14 @@ parameter. An appropriate error is returned if an invalid note is supplied.</p>
 <p>Example Response</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">22984</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"creator_id"</span><span class="p">:</span><span class="mi">860197</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"person_ids"</span><span class="p">:[</span><span class="mi">38706</span><span class="p">,</span><span class="mi">89734</span><span class="p">],</span><span class="w">
-  </span><span class="s2">"organization_ids"</span><span class="p">:[</span><span class="mi">64779194</span><span class="p">],</span><span class="w">
-  </span><span class="s2">"opportunity_ids"</span><span class="p">:[</span><span class="mi">117</span><span class="p">],</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">22984</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"creator_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">860197</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"person_ids"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">38706</span><span class="p">,</span><span class="w"> </span><span class="mi">89734</span><span class="p">],</span><span class="w">
+  </span><span class="s2">"organization_ids"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">64779194</span><span class="p">],</span><span class="w">
+  </span><span class="s2">"opportunity_ids"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">117</span><span class="p">],</span><span class="w">
   </span><span class="s2">"parent_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"content"</span><span class="p">:</span><span class="s2">"Had a lunch meeting with Jane ... "</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"created_at"</span><span class="p">:</span><span class="s2">"2017-03-28 00:38:41 -0700"</span><span class="w">
+  </span><span class="s2">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Had a lunch meeting with Jane ... "</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-03-28 00:38:41 -0700"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><code class="prettyprint">POST /notes</code></p>
@@ -3611,14 +3613,14 @@ account that owns the Gmail mesage.) A note associated with an email cannot have
 <p>Example Response</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">43212</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"JohnDoeFriends.csv"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"size"</span><span class="p">:</span><span class="w"> </span><span class="mi">993</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"personId"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"organizationId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"opportunityId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2011-01-25T09:59:35.288-08:00"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"uploaderId"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">43212</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"JohnDoeFriends.csv"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"size"</span><span class="p">:</span><span class="w"> </span><span class="mi">993</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"personId"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"organizationId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"opportunityId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2011-01-25T09:59:35.288-08:00"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"uploaderId"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <table><thead>
@@ -3788,14 +3790,14 @@ array of all the entity file resources. See description for more details on pagi
 <p>Example Response</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">43212</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GoogleFriends.csv"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"size"</span><span class="p">:</span><span class="w"> </span><span class="mi">993</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"personId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"organizationId"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"opportunityId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2011-01-25T09:59:35.288-08:00"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"uploaderId"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">43212</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GoogleFriends.csv"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"size"</span><span class="p">:</span><span class="w"> </span><span class="mi">993</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"personId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"organizationId"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"opportunityId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2011-01-25T09:59:35.288-08:00"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"uploaderId"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><code class="prettyprint">GET /entity-files/{entity_file_id}</code></p>
@@ -3873,7 +3875,7 @@ array of all the entity file resources. See description for more details on pagi
 <blockquote>
 <p>Example Response</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="s2">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">}</span><span class="w">
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w"> </span><span class="s2">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><code class="prettyprint">POST /entity-files</code></p>
 
@@ -3926,8 +3928,8 @@ array of all the entity file resources. See description for more details on pagi
 <p><strong>Note:</strong></p>
 
 <ol>
-<li>Files must be attached to a single entity, specified using one of the three entity id parameters (<code class="prettyprint">person_id</code>, <code class="prettyprint">organization_id</code>, and <code class="prettyprint">opportunity_id</code>).</li>
-<li>At least one file must be uploaded using the <code class="prettyprint">file</code> or <code class="prettyprint">files</code> parameters.</li>
+<li> Files must be attached to a single entity, specified using one of the three entity id parameters (<code class="prettyprint">person_id</code>, <code class="prettyprint">organization_id</code>, and <code class="prettyprint">opportunity_id</code>).</li>
+<li> At least one file must be uploaded using the <code class="prettyprint">file</code> or <code class="prettyprint">files</code> parameters.</li>
 </ol>
 
 <h3 id="returns">Returns</h3>
@@ -4217,17 +4219,17 @@ array of all the entity file resources. See description for more details on pagi
 
 <h2 id="sdk-and-native-client-support">SDK and Native Client support</h2>
 
-<p>We currently don&rsquo;t have native clients or SDKs for different languages, but given the 
-rise in the number of REST clients for different languages, we have compiled some 
+<p>We currently don&rsquo;t have native clients or SDKs for different languages, but given the
+rise in the number of REST clients for different languages, we have compiled some
 resources to make the API super easy to implement for your use case.</p>
 
 <p>Here are some links to REST clients in the most popular languages:</p>
 
 <ol>
-<li><a href="https://github.com/rest-client/rest-client">Ruby</a></li>
-<li><a href="http://docs.python-requests.org/en/master/">Python</a></li>
-<li><a href="https://github.com/cujojs/rest">Javascript</a></li>
-<li><a href="https://github.com/dghubble/sling">Go</a></li>
+<li> <a href="https://github.com/rest-client/rest-client">Ruby</a></li>
+<li> <a href="http://docs.python-requests.org/en/master/">Python</a></li>
+<li> <a href="https://github.com/cujojs/rest">Javascript</a></li>
+<li> <a href="https://github.com/dghubble/sling">Go</a></li>
 </ol>
 
       </div>
