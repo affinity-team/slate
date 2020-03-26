@@ -107,7 +107,7 @@ curl "https://api.affinity.co/fields" \
 
 Returns all fields based on the parameters provided.
 
-Pass the `list_id` to fetch fields that specific only to that list. Otherwise, all global and list specific fields will be returned.
+Pass the `list_id` to only fetch fields that are specific to that list. Otherwise, all global and list specific fields will be returned.
 
 Pass the `value_type` to fetch fields of specific value types. Otherwise, all fields of any type will be returned.
 
@@ -119,7 +119,7 @@ Pass the `with_modified_names` flag to return the fields such that the names hav
 | ------------------- | ------- | -------- | -------------------------------------------------------------------------- |
 | list_id             | integer | false    | An unique identifier of the list whose fields are to be retrieved.         |
 | value_type          | integer | false    | The value type of the fields that are to be retrieved.                     |
-| with_modified_names | integer | false    | When true, field names will return in the format `[List Name] Field Name`. |
+| with_modified_names | boolean | false    | When true, field names will return in the format `[List Name] Field Name`. |
 
 ### Returns
 
