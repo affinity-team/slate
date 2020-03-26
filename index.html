@@ -449,6 +449,84 @@ For accessing list specific fields on a list, see the <a href="#get-a-specific-l
 </tr>
 </tbody></table>
 
+<h2 id="get-fields">Get fields</h2>
+
+<blockquote>
+<p>Example Request</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.affinity.co/fields"</span> <span class="se">\</span>
+  -u :&lt;API-KEY&gt; <span class="se">\</span>
+  -d <span class="nv">with_modified_names</span><span class="o">=</span><span class="nb">true</span> <span class="se">\</span>
+</code></pre>
+<blockquote>
+<p>Example Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">1234</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"[Deals] Amount"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"list_id"</span><span class="p">:</span><span class="mi">11</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"value_type"</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"allows_multiple"</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"track_changes"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"dropdown_options"</span><span class="p">:[]</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">5678</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"[Events] Amount"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"list_id"</span><span class="p">:</span><span class="mi">16</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"value_type"</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"allows_multiple"</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"track_changes"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"dropdown_options"</span><span class="p">:[]</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="err">...</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+<p><code class="prettyprint">GET /fields</code></p>
+
+<p>Returns all fields based on the parameters provided.</p>
+
+<p>Pass the <code class="prettyprint">list_id</code> to only fetch fields that are specific to that list. Otherwise, all global and list specific fields will be returned.</p>
+
+<p>Pass the <code class="prettyprint">value_type</code> to fetch fields of specific value types. Otherwise, all fields of any type will be returned.</p>
+
+<p>Pass the <code class="prettyprint">with_modified_names</code> flag to return the fields such that the names have the list name prepended to them in the format <code class="prettyprint">[List Name] Field Name</code> (i.e. <code class="prettyprint">[Deals] Status</code>).</p>
+
+<h3 id="query-parameters">Query Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>list_id</td>
+<td>integer</td>
+<td>false</td>
+<td>An unique identifier of the list whose fields are to be retrieved.</td>
+</tr>
+<tr>
+<td>value_type</td>
+<td>integer</td>
+<td>false</td>
+<td>The value type of the fields that are to be retrieved.</td>
+</tr>
+<tr>
+<td>with_modified_names</td>
+<td>boolean</td>
+<td>false</td>
+<td>When true, field names will return in the format <code class="prettyprint">[List Name] Field Name</code>.</td>
+</tr>
+</tbody></table>
+
+<h3 id="returns">Returns</h3>
+
+<p>An array of all the fields requested.</p>
+
           <h1 id="lists">Lists</h1>
 
 <p>Lists are the primary data structure that you can interact with in Affinity. Each list
