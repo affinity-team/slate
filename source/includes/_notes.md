@@ -210,7 +210,7 @@ curl "https://api.affinity.co/notes/22984" \
 
 Deletes a note with a specified `note_id`.
 
-**Note:** An appropriate error will be returned if you are not the owner of the note you
+**Note:** An appropriate error will be returned if you are not the creator of the note you
 are trying to delete.
 
 ### Path Parameters
