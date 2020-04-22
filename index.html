@@ -3388,8 +3388,7 @@ exist for the given person or organization. Opportunities can only have one list
   </span><span class="s2">"organization_ids"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">64779194</span><span class="p">],</span><span class="w">
   </span><span class="s2">"opportunity_ids"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">117</span><span class="p">],</span><span class="w">
   </span><span class="s2">"parent_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"content"</span><span class="p">:</span><span class="w">
-    </span><span class="s2">"Had a lunch meeting with Jane and John today. They are looking to invest."</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Had a lunch meeting with Jane and John today. They are looking to invest."</span><span class="p">,</span><span class="w">
   </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-03-28 00:38:41 -0700"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -3680,6 +3679,49 @@ account that owns the Gmail mesage.) A note associated with an email cannot have
 <h3 id="returns">Returns</h3>
 
 <p>The note resource created through this request.</p>
+
+<h2 id="delete-a-note">Delete a note</h2>
+
+<blockquote>
+<p>Example Request</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.affinity.co/notes/22984"</span> <span class="se">\</span>
+  -u :&lt;API-KEY&gt; <span class="se">\</span>
+  -X <span class="s2">"DELETE"</span>
+</code></pre>
+<blockquote>
+<p>Example Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w"> </span><span class="s2">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code class="prettyprint">DELETE /notes/{note_id}</code></p>
+
+<p>Deletes a note with a specified <code class="prettyprint">note_id</code>.</p>
+
+<p><strong>Note:</strong> An appropriate error will be returned if you are not the creator of the note you
+are trying to delete.</p>
+
+<h3 id="path-parameters">Path Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>note_id</td>
+<td>integer</td>
+<td>true</td>
+<td>The unique id of the note that needs to be deleted.</td>
+</tr>
+</tbody></table>
+
+<h3 id="returns">Returns</h3>
+
+<p><code class="prettyprint">{success: true}</code>.</p>
 
           <h1 id="entity-files">Entity Files</h1>
 
