@@ -72,7 +72,7 @@ will represent when a Field Value has been created.
 > Example Request
 
 ```shell
-curl "https://api.affinity.co/field-values-changes?person_id=38706" -u :<API-KEY>
+curl "https://api.affinity.co/field-values-changes?field_id=38706" -u :<API-KEY>
 ```
 
 > Example Response
