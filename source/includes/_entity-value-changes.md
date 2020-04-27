@@ -1,6 +1,6 @@
 # Field Value Changes
 
-The field value changes API allows you to see historical changes to the values of fields.
+The field value changes allow you to see historical changes to the values of fields in Affinity.
 This is especially useful for tracking progress through statuses (e.g. Lead --> Closed Won).
 
 **Note:**
@@ -45,14 +45,14 @@ appropriate associations, as noted in the example above.
 There are some extra attributes returned by this endpoint; they will be deprecated soon and
 should not be used.
 
-| Attribute     | Type           | Description                                                                                                                                                     |
-| ------------- | -------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| id            | integer        | The unique identifier of the field value object.                                                                                                                |
-| field_id      | integer        | The unique identifier of the field the value is associated with.                                                                                                |
-| entity_id     | integer        | The unique identifier of the person, organization, or opportunity object the field value is associated with.                                                    |
-| list_entry_id | integer        | The unique identifier of the list entry object the field value is associated with. This only exists if the field the value is associated with is list-specific. |
-| value         | One of many    | The value attribute can take on many different types, depending on the field `value_type`. See below for reference.                                             |
-| action_type   | One of several | The action_type attribute can take on several different types. See below for reference.                                                                         |
+| Attribute     | Type           | Description                                                                                                                                                                                        |
+| ------------- | -------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| id            | integer        | The unique identifier of the field value object.                                                                                                                                                   |
+| field_id      | integer        | The unique identifier of the field the value is associated with.                                                                                                                                   |
+| entity_id     | integer        | The unique identifier of the person, organization, or opportunity object the field value is associated with.                                                                                       |
+| list_entry_id | integer        | The unique identifier of the list entry object the field value is associated with. This only exists if the field the value is associated with is list-specific.                                    |
+| action_type   | One of several | The action_type attribute can take on several different types. See below for reference.                                                                                                            |
+| value         | One of many    | The value attribute can take on many different types, depending on the field `value_type`. When the action type is Delete, value represents the old value; otherwise, it represents the new value. |
 
 ### Field Value Change action types
 
@@ -61,11 +61,11 @@ This attribute is required, and filters the Field Value Changes that are returne
 when an `action_type` of 0 is specified, all the Field Value Change objects that are returned
 will represent when a Field Value has been created.
 
-| Action Type | Type    |
-| ----------- | ------- |
-| 0           | Created |
-| 1           | Updated |
-| 2           | Deleted |
+| Action Type | Type   |
+| ----------- | ------ |
+| 0           | Create |
+| 1           | Update |
+| 2           | Delete |
 
 ## Get field values changes
 
