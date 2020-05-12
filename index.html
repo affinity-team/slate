@@ -449,6 +449,84 @@ For accessing list specific fields on a list, see the <a href="#get-a-specific-l
 </tr>
 </tbody></table>
 
+<h2 id="get-fields">Get fields</h2>
+
+<blockquote>
+<p>Example Request</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.affinity.co/fields"</span> <span class="se">\</span>
+  -u :&lt;API-KEY&gt; <span class="se">\</span>
+  -d <span class="nv">with_modified_names</span><span class="o">=</span><span class="nb">true</span> <span class="se">\</span>
+</code></pre>
+<blockquote>
+<p>Example Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">1234</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"[Deals] Amount"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"list_id"</span><span class="p">:</span><span class="mi">11</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"value_type"</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"allows_multiple"</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"track_changes"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"dropdown_options"</span><span class="p">:[]</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">5678</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"[Events] Amount"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"list_id"</span><span class="p">:</span><span class="mi">16</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"value_type"</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"allows_multiple"</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"track_changes"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"dropdown_options"</span><span class="p">:[]</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="err">...</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+<p><code class="prettyprint">GET /fields</code></p>
+
+<p>Returns all fields based on the parameters provided.</p>
+
+<p>Pass the <code class="prettyprint">list_id</code> to only fetch fields that are specific to that list. Otherwise, all global and list specific fields will be returned.</p>
+
+<p>Pass the <code class="prettyprint">value_type</code> to fetch fields of specific value types. Otherwise, all fields of any type will be returned.</p>
+
+<p>Pass the <code class="prettyprint">with_modified_names</code> flag to return the fields such that the names have the list name prepended to them in the format <code class="prettyprint">[List Name] Field Name</code> (i.e. <code class="prettyprint">[Deals] Status</code>).</p>
+
+<h3 id="query-parameters">Query Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>list_id</td>
+<td>integer</td>
+<td>false</td>
+<td>An unique identifier of the list whose fields are to be retrieved.</td>
+</tr>
+<tr>
+<td>value_type</td>
+<td>integer</td>
+<td>false</td>
+<td>The value type of the fields that are to be retrieved.</td>
+</tr>
+<tr>
+<td>with_modified_names</td>
+<td>boolean</td>
+<td>false</td>
+<td>When true, field names will return in the format <code class="prettyprint">[List Name] Field Name</code>.</td>
+</tr>
+</tbody></table>
+
+<h3 id="returns">Returns</h3>
+
+<p>An array of all the fields requested.</p>
+
           <h1 id="lists">Lists</h1>
 
 <p>Lists are the primary data structure that you can interact with in Affinity. Each list
@@ -1519,7 +1597,7 @@ existing values for <code class="prettyprint">emails</code> and <code class="pre
 <td>person_id</td>
 <td>integer</td>
 <td>true</td>
-<td>The unique id of the person that needs to be retrieved.</td>
+<td>The unique id of the person that needs to be updated.</td>
 </tr>
 </tbody></table>
 
@@ -3298,6 +3376,186 @@ exist for the given person or organization. Opportunities can only have one list
 
 <p><code class="prettyprint">{success: true}</code>.</p>
 
+          <h1 id="field-value-changes">Field Value Changes</h1>
+
+<p>Field value changes allow you to see historical changes to the values of fields in Affinity.
+This is especially useful for tracking progress through statuses (e.g. Lead &ndash;&gt; Closed Won).</p>
+
+<p><strong>Note:</strong>
+Not all fields can track historical changes; you can see if a field does so by looking at the
+<code class="prettyprint">track_changes</code> attribute in the <a href="#get-fields">field resource</a>. The API will return an
+appropriate error if the field doesn&rsquo;t support historical tracking.</p>
+
+<h2 id="the-field-value-change-resource">The field value change resource</h2>
+
+<blockquote>
+<p>Example Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">50822718</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"field_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">236333</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"entity_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">261131046</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"list_entry_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">15709964</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"action_type"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"changer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">38706</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jane"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Doe"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"primary_email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jane@gmail.com"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"emails"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"jane@gmail.com"</span><span class="p">]</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"changed_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-04-11T15:46:50.963-07:00"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1607859</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"New"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"rank"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"color"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Each field value change object has a unique <code class="prettyprint">id</code>.</p>
+
+<p>A field value change also has <code class="prettyprint">field_id</code>, <code class="prettyprint">entity_id</code>, <code class="prettyprint">list_entry_id</code> attributes that give it the
+appropriate associations, as noted in the example above.</p>
+
+<p><strong>Note:</strong>
+There are some extra attributes returned by this endpoint; they will be deprecated soon and
+should not be used.</p>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>integer</td>
+<td>The unique identifier of the field value change object.</td>
+</tr>
+<tr>
+<td>field_id</td>
+<td>integer</td>
+<td>The unique identifier of the field the value change is associated with.</td>
+</tr>
+<tr>
+<td>entity_id</td>
+<td>integer</td>
+<td>The unique identifier of the person, organization, or opportunity object the field value change is associated with.</td>
+</tr>
+<tr>
+<td>list_entry_id</td>
+<td>integer</td>
+<td>The unique identifier of the list entry object the field value change is associated with.</td>
+</tr>
+<tr>
+<td>action_type</td>
+<td>One of several</td>
+<td>Describes the action behind this field value change. This attribute can take on several different types; see below for reference.</td>
+</tr>
+<tr>
+<td>value</td>
+<td>One of many</td>
+<td>Represents the field&rsquo;s value. This attribute can take on many different types, depending on the field <code class="prettyprint">value_type</code>. When the action type is Delete, value represents the old value; otherwise, it represents the new value.</td>
+</tr>
+</tbody></table>
+
+<h3 id="field-value-change-action-types">Field Value Change action types</h3>
+
+<p>The action type specified below corresponds to the <code class="prettyprint">action_type</code> of a field value change.
+This attribute filters the field value changes that are returned. For example,
+when an <code class="prettyprint">action_type</code> of 0 is specified, all the field value change objects that are returned
+will represent when a field value has been created.</p>
+
+<table><thead>
+<tr>
+<th>Action Type</th>
+<th>Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>0</td>
+<td>Create</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Update</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Delete</td>
+</tr>
+</tbody></table>
+
+<h2 id="get-field-values-changes">Get field values changes</h2>
+
+<blockquote>
+<p>Example Request</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.affinity.co/field-value-changes?field_id=236333"</span> -u :&lt;API-KEY&gt;
+</code></pre>
+<blockquote>
+<p>Example Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">50822718</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"field_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">236333</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"entity_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">261131046</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"list_entry_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">15709964</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"action_type"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"changer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">38706</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jane"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Doe"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"primary_email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jane@gmail.com"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"emails"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"jane@gmail.com"</span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"changed_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-04-11T15:46:50.963-07:00"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1607859</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"New"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"rank"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"color"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+<p><code class="prettyprint">GET /field-value-changes</code></p>
+
+<p>Returns all field values changes attached to a specific field.</p>
+
+<h3 id="query-parameters">Query Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>field_id</td>
+<td>integer</td>
+<td>true</td>
+<td>A unique id that represents a field object whose field values changes are to be retrieved.</td>
+</tr>
+<tr>
+<td>action_type</td>
+<td>integer</td>
+<td>false</td>
+<td>An integer that filters field value changes that were created with this specific action type (see above).</td>
+</tr>
+</tbody></table>
+
+<h3 id="returns">Returns</h3>
+
+<p>An array of all the field values changes associated with the supplied field.</p>
+
           <h1 id="notes">Notes</h1>
 
 <blockquote>
@@ -3310,8 +3568,7 @@ exist for the given person or organization. Opportunities can only have one list
   </span><span class="s2">"organization_ids"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">64779194</span><span class="p">],</span><span class="w">
   </span><span class="s2">"opportunity_ids"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">117</span><span class="p">],</span><span class="w">
   </span><span class="s2">"parent_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"content"</span><span class="p">:</span><span class="w">
-    </span><span class="s2">"Had a lunch meeting with Jane and John today. They are looking to invest."</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Had a lunch meeting with Jane and John today. They are looking to invest."</span><span class="p">,</span><span class="w">
   </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-03-28 00:38:41 -0700"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -3602,6 +3859,123 @@ account that owns the Gmail mesage.) A note associated with an email cannot have
 <h3 id="returns">Returns</h3>
 
 <p>The note resource created through this request.</p>
+
+<h2 id="update-a-note">Update a note</h2>
+
+<blockquote>
+<p>Example Request</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.affinity.co/notes/22984"</span> <span class="se">\</span>
+  -u :&lt;API-KEY&gt; <span class="se">\</span>
+  -d <span class="nv">content</span><span class="o">=</span><span class="s2">"Had another meeting with Jane and </span><span class="se">\</span><span class="s2">
+              John today."</span>
+  -X <span class="s2">"PUT"</span>
+</code></pre>
+<blockquote>
+<p>Example Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">22984</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"creator_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">860197</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"person_ids"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">38706</span><span class="p">,</span><span class="w"> </span><span class="mi">89734</span><span class="p">],</span><span class="w">
+  </span><span class="s2">"organization_ids"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">64779194</span><span class="p">],</span><span class="w">
+  </span><span class="s2">"opportunity_ids"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">117</span><span class="p">],</span><span class="w">
+  </span><span class="s2">"parent_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Had another meeting with Jane ... "</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-03-28 00:38:41 -0700"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code class="prettyprint">PUT /notes/{notes_id}</code></p>
+
+<p>Updates the content of an existing note with <code class="prettyprint">note_id</code> with the supplied <code class="prettyprint">content</code> parameter.</p>
+
+<p><strong>Note:</strong></p>
+
+<p>You cannot update the content of a note that has mentions. You also cannot update the content
+of a note associated with an email.</p>
+
+<h3 id="path-parameters">Path Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>note_id</td>
+<td>integer</td>
+<td>true</td>
+<td>The unique id of the note that needs to be updated.</td>
+</tr>
+</tbody></table>
+
+<h3 id="payload-parameters">Payload Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>content</td>
+<td>string</td>
+<td>true</td>
+<td>The new content of the note.</td>
+</tr>
+</tbody></table>
+
+<h3 id="returns">Returns</h3>
+
+<p>The note object that was just updated through this request.</p>
+
+<h2 id="delete-a-note">Delete a note</h2>
+
+<blockquote>
+<p>Example Request</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.affinity.co/notes/22984"</span> <span class="se">\</span>
+  -u :&lt;API-KEY&gt; <span class="se">\</span>
+  -X <span class="s2">"DELETE"</span>
+</code></pre>
+<blockquote>
+<p>Example Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w"> </span><span class="s2">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code class="prettyprint">DELETE /notes/{note_id}</code></p>
+
+<p>Deletes a note with a specified <code class="prettyprint">note_id</code>.</p>
+
+<p><strong>Note:</strong> An appropriate error will be returned if you are not the creator of the note you
+are trying to delete.</p>
+
+<h3 id="path-parameters">Path Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>note_id</td>
+<td>integer</td>
+<td>true</td>
+<td>The unique id of the note that needs to be deleted.</td>
+</tr>
+</tbody></table>
+
+<h3 id="returns">Returns</h3>
+
+<p><code class="prettyprint">{success: true}</code>.</p>
 
           <h1 id="entity-files">Entity Files</h1>
 
@@ -4203,17 +4577,7 @@ array of all the entity file resources. See description for more details on pagi
 
 <h2 id="limitations">Limitations</h2>
 
-<ul>
-<li><p>The following triggers will not create webhook events:</p>
-
-<ul>
-<li>Resources created/updated/deleted via our importer tool</li>
-<li>Resources created/updated/deleted via Email Bot.</li>
-<li>Organizations created automatically based on email/event interactions.</li>
-<li>Field values created/updated/deleted in automated global organization fields (i.e. location, last round raised, etc.)</li>
-</ul></li>
-<li><p>There is a limit of three webhook subscriptions. If you have any questions at all regarding webhooks, please reach out to support@affinity.co.</p></li>
-</ul>
+<p>There is a limit of three webhook subscriptions per Affinity instance. If you have any questions at all regarding webhooks, please reach out to <a href="mailto:support@affinity.co">support@affinity.co</a>.</p>
 
           <h1 id="additional-materials">Additional Materials</h1>
 
