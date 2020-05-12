@@ -183,4 +183,4 @@ Deletes a webhook subscription with a specified `webhook_subscription_id`.
 
 ## Limitations
 
-There is a limit of three webhook subscriptions. If you have any questions at all regarding webhooks, please reach out to <support@affinity.co>.
+There is a limit of three webhook subscriptions per Affinity instance. If you have any questions at all regarding webhooks, please reach out to <support@affinity.co>.
