@@ -2445,23 +2445,11 @@ spreadsheet), please check out the <a href="#field-values">Field Values</a> sect
   </span><span class="s2">"list_entries"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">442313</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"creator"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">38706</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"emails"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"john@affinity.co"</span><span class="p">,</span><span class="w"> </span><span class="s2">"johnjdoe@gmail.com"</span><span class="p">],</span><span class="w">
-        </span><span class="s2">"firstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"lastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Doe"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"photoUrl"</span><span class="p">:</span><span class="w">
-          </span><span class="s2">"https://dapjjo8h3d36y.cloudfront.net/315dc7f40516f732ds9b817a03f6d826e"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"entityType"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"inferredType"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"interactionsHidden"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"hiddenExternal"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"primaryEmail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"john@affinity.co"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="s2">"listId"</span><span class="p">:</span><span class="w"> </span><span class="mi">4974</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"entityId"</span><span class="p">:</span><span class="w"> </span><span class="mi">117</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-03-03T23:02:46.412-08:00"</span><span class="w">
+      </span><span class="s2">"creator_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">38706</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"list_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">4974</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"entity_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">117</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"entity_type"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-03-03T23:02:46.412-08:00"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -2539,59 +2527,37 @@ confirm that there are no more resources).</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"opportunities"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">121</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"Affinity Opp"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"person_ids"</span><span class="p">:[</span><span class="mi">3526824</span><span class="p">],</span><span class="w">
-      </span><span class="s2">"organization_ids"</span><span class="p">:[</span><span class="mi">128367168</span><span class="p">],</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">121</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Affinity Opp"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"person_ids"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">3526824</span><span class="p">],</span><span class="w">
+      </span><span class="s2">"organization_ids"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">128367168</span><span class="p">],</span><span class="w">
       </span><span class="s2">"list_entries"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">442313</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"creator"</span><span class="p">:{</span><span class="w">
-            </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">1124736</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"type"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"emails"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"john@affinity.co"</span><span class="p">,</span><span class="w"> </span><span class="s2">"johnjdoe@gmail.com"</span><span class="p">],</span><span class="w">
-            </span><span class="s2">"firstName"</span><span class="p">:</span><span class="s2">"John"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"lastName"</span><span class="p">:</span><span class="s2">"Doe"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"photoUrl"</span><span class="p">:</span><span class="s2">"https://dapjjo8h3d36y.cloudfront.net/315dc7f40516f732ds9b817a03f6d826e"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"entityType"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"inferredType"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"interactionsHidden"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"hiddenExternal"</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"primaryEmail"</span><span class="p">:</span><span class="s2">"john@affinity.co"</span><span class="w">
-          </span><span class="p">},</span><span class="w">
-        </span><span class="s2">"listId"</span><span class="p">:</span><span class="mi">4974</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"entityId"</span><span class="p">:</span><span class="mi">121</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="s2">"2018-03-03T23:02:46.412-08:00"</span><span class="w">
+          </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">442313</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"creator_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1124736</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"list_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">4974</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"entity_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">121</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"entity_type"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-03-03T23:02:46.412-08:00"</span><span class="w">
         </span><span class="p">},</span><span class="w">
       </span><span class="p">],</span><span class="w">
-    </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">150</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"Affinity Opp 2"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"person_ids"</span><span class="p">:[</span><span class="mi">5326214</span><span class="p">],</span><span class="w">
-      </span><span class="s2">"organization_ids"</span><span class="p">:[</span><span class="mi">128367168</span><span class="p">],</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">150</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Affinity Opp 2"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"person_ids"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">5326214</span><span class="p">],</span><span class="w">
+      </span><span class="s2">"organization_ids"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">128367168</span><span class="p">],</span><span class="w">
       </span><span class="s2">"list_entries"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">442421</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"creator"</span><span class="p">:{</span><span class="w">
-            </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">1124736</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"type"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"emails"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"john@affinity.co"</span><span class="p">,</span><span class="w"> </span><span class="s2">"johnjdoe@gmail.com"</span><span class="p">],</span><span class="w">
-            </span><span class="s2">"firstName"</span><span class="p">:</span><span class="s2">"John"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"lastName"</span><span class="p">:</span><span class="s2">"Doe"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"photoUrl"</span><span class="p">:</span><span class="s2">"https://dapjjo8h3d36y.cloudfront.net/315dc7f40516f732ds9b817a03f6d826e"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"entityType"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"inferredType"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"interactionsHidden"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"hiddenExternal"</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"primaryEmail"</span><span class="p">:</span><span class="s2">"john@affinity.co"</span><span class="w">
-          </span><span class="p">},</span><span class="w">
-        </span><span class="s2">"listId"</span><span class="p">:</span><span class="mi">4974</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"entityId"</span><span class="p">:</span><span class="mi">150</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="s2">"2018-03-08T23:02:46.412-08:00"</span><span class="w">
+          </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">442421</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"creator_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1124736</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"list_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">4974</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"entity_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">150</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"entity_type"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-03-08T23:02:46.412-08:00"</span><span class="w">
         </span><span class="p">},</span><span class="w">
       </span><span class="p">],</span><span class="w">
-    </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
     </span><span class="err">...</span><span class="w">
   </span><span class="p">],</span><span class="w">
   </span><span class="s2">"next_page_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eyJwYXJhbXMiOnsidGVybSI6IiJ9LCJwYWdlX3NpemUiOjUsIm9mZnNldCI6MTB9"</span><span class="p">,</span><span class="w">
@@ -2658,25 +2624,13 @@ an array of all the opportunity resources that match the search criteria.
   </span><span class="s2">"list_entries"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">442313</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"creator"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1124736</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"emails"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"john@affinity.co"</span><span class="p">,</span><span class="w"> </span><span class="s2">"johnjdoe@gmail.com"</span><span class="p">],</span><span class="w">
-        </span><span class="s2">"firstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"lastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Doe"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"photoUrl"</span><span class="p">:</span><span class="w">
-          </span><span class="s2">"https://dapjjo8h3d36y.cloudfront.net/315dc7f40516f732ds9b817a03f6d826e"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"entityType"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"inferredType"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"interactionsHidden"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"hiddenExternal"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"primaryEmail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"john@affinity.co"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="s2">"listId"</span><span class="p">:</span><span class="w"> </span><span class="mi">4974</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"entityId"</span><span class="p">:</span><span class="w"> </span><span class="mi">121</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-03-03T23:02:46.412-08:00"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">]</span><span class="w">
+      </span><span class="s2">"creator_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1124736</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"list_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">4974</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"entity_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">121</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"entity_type"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-03-03T23:02:46.412-08:00"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+  </span><span class="p">],</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><code class="prettyprint">GET /opportunities/{opportunity_id}</code></p>
@@ -2728,23 +2682,11 @@ an array of all the opportunity resources that match the search criteria.
   </span><span class="s2">"list_entries"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">999886</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"creator"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1127776</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"emails"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"john@affinity.co"</span><span class="p">,</span><span class="w"> </span><span class="s2">"john@berkeley.edu"</span><span class="p">],</span><span class="w">
-        </span><span class="s2">"firstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"lastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Doe"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"photoUrl"</span><span class="p">:</span><span class="w">
-          </span><span class="s2">"https://dapjjo8h3d36y.cloudfront.net/315dc7f40516f73259b807a06f6d826a"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"entityType"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"inferredType"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"interactionsHidden"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"hiddenExternal"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"primaryEmail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"john@affinity.co"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="s2">"listId"</span><span class="p">:</span><span class="w"> </span><span class="mi">6645</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"entityId"</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-03-07T16:32:35.794-08:00"</span><span class="w">
+      </span><span class="s2">"creator_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1127776</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"list_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">6645</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"entity_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"entity_type"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-03-07T16:32:35.794-08:00"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -2816,23 +2758,11 @@ an array of all the opportunity resources that match the search criteria.
   </span><span class="s2">"list_entries"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">999886</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"creator"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1127776</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"emails"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"john@affinity.co"</span><span class="p">,</span><span class="w"> </span><span class="s2">"john@berkeley.edu"</span><span class="p">],</span><span class="w">
-        </span><span class="s2">"firstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"lastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Doe"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"photoUrl"</span><span class="p">:</span><span class="w">
-          </span><span class="s2">"https://dapjjo8h3d36y.cloudfront.net/315dc7f40516f73259b807a06f6d826a"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"entityType"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"inferredType"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"interactionsHidden"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"hiddenExternal"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"primaryEmail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"john@affinity.co"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="s2">"listId"</span><span class="p">:</span><span class="w"> </span><span class="mi">6645</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"entityId"</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-03-07T16:32:35.794-08:00"</span><span class="w">
+      </span><span class="s2">"creator_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1127776</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"list_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">6645</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"entity_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"entity_type"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-03-07T16:32:35.794-08:00"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
