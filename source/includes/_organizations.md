@@ -28,6 +28,7 @@ We use this database to minimize data entry for you as you use Affinity's CRM pr
   "id":64779194,
   "name":"Affinity",
   "domain":"affinity.co",
+  "domains":["affinity.co"],
   "crunchbase_uuid":"ca0e6bd5-7de2-0a26-f648-0bf66e88b05c",
   "global":false,
   "person_ids":[89734, 117270, 138123, 274492, 304848, ...]
@@ -122,6 +123,7 @@ curl "https://api.affinity.co/organizations?term=affinity" -u :<API-KEY>
       "id":64779194,
       "name":"Affinity",
       "domain":"affinity.co",
+      "domains":["affinity.co"],
       "crunchbase_uuid":null,
       "global":false
     },
@@ -129,6 +131,7 @@ curl "https://api.affinity.co/organizations?term=affinity" -u :<API-KEY>
       "id":1513682,
       "name":"Brand Affinity Technologies",
       "domain":"brandaffinity.net",
+      "domains":["brandaffinity.net"],
       "crunchbase_uuid":"035ed4bb-7a8c-f713-5032-91a81a4b4bb9",
       "global":true
     },
@@ -178,6 +181,7 @@ curl "https://api.affinity.co/organizations/64779194" -u :<API-KEY>
   "id":64779194,
   "name":"Affinity",
   "domain":"affinity.co",
+  "domains":["affinity.co"],
   "crunchbase_uuid":"ca0e6bd5-7de2-0a26-f648-0bf66e88b05c",
   "global":false,
   "person_ids":[89734, 117270, 138123, 274492, 304848, ...],
@@ -228,6 +232,7 @@ curl "https://api.affinity.co/organizations" \
   "id": 120611418,
   "name": "Acme Corporation",
   "domain": "acme.co",
+  "domains": ["acme.co"],
   "crunchbase_uuid": null,
   "global": false,
   "person_ids": [38706]
@@ -273,6 +278,7 @@ curl "https://api.affinity.co/organizations/120611418" \
   "id": 120611418,
   "name": "Acme Corp.",
   "domain": "acme.co",
+  "domains": ["acme.co"],
   "crunchbase_uuid": null,
   "global": false,
   "person_ids": [38706, 89734]
