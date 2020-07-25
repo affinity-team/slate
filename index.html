@@ -1898,6 +1898,7 @@ spreadsheet), please check out the <a href="#field-values">Field Values</a> sect
   </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">64779194</span><span class="p">,</span><span class="w">
   </span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"Affinity"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"domain"</span><span class="p">:</span><span class="s2">"affinity.co"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"domains"</span><span class="p">:[</span><span class="s2">"affinity.co"</span><span class="p">],</span><span class="w">
   </span><span class="s2">"crunchbase_uuid"</span><span class="p">:</span><span class="s2">"ca0e6bd5-7de2-0a26-f648-0bf66e88b05c"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"global"</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w">
   </span><span class="s2">"person_ids"</span><span class="p">:[</span><span class="mi">89734</span><span class="p">,</span><span class="w"> </span><span class="mi">117270</span><span class="p">,</span><span class="w"> </span><span class="mi">138123</span><span class="p">,</span><span class="w"> </span><span class="mi">274492</span><span class="p">,</span><span class="w"> </span><span class="mi">304848</span><span class="p">,</span><span class="w"> </span><span class="err">...</span><span class="p">]</span><span class="w">
@@ -1959,6 +1960,11 @@ the <code class="prettyprint">/organizations/{organization_id}</code> endpoints.
 <td>domain</td>
 <td>string</td>
 <td>The website name of the organization. This is used by Affinity to automatically associate person objects with an organization.</td>
+</tr>
+<tr>
+<td>domains</td>
+<td>string[]</td>
+<td>An array of all the websites associated with the organization. These are also used to automatically associate person objects with an organization.</td>
 </tr>
 <tr>
 <td>crunchbase_uuid</td>
@@ -2028,6 +2034,7 @@ be ISO 8601 formatted date strings.</p>
       </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">64779194</span><span class="p">,</span><span class="w">
       </span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"Affinity"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"domain"</span><span class="p">:</span><span class="s2">"affinity.co"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"domains"</span><span class="p">:[</span><span class="s2">"affinity.co"</span><span class="p">],</span><span class="w">
       </span><span class="s2">"crunchbase_uuid"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="s2">"global"</span><span class="p">:</span><span class="kc">false</span><span class="w">
     </span><span class="p">},</span><span class="w">
@@ -2035,6 +2042,7 @@ be ISO 8601 formatted date strings.</p>
       </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">1513682</span><span class="p">,</span><span class="w">
       </span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"Brand Affinity Technologies"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"domain"</span><span class="p">:</span><span class="s2">"brandaffinity.net"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"domains"</span><span class="p">:[</span><span class="s2">"brandaffinity.net"</span><span class="p">],</span><span class="w">
       </span><span class="s2">"crunchbase_uuid"</span><span class="p">:</span><span class="s2">"035ed4bb-7a8c-f713-5032-91a81a4b4bb9"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"global"</span><span class="p">:</span><span class="kc">true</span><span class="w">
     </span><span class="p">},</span><span class="w">
@@ -2113,6 +2121,7 @@ passed in the returned resources will have <code class="prettyprint">interaction
   </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">64779194</span><span class="p">,</span><span class="w">
   </span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"Affinity"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"domain"</span><span class="p">:</span><span class="s2">"affinity.co"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"domains"</span><span class="p">:[</span><span class="s2">"affinity.co"</span><span class="p">],</span><span class="w">
   </span><span class="s2">"crunchbase_uuid"</span><span class="p">:</span><span class="s2">"ca0e6bd5-7de2-0a26-f648-0bf66e88b05c"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"global"</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w">
   </span><span class="s2">"person_ids"</span><span class="p">:[</span><span class="mi">89734</span><span class="p">,</span><span class="w"> </span><span class="mi">117270</span><span class="p">,</span><span class="w"> </span><span class="mi">138123</span><span class="p">,</span><span class="w"> </span><span class="mi">274492</span><span class="p">,</span><span class="w"> </span><span class="mi">304848</span><span class="p">,</span><span class="w"> </span><span class="err">...</span><span class="p">],</span><span class="w">
@@ -2178,6 +2187,7 @@ passed in the returned resources will have <code class="prettyprint">interaction
   </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">120611418</span><span class="p">,</span><span class="w">
   </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Acme Corporation"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"domain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"acme.co"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"domains"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"acme.co"</span><span class="p">],</span><span class="w">
   </span><span class="s2">"crunchbase_uuid"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="s2">"global"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
   </span><span class="s2">"person_ids"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">38706</span><span class="p">]</span><span class="w">
@@ -2243,6 +2253,7 @@ the <a href="#list-entries">List Entries</a> section of the API.</p>
   </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">120611418</span><span class="p">,</span><span class="w">
   </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Acme Corp."</span><span class="p">,</span><span class="w">
   </span><span class="s2">"domain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"acme.co"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"domains"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"acme.co"</span><span class="p">],</span><span class="w">
   </span><span class="s2">"crunchbase_uuid"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="s2">"global"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
   </span><span class="s2">"person_ids"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">38706</span><span class="p">,</span><span class="w"> </span><span class="mi">89734</span><span class="p">]</span><span class="w">
