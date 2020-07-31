@@ -527,6 +527,46 @@ For accessing list specific fields on a list, see the <a href="#get-a-specific-l
 
 <p>An array of all the fields requested.</p>
 
+<h2 id="delete-a-field">Delete a field</h2>
+
+<blockquote>
+<p>Example Request</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.affinity.co/fields/1234"</span> <span class="se">\</span>
+  -u :&lt;API-KEY&gt; <span class="se">\</span>
+  -X <span class="s2">"DELETE"</span>
+</code></pre>
+<blockquote>
+<p>Example Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w"> </span><span class="s2">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code class="prettyprint">DELETE /fields/{id}</code></p>
+
+<p>Deletes an field with the specified <code class="prettyprint">id</code>.</p>
+
+<h3 id="path-parameters">Path Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>integer</td>
+<td>true</td>
+<td>The unique id of the field that needs to be deleted.</td>
+</tr>
+</tbody></table>
+
+<h3 id="returns">Returns</h3>
+
+<p><code class="prettyprint">{success: true}</code>.</p>
+
           <h1 id="lists">Lists</h1>
 
 <p>Lists are the primary data structure that you can interact with in Affinity. Each list
@@ -3193,7 +3233,7 @@ exist for the given person or organization. Opportunities can only have one list
 <td>list_entry_id</td>
 <td>integer</td>
 <td>false</td>
-<td>The unique identifier of the list entry (list row) that the field value is associated with. Only specify the list_entry_id if the field that the field value is associated with is list specific.</td>
+<td>The unique identifier of the list entry (list row) that the field value is associated with. Only specify the <code class="prettyprint">list_entry_id</code> if the field that the field value is associated with is list specific.</td>
 </tr>
 <tr>
 <td>value</td>
