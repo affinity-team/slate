@@ -48,6 +48,7 @@ We use this database to minimize data entry for you as you use Affinity's CRM pr
     "last_event_date": "2011-12-11T02:26:56.537-08:00",
     "last_interaction_date": "2012-03-04T05:06:07.890-08:00",
     "next_event_date": "2019-03-04T05:06:07.890-08:00",
+    "first_event_date": "2012-01-01T08:18:00.329-08:00",
   },
 }
 ```
