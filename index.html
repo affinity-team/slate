@@ -1223,7 +1223,49 @@ spreadsheet), please check out the <a href="#field-values">Field Values</a> sect
     </span><span class="s2">"last_event_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2011-12-11T02:26:56.537-08:00"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"last_interaction_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-03-04T05:06:07.890-08:00"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"next_event_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-03-04T05:06:07.890-08:00"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"first_event_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-01-01T08:18:00.329-08:00"</span><span class="p">,</span><span class="w">
   </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"interactions"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"first_email"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2011-11-23T08:12:45.328-08:00"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"person_ids"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="mi">123</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"last_email"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-03-04T05:06:07.890-08:00"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"person_ids"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="mi">123</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"last_event"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2011-12-11T02:26:56.537-08:00"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"person_ids"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="mi">123</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"last_interaction"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-03-04T05:06:07.890-08:00"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"person_ids"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="mi">123</span><span class="p">,</span><span class="w">
+        </span><span class="mi">111</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"next_event"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-03-04T05:06:07.890-08:00"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"person_ids"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="mi">123</span><span class="p">,</span><span class="w">
+        </span><span class="mi">124</span><span class="p">,</span><span class="w">
+        </span><span class="mi">125</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"first_event"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-01-01T08:18:00.329-08:00"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"person_ids"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="mi">123</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
 </span><span class="p">},</span><span class="w">
 </span></code></pre>
 <p>Each person resource is assigned a unique <code class="prettyprint">id</code> and stores the name, type, and
@@ -1299,7 +1341,12 @@ the <code class="prettyprint">/persons/{person_id}</code> endpoints.</p>
 <tr>
 <td>interaction_dates</td>
 <td>object</td>
-<td>An object with four string date fields representing the most recent and upcoming interactions with this person: <code class="prettyprint">first_email_date</code>, <code class="prettyprint">last_email_date</code>, <code class="prettyprint">last_event_date</code>, <code class="prettyprint">last_interacton_date</code> and <code class="prettyprint">next_event_date</code>. Only returned when passing <code class="prettyprint">with_interaction_dates=true</code>.</td>
+<td>An object with six string date fields representing the most recent and upcoming interactions with this person: <code class="prettyprint">first_email_date</code>, <code class="prettyprint">last_email_date</code>, <code class="prettyprint">last_event_date</code>, <code class="prettyprint">last_interacton_date</code>, <code class="prettyprint">first_event_date</code> and <code class="prettyprint">next_event_date</code>. Only returned when passing <code class="prettyprint">with_interaction_dates=true</code>.</td>
+</tr>
+<tr>
+<td>interactions</td>
+<td>object</td>
+<td>An object with six fields nested underneath.  Each field corresponds to one of the six interactions, and includes nested fields for <code class="prettyprint">date</code> and <code class="prettyprint">person_ids</code> which indicates the internal people associated with that event.  Only returned when passing <code class="prettyprint">with_interaction_dates=true</code>.</td>
 </tr>
 </tbody></table>
 
@@ -1420,7 +1467,7 @@ curl <span class="s2">"https://api.affinity.co/persons?term=doe&amp;page_token=e
 <td><code class="prettyprint">{min,max}_&lt;interaction&gt;_date</code></td>
 <td>string</td>
 <td>false</td>
-<td>Only returns persons with the given interaction type above or below the given value. <code class="prettyprint">interaction</code> can be one of <code class="prettyprint">first_email</code>, <code class="prettyprint">last_email</code>, <code class="prettyprint">last_interaction</code>, <code class="prettyprint">last_event</code>, or <code class="prettyprint">next_event</code>.</td>
+<td>Only returns persons with the given interaction type above or below the given value. <code class="prettyprint">interaction</code> can be one of <code class="prettyprint">first_email</code>, <code class="prettyprint">last_email</code>, <code class="prettyprint">last_interaction</code>, <code class="prettyprint">last_event</code>, <code class="prettyprint">first_event</code>, or <code class="prettyprint">next_event</code>.</td>
 </tr>
 <tr>
 <td>page_size</td>
@@ -1963,7 +2010,49 @@ spreadsheet), please check out the <a href="#field-values">Field Values</a> sect
     </span><span class="s2">"last_event_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2011-12-11T02:26:56.537-08:00"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"last_interaction_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-03-04T05:06:07.890-08:00"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"next_event_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-03-04T05:06:07.890-08:00"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"first_event_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-01-01T08:18:00.329-08:00"</span><span class="p">,</span><span class="w">
   </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"interactions"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"first_email"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2011-11-23T08:12:45.328-08:00"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"person_ids"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="mi">123</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"last_email"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-03-04T05:06:07.890-08:00"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"person_ids"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="mi">123</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"last_event"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2011-12-11T02:26:56.537-08:00"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"person_ids"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="mi">123</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"last_interaction"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-03-04T05:06:07.890-08:00"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"person_ids"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="mi">123</span><span class="p">,</span><span class="w">
+        </span><span class="mi">111</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"next_event"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-03-04T05:06:07.890-08:00"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"person_ids"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="mi">123</span><span class="p">,</span><span class="w">
+        </span><span class="mi">124</span><span class="p">,</span><span class="w">
+        </span><span class="mi">125</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"first_event"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-01-01T08:18:00.329-08:00"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"person_ids"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="mi">123</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>Each organization object has a unique <code class="prettyprint">id</code>. It also has a <code class="prettyprint">name</code>, <code class="prettyprint">domain</code> (the website
@@ -2034,7 +2123,12 @@ the <code class="prettyprint">/organizations/{organization_id}</code> endpoints.
 <tr>
 <td>interaction_dates</td>
 <td>object</td>
-<td>An object with four string date fields representing the most recent and upcoming interactions with this organization: <code class="prettyprint">first_email_date</code>, <code class="prettyprint">last_email_date</code>, <code class="prettyprint">last_event_date</code>, <code class="prettyprint">last_interacton_date</code> and <code class="prettyprint">next_event_date</code>. Only returned when passing <code class="prettyprint">with_interaction_dates=true</code>.</td>
+<td>An object with six string date fields representing the most recent and upcoming interactions with this organization: <code class="prettyprint">first_email_date</code>, <code class="prettyprint">last_email_date</code>, <code class="prettyprint">last_event_date</code>, <code class="prettyprint">last_interacton_date</code>, <code class="prettyprint">first_event_date</code>, and <code class="prettyprint">next_event_date</code>. Only returned when passing <code class="prettyprint">with_interaction_dates=true</code>.</td>
+</tr>
+<tr>
+<td>interactions</td>
+<td>object</td>
+<td>An object with six fields nested underneath.  Each field corresponds to one of the six interactions, and includes nested fields for <code class="prettyprint">date</code> and <code class="prettyprint">person_ids</code> which indicates the internal people associated with that event.  Only returned when passing <code class="prettyprint">with_interaction_dates=true</code>.</td>
 </tr>
 </tbody></table>
 
@@ -2128,7 +2222,7 @@ curl <span class="s2">"https://api.affinity.co/organizations?term=affinity&amp;p
 <td><code class="prettyprint">{min,max}_&lt;interaction&gt;_date</code></td>
 <td>string</td>
 <td>false</td>
-<td>Only returns organizations with the given interaction type above or below the given value. <code class="prettyprint">interaction</code> can be one of <code class="prettyprint">first_email</code>, <code class="prettyprint">last_email</code>, <code class="prettyprint">last_interaction</code>, <code class="prettyprint">last_event</code>, or <code class="prettyprint">next_event</code>.</td>
+<td>Only returns organizations with the given interaction type above or below the given value. <code class="prettyprint">interaction</code> can be one of <code class="prettyprint">first_email</code>, <code class="prettyprint">last_email</code>, <code class="prettyprint">last_interaction</code>, <code class="prettyprint">last_event</code>, <code class="prettyprint">first_event</code>, or <code class="prettyprint">next_event</code>.</td>
 </tr>
 <tr>
 <td>page_size</td>
