@@ -1391,7 +1391,10 @@ confirm that there are no more resources).</p>
 
 <p>Pass <code class="prettyprint">with_interaction_dates=true</code> as a query parameter to include dates of the most
 recent and upcoming interactions with persons. When this parameter is included, persons
-with no interactions will not be returned in the response.</p>
+with no interactions will not be returned in the response.
+Pass <code class="prettyprint">with_interaction_persons=true</code> as a query parameter if
+<code class="prettyprint">with_interaction_dates=true</code> to also get the internal persons associated with the
+interaction.</p>
 
 <p>You can filter by interaction dates by providing additional query parameters like
 <code class="prettyprint">min_last_email_date</code> or <code class="prettyprint">max_next_event_date</code>. The value of these query parameters should
@@ -1462,6 +1465,12 @@ curl <span class="s2">"https://api.affinity.co/persons?term=doe&amp;page_token=e
 <td>boolean</td>
 <td>false</td>
 <td>When true, interaction dates will be present on the returned resources. Only persons that have interactions will be returned.</td>
+</tr>
+<tr>
+<td>with_interaction_persons</td>
+<td>boolean</td>
+<td>false</td>
+<td>When true, persons for each interaction will be returned. Used in conjunction with <code class="prettyprint">with_interaction_dates</code></td>
 </tr>
 <tr>
 <td><code class="prettyprint">{min,max}_&lt;interaction&gt;_date</code></td>
@@ -1552,6 +1561,18 @@ When <code class="prettyprint">with_interaction_dates</code> is passed in the re
 <td>boolean</td>
 <td>false</td>
 <td>When true, interaction dates will be present on the returned resources.</td>
+</tr>
+<tr>
+<td>with_interaction_persons</td>
+<td>boolean</td>
+<td>false</td>
+<td>When true, persons for each interaction will be returned. Used in</td>
+</tr>
+<tr>
+<td>conjunction with <code class="prettyprint">with_interaction_dates</code></td>
+<td></td>
+<td></td>
+<td></td>
 </tr>
 </tbody></table>
 
@@ -2128,7 +2149,7 @@ the <code class="prettyprint">/organizations/{organization_id}</code> endpoints.
 <tr>
 <td>interactions</td>
 <td>object</td>
-<td>An object with six fields nested underneath.  Each field corresponds to one of the six interactions, and includes nested fields for <code class="prettyprint">date</code> and <code class="prettyprint">person_ids</code> which indicates the internal people associated with that event.  Only returned when passing <code class="prettyprint">with_interaction_dates=true</code>.</td>
+<td>An object with six fields nested underneath.  Each field corresponds to one of the six interactions, and includes nested fields for <code class="prettyprint">date</code> and <code class="prettyprint">person_ids</code> which indicates the internal people associated with that event (people only returned if passing <code class="prettyprint">with_interaction_persons=true</code>).  Only returned when passing <code class="prettyprint">with_interaction_dates=true</code>.</td>
 </tr>
 </tbody></table>
 
@@ -2153,7 +2174,10 @@ confirm that there are no more resources).</p>
 
 <p>Pass <code class="prettyprint">with_interaction_dates=true</code> as a query parameter to include dates of the most
 recent and upcoming interactions with organizations. When this parameter is included,
-organizations with no interactions will not be returned in the response.</p>
+organizations with no interactions will not be returned in the response.
+Pass <code class="prettyprint">with_interaction_persons=true</code> as a query parameter if
+<code class="prettyprint">with_interaction_dates=true</code> to also get the internal persons associated with the
+interaction.</p>
 
 <p>You can filter by interaction dates by providing additional query parameters like
 <code class="prettyprint">min_last_email_date</code> or <code class="prettyprint">max_next_event_date</code>. The value of these query parameters should
@@ -2217,6 +2241,12 @@ curl <span class="s2">"https://api.affinity.co/organizations?term=affinity&amp;p
 <td>boolean</td>
 <td>false</td>
 <td>When true, interaction dates will be present on the returned resources. Only organizations that have interactions will be returned.</td>
+</tr>
+<tr>
+<td>with_interaction_persons</td>
+<td>boolean</td>
+<td>false</td>
+<td>When true, persons for each interaction will be returned. Used in conjunction with <code class="prettyprint">with_interaction_dates</code></td>
 </tr>
 <tr>
 <td><code class="prettyprint">{min,max}_&lt;interaction&gt;_date</code></td>
@@ -2301,6 +2331,18 @@ passed in the returned resources will have <code class="prettyprint">interaction
 <td>boolean</td>
 <td>false</td>
 <td>When true, interaction dates will be present on the returned resources.</td>
+</tr>
+<tr>
+<td>with_interaction_persons</td>
+<td>boolean</td>
+<td>false</td>
+<td>When true, persons for each interaction will be returned. Used in</td>
+</tr>
+<tr>
+<td>conjunction with <code class="prettyprint">with_interaction_dates</code></td>
+<td></td>
+<td></td>
+<td></td>
 </tr>
 </tbody></table>
 
