@@ -1128,7 +1128,6 @@ you might want to make sure that it does not exist in the list already.</p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.affinity.co/lists/450/list-entries/56517"</span> <span class="se">\</span>
    -u :&lt;API-KEY&gt; <span class="se">\</span>
-   -d <span class="nv">entity_id</span><span class="o">=</span>38706 <span class="se">\</span>
    -X <span class="s2">"DELETE"</span>
 </code></pre>
 <blockquote>
@@ -2180,7 +2179,10 @@ interaction.</p>
 
 <p>You can filter by interaction dates by providing additional query parameters like
 <code class="prettyprint">min_last_email_date</code> or <code class="prettyprint">max_next_event_date</code>. The value of these query parameters should
-be ISO 8601 formatted date strings.</p>
+be ISO 8601 formatted date strings. The interaction dates are stored with timestamps,
+so the <code class="prettyprint">{min,max}_&lt;interaction&gt;_date</code> parameter can include or exclude timestamps to explicitly
+filter the dataset. If a timestamp is not provided, the system will use the default value of 
+<code class="prettyprint">00:00:00</code>.</p>
 
 <blockquote>
 <p>Example Request</p>
@@ -2217,7 +2219,19 @@ be ISO 8601 formatted date strings.</p>
 <p>Example pagination</p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code><span class="c"># To get the second page of results, issue the following query:</span>
-curl <span class="s2">"https://api.affinity.co/organizations?term=affinity&amp;page_token=eyJwYXJhbXMiOnsidGVybSI6IiJ9LCJwYWdlX3NpemUiOjUsIm9mZnNldCI6MTB9"</span> -u :&lt;API-KEY&gt;
+curl --request GET  <span class="s2">"https://api.affinity.co/organizations"</span> <span class="se">\</span>
+  -u :&lt;API-KEY&gt; <span class="se">\</span>
+  -d <span class="nv">page_token</span><span class="o">=</span>eyJwYXJhbXMiOnsidGVybSI6IiJ9LCJwYWdlX3NpemUiOjUsIm9mZnNldCI6MTB9
+</code></pre>
+<blockquote>
+<p>Example with interaction date</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code><span class="c"># To get the results between min_last_email_interaction_date and max_last_email_interaction_date, issue the following query:</span>
+curl --request GET <span class="s2">"https://api.affinity.co/organizations"</span> <span class="se">\</span>
+  -u :&lt;API-KEY&gt; <span class="se">\</span>
+  -d <span class="nv">min_last_email_date</span><span class="o">=</span>2021-01-01T00:00:00 <span class="se">\</span>
+  -d <span class="nv">with_interaction_dates</span><span class="o">=</span><span class="nb">true</span> <span class="se">\</span>
+  -d <span class="nv">max_last_email_date</span><span class="o">=</span>2021-01-12T23:59:59
 </code></pre>
 <h3 id="query-parameters">Query Parameters</h3>
 
@@ -2666,7 +2680,7 @@ can only have one list entry.</p>
 </tr>
 <tr>
 <td>name</td>
-<td>integer</td>
+<td>string</td>
 <td>The name of the opportunity (see below).</td>
 </tr>
 <tr>
@@ -2682,11 +2696,9 @@ can only have one list entry.</p>
 <tr>
 <td>list_entries</td>
 <td>ListEntry[]</td>
-<td>An array of list entry resources associated with the opportunity (at most 1 list entry). If the</td>
+<td>An array of list entry resources associated with the opportunity (at most 1 list entry). If the user corresponding to the API key does not have access to the list, this will be empty.</td>
 </tr>
 </tbody></table>
-
-<p>user corresponding to the API key does not have access to the list, this will be empty.</p>
 
 <h2 id="search-for-opportunities">Search for opportunities</h2>
 
