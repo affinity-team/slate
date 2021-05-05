@@ -4522,7 +4522,8 @@ array of all the entity file resources. See description for more details on pagi
     </span><span class="s2">"person.created"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"organization.created"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"opportunity.created"</span><span class="w">
-  </span><span class="p">]</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"disabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>Each webhook subscription object has a unique <code class="prettyprint">id</code>. It also has a <code class="prettyprint">webhook_url</code> and <code class="prettyprint">subscriptions</code> associated with it.</p>
@@ -4548,6 +4549,11 @@ array of all the entity file resources. See description for more details on pagi
 <td>subscriptions</td>
 <td>string[]</td>
 <td>An array of webhook events that are enabled for that endpoint. An empty array indicates subscription to all webhook events. See <a href="#supported-webhook-events">below</a> for the complete list of supported webhook events.</td>
+</tr>
+<tr>
+<td>disabled</td>
+<td>boolean</td>
+<td>If the subscription is disabled, this is true. Otherwise, this is false by default. A subscription may be disabled manually via API or automatically if we are not able to process it.</td>
 </tr>
 </tbody></table>
 
@@ -4618,12 +4624,14 @@ array of all the entity file resources. See description for more details on pagi
       </span><span class="s2">"person.created"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"organization.created"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"opportunity.created"</span><span class="w">
-    </span><span class="p">]</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"disabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="p">{</span><span class="w">
     </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2345</span><span class="p">,</span><span class="w">
     </span><span class="s2">"webhook_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://hooks.example.com/webhook-all"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"subscriptions"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+    </span><span class="s2">"subscriptions"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="s2">"disabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
@@ -4649,7 +4657,8 @@ array of all the entity file resources. See description for more details on pagi
     </span><span class="s2">"person.created"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"organization.created"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"opportunity.created"</span><span class="w">
-  </span><span class="p">]</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"disabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><code class="prettyprint">GET /webhook/{webhook_subscription_id}</code></p>
@@ -4693,7 +4702,8 @@ array of all the entity file resources. See description for more details on pagi
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1234</span><span class="p">,</span><span class="w">
   </span><span class="s2">"webhook_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://hooks.example.com/webhook"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"subscriptions"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+  </span><span class="s2">"subscriptions"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+  </span><span class="s2">"disabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><code class="prettyprint">POST /webhook/subscribe</code></p>
@@ -4731,6 +4741,65 @@ array of all the entity file resources. See description for more details on pagi
 <h3 id="returns">Returns</h3>
 
 <p>The webhook subscription object that was just created from this successful request.</p>
+
+<h2 id="update-a-webhook-subscription">Update a webhook subscription</h2>
+
+<blockquote>
+<p>Example Request</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.affinity.co/webhook/1234"</span> <span class="se">\</span>
+  -u :&lt;API-KEY&gt; <span class="se">\</span>
+  -d <span class="nv">webhook_url</span><span class="o">=</span><span class="s2">"https://hooks.example.com/webhook"</span> <span class="se">\</span>
+  -d <span class="nv">disabled</span><span class="o">=</span><span class="nb">true</span> <span class="se">\</span>
+  -X <span class="s2">"PUT"</span>
+</code></pre>
+<blockquote>
+<p>Example Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1234</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"webhook_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://hooks.example.com/webhook"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"subscriptions"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+  </span><span class="s2">"disabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code class="prettyprint">PUT /webhook/{webhook_subscription_id}</code></p>
+
+<p>Update webhook subscription with the supplied parameters. If the endpoint returns an invalid response, the webhook update will fail.</p>
+
+<h3 id="payload-parameters">Payload Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>webhook_url</td>
+<td>string</td>
+<td>false</td>
+<td>The URL to which the webhooks will be sent to.</td>
+</tr>
+<tr>
+<td>subscriptions</td>
+<td>string[]</td>
+<td>false</td>
+<td>An array of webhook events that will be enabled for that endpoint. Leave out this parameter or pass an empty array to subscribe to all webhook events. You can find the complete list of supported webhook events <a href="#supported-webhook-events">here</a>.</td>
+</tr>
+<tr>
+<td>disabled</td>
+<td>boolean</td>
+<td>false</td>
+<td>Change the status of a subscription. To enable a subscription, provide the value as <code class="prettyprint">false</code>. Otherwise, provide the value as <code class="prettyprint">true.</code></td>
+</tr>
+</tbody></table>
+
+<h3 id="returns">Returns</h3>
+
+<p>The webhook subscription object that was just updated from this successful request.</p>
 
 <h2 id="delete-a-specific-webhook-subscription">Delete a specific webhook subscription</h2>
 
